@@ -1,13 +1,13 @@
 # Delete these routes and define your own shop routes here
 
-acme_sylius_example_static_welcome:
+sky_bound_tech_wholesale_suite_static_welcome:
     path: /static-welcome/{name}
     defaults:
-        _controller: AcmeSyliusExamplePlugin:Greeting:staticallyGreet
+        _controller: SkyBoundTechSyliusWholesaleSuitePlugin:Greeting:staticallyGreet
         name: ~
 
-acme_sylius_example_dynamic_welcome:
+sky_bound_tech_wholesale_suite_dynamic_welcome:
     path: /dynamic-welcome/{name}
     defaults:
-        _controller: AcmeSyliusExamplePlugin:Greeting:dynamicallyGreet
+        _controller: SkyBoundTechSyliusWholesaleSuitePlugin:Greeting:dynamicallyGreet
         name: ~
