@@ -1,8 +1,8 @@
 {
-    "name": "sylius/plugin-skeleton",
+    "name": "skybound-tech/sylius-wholesale-suite-plugin",
     "type": "sylius-plugin",
     "keywords": ["sylius", "sylius-plugin"],
-    "description": "Acme example plugin for Sylius.",
+    "description": "Enables an administrator to create and enable wholesale-oriented purchase rules and settings.",
     "license": "MIT",
     "require": {
         "php": "^7.3",
@@ -41,8 +41,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Acme\\SyliusExamplePlugin\\": "src/",
-            "Tests\\Acme\\SyliusExamplePlugin\\": "tests/"
+            "SkyBoundTech\\SyliusWholesaleSuitePlugin\\": "src/",
+            "Tests\\SkyBoundTech\\SyliusWholesaleSuitePlugin\\": "tests/"
         }
     },
     "autoload-dev": {
