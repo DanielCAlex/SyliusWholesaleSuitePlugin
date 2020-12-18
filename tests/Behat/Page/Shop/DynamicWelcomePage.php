@@ -29,7 +29,7 @@ class DynamicWelcomePage extends SymfonyPage implements WelcomePageInterface
      */
     public function getRouteName(): string
     {
-        return 'sky_bound_tech_wholesale_suite_dynamic_welcome';
+        return 'skybound_tech_wholesale_suite_dynamic_welcome';
     }
 
     /**

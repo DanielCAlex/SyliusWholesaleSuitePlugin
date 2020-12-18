@@ -1,0 +1,7 @@
+# config/services.yaml
+services:
+  # default configuration for services in *this* file
+  _defaults: { public: true }
+
+  skyboundtech_sylius_wholesale_suite_plugin.context.ui.admin.managing_wholesale_rulesets:
+    class: Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Context\Ui\Admin\ManagingWholesaleSuiteRulesets

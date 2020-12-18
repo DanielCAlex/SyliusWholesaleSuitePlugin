@@ -21,7 +21,7 @@ class StaticWelcomePage extends SymfonyPage implements WelcomePageInterface
      */
     public function getRouteName(): string
     {
-        return 'sky_bound_tech_wholesale_suite_static_welcome';
+        return 'skybound_tech_wholesale_suite_static_welcome';
     }
 
     /**

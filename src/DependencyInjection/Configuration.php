@@ -11,7 +11,7 @@ final class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder('sky_bound_tech_sylius_wholesale_suite_plugin');
+        $treeBuilder = new TreeBuilder('skybound_tech_sylius_wholesale_suite_plugin');
         $rootNode = $treeBuilder->getRootNode();
 
         return $treeBuilder;
