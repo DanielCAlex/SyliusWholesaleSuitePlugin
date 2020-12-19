@@ -6,9 +6,11 @@ Feature: Viewing wholesale rulesets in a list.
 
   Background:
     Given I am logged in as an administrator
-    And the administrator menu has a "Wholesale Purchase Rules" section
+    And the following wholesale rulesets exist
+      | name      | type          | scope  | description                    |
+      | ruleset 1 | Quantity Step | Global | This is an example description |
 
   @ui @javascript
   Scenario: Entering the wholesale ruleset management page
-    When I go the "Wholesale Purchase Rules" page in the administrator menu
-    Then I should see "Manage Wholesale Purchase Rules"
+    When I go to the wholesale rulesets list
+    Then I should see "Manage Rules"
