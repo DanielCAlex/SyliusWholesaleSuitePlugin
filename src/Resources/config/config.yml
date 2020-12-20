@@ -1,8 +1,10 @@
 imports:
   # SkyBound Tech Wholesale Suite
-
     # Import resources config
   - { resource: '@SkyBoundTechSyliusWholesaleSuitePlugin/Resources/config/resources.yml' }
 
     # Import grid config
   - { resource: '@SkyBoundTechSyliusWholesaleSuitePlugin/Resources/config/grids.yml' }
+
+parameters:
+  plugin.name.base: skyboundtech_sylius_wholesale_suite_plugin
