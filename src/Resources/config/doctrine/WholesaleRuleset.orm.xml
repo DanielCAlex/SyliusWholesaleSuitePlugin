@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                                      http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleset"
+                       table="skybound_wholesale_ruleset">
+
+        <id name="id" column="id" type="integer">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="name" column="name" type="string" length="100"
+               nullable="false" unique="true"/>
+
+        <field name="type" column="type" type="string" length="50"
+               nullable="false">
+            <options>
+                <option name="comment">
+                    The type of wholesale ruleset.
+                </option>
+            </options>
+        </field>
+
+        <field name="scope" column="scope" type="string" length="50"
+               nullable="false">
+            <options>
+                <option name="comment">
+                    The scope at which the ruleset applies for the enabled channels.
+                    Scope: Global applies the rule to all products.
+                    Scope: Product Taxonomy applies to all products under a chosen sylius_product_taxon.
+                    Scope: Product applies to a chosen product and all its variants.
+                    Scope: Product Variant applies to the chosen product variant.
+                </option>
+            </options>
+        </field>
+
+        <field name="description" column="description" type="string" length="255"
+               nullable="true"/>
+
+        <field name="isEnabled" column="enabled" type="boolean" nullable="false"/>
+
+    </entity>
+</doctrine-mapping>
