@@ -1,0 +1,14 @@
+skyboundtech_sylius_wholesale_suite_plugin_admin_wholesale_ruleset:
+  resource: |
+    alias: skyboundtech.wholesale_ruleset
+    section: admin
+    templates: "@SyliusAdmin\\Crud"
+    redirect: update
+    grid: "%plugin.name.base%_wholesale_ruleset"
+    vars:
+        all:
+            header: "%plugin.name.base%.ui.wholesale_rulesets_header"
+            subheader: "%plugin.name.base%.ui.wholesale_rulesets_subheader"
+        index:
+            icon: block layout
+  type: sylius.resource

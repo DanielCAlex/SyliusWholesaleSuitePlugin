@@ -5,5 +5,4 @@ skyboundtech_wholesale_suite_shop:
         _locale: ^[a-z]{2}(?:_[A-Z]{2})?$
 
 skyboundtech_wholesale_suite_admin:
-    resource: "@SkyBoundTechSyliusWholesaleSuitePlugin/Resources/config/admin_routing.yml"
-    prefix: /admin
+    resource: "@SkyBoundTechSyliusWholesaleSuitePlugin/Resources/config/routing.yml"
