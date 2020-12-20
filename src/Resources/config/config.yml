@@ -1,0 +1,3 @@
+imports:
+  # SkyBound Tech Wholesale Suite
+  - { resource: '@SkyBoundTechSyliusWholesaleSuitePlugin/Resources/config/resources.yml' }
