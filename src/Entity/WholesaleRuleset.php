@@ -46,7 +46,7 @@ class WholesaleRuleset implements ResourceInterface
     /**
      * @return string
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -62,7 +62,7 @@ class WholesaleRuleset implements ResourceInterface
     /**
      * @return string
      */
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -78,7 +78,7 @@ class WholesaleRuleset implements ResourceInterface
     /**
      * @return string
      */
-    public function getScope(): string
+    public function getScope(): ?string
     {
         return $this->scope;
     }
@@ -110,7 +110,7 @@ class WholesaleRuleset implements ResourceInterface
     /**
      * @return bool
      */
-    public function isEnabled(): bool
+    public function isEnabled(): ?bool
     {
         return $this->isEnabled;
     }
