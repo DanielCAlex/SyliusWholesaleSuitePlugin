@@ -1,4 +1,4 @@
-skyboundtech_sylius_wholesale_suite_plugin_admin:
+"%plugin.name.admin.base%":
   resource: "@SkyBoundTechSyliusWholesaleSuitePlugin/Resources/config/routing/admin.yml"
   prefix: /admin
 

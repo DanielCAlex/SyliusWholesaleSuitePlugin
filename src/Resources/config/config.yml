@@ -8,3 +8,4 @@ imports:
 
 parameters:
   plugin.name.base: skyboundtech_sylius_wholesale_suite_plugin
+  plugin.name.admin.base: skyboundtech_sylius_wholesale_suite_plugin_admin

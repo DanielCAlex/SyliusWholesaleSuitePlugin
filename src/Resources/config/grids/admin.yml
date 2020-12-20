@@ -1,6 +1,6 @@
 sylius_grid:
   grids:
-    "%plugin.name.base%_wholesale_ruleset":
+    "%plugin.name.admin.base%_wholesale_ruleset":
       driver:
         name: doctrine/orm
         options:
