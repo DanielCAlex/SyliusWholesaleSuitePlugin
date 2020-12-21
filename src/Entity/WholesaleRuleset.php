@@ -15,23 +15,18 @@ namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Entity;
 
 use Sylius\Component\Resource\Model\ResourceInterface;
 
-class WholesaleRuleset implements ResourceInterface
+class WholesaleRuleset extends BaseEntity implements ResourceInterface
 {
     /** @var int */
     protected $id;
-
     /** @var string */
     protected $name;
-
     /** @var string */
     protected $type;
-
     /** @var string */
     protected $scope;
-
     /** @var string|null */
     protected $description;
-
     /** @var boolean */
     protected $isEnabled;
 
