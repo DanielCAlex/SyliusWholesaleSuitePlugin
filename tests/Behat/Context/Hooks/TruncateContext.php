@@ -32,19 +32,25 @@ final class TruncateContext implements Context
         $platform = $connection->getDatabasePlatform();
 
         foreach ($tablesToTruncate as $key => $entity) {
+            $tableName = $this->entityManager
+                ->getClassMetadata($entity->getEntityName())
+                ->getTableName()
+            ;
+
             //Truncate the entity stored in the current key
             $connection->executeStatement(
                 $platform->getTruncateTableSQL(
-                    $entity::TABLE_NAME,
+                    $tableName,
                     false
                 )
             );
 
-            //Get the entity repository based off a method from BaseEntity. Polymorphic call.
-            $repository = $this->entityManager
+            //Get the entity repository based off a method from BaseEntity. Polymorphic call (sorry BitBag).
+            $entityRepository = $this->entityManager
                 ->getRepository($entity->getEntityName());
 
-            $entities = $repository->findAll();
+            //Make sure there are no rows left in the entity table.
+            $entities = $entityRepository->findAll();
 
             if (count($entities) > 0) {
                 throw new Exception(
