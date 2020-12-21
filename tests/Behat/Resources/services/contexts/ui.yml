@@ -4,4 +4,6 @@ services:
   _defaults: { public: true }
 
   skyboundtech_sylius_wholesale_suite_plugin.context.ui.admin.managing_wholesale_rulesets:
+    public: true
+    autowire: true
     class: Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Context\Ui\Admin\ManagingWholesaleSuiteRulesets
