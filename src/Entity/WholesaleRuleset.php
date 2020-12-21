@@ -38,7 +38,7 @@ class WholesaleRuleset implements ResourceInterface
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
