@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Context\Hooks;
 
+use Exception;
 use Behat\Behat\Context\Context;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -30,13 +31,26 @@ final class TruncateContext implements Context
         $connection = $this->entityManager->getConnection();
         $platform = $connection->getDatabasePlatform();
 
-        foreach ($tablesToTruncate as $table) {
+        foreach ($tablesToTruncate as $key => $entity) {
+            //Truncate the entity stored in the current key
             $connection->executeStatement(
                 $platform->getTruncateTableSQL(
-                    $table,
+                    $entity::TABLE_NAME,
                     false
                 )
             );
+
+            //Get the entity repository based off a method from BaseEntity. Polymorphic call.
+            $repository = $this->entityManager
+                ->getRepository($entity->getEntityName());
+
+            $entities = $repository->findAll();
+
+            if (count($entities) > 0) {
+                throw new Exception(
+                    'Truncate unsuccessful. There are still rows of this table in the database.'
+                );
+            }
         }
     }
 }
