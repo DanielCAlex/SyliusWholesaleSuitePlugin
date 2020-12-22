@@ -21,7 +21,7 @@ use Symfony\Component\Routing\RouterInterface;
 use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleset;
 use Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Context\Hooks\TruncateContext;
 
-final class ManagingWholesaleSuiteRulesets extends MinkContext
+final class ManagingWholesaleSuiteRulesetsContext extends MinkContext
 {
 
     /**
