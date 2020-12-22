@@ -13,14 +13,15 @@ declare(strict_types=1);
 namespace Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Context\Ui\Admin;
 
 use Exception;
-use Behat\Behat\Context\Context;
+use Behat\Mink\Session;
 use Behat\Gherkin\Node\TableNode;
 use Doctrine\ORM\EntityManagerInterface;
-use Behat\Behat\Tester\Exception\PendingException;
+use Behat\MinkExtension\Context\MinkContext;
+use Symfony\Component\Routing\RouterInterface;
 use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleset;
 use Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Context\Hooks\TruncateContext;
 
-final class ManagingWholesaleSuiteRulesets implements Context
+final class ManagingWholesaleSuiteRulesets extends MinkContext
 {
 
     /**
@@ -31,13 +32,25 @@ final class ManagingWholesaleSuiteRulesets implements Context
      * @var EntityManagerInterface
      */
     protected $entityManager;
+    /**
+     * @var Session
+     */
+    protected $session;
+    /**
+     * @var RouterInterface
+     */
+    protected $router;
 
     public function __construct(
         EntityManagerInterface $entityManager,
-        TruncateContext $truncateContext
+        TruncateContext $truncateContext,
+        Session $session,
+        RouterInterface $router
     ) {
         $this->entityManager = $entityManager;
         self::$truncateContext = $truncateContext;
+        $this->session = $session;
+        $this->router = $router;
     }
 
     /**
@@ -96,18 +109,25 @@ final class ManagingWholesaleSuiteRulesets implements Context
     }
 
     /**
-     * @When I go to the wholesale rulesets list
+     * @When I visit the page :route
      */
-    public function iGoToTheWholesaleRulesetsList()
+    public function iVisitThePage($route)
     {
-        throw new PendingException();
-    }
+        $url = $this->router->generate(
+            $route,
+        );
 
-    /**
-     * @Then I should see :arg1
-     */
-    public function iShouldSee($arg1)
-    {
-        throw new PendingException();
+        $this->visit($url);
+
+        $currentUrl = $this->session->getCurrentUrl();
+//        $currentUrl = 'hmm';
+        $message = sprintf(
+            'Expected url: %s. Currently on page %s.',
+            $url,
+            $currentUrl
+        );
+        if (!str_contains($currentUrl, $url)) {
+            throw new \Exception($message);
+        }
     }
 }

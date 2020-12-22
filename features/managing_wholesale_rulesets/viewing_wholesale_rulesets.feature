@@ -15,5 +15,8 @@ Feature: Viewing wholesale rulesets in a list.
 
   @ui @javascript
   Scenario: Entering the wholesale ruleset management page
-    When I go to the wholesale rulesets list
-    Then I should see "Manage Rules"
+    When I visit the page "skyboundtech_admin_wholesale_ruleset_index"
+    Then I should see "Ruleset 1"
+    And I should see "Ruleset 2"
+    And I should see "Ruleset 3"
+    And I should see "Ruleset 4"
