@@ -12,6 +12,9 @@ sylius_grid:
         description:
           type: string
           label: sylius.ui.description
+        type:
+          type: string
+          label: "%plugin.name.base%.ui.wholesale_rulesets.type"
         enabled:
           type: twig
           label: sylius.ui.enabled
