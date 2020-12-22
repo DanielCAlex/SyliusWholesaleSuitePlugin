@@ -7,8 +7,8 @@
     grid: "%plugin.name.admin.base%_wholesale_ruleset"
     vars:
         all:
-            header: "%plugin.name.base%.ui.wholesale_rulesets_header"
-            subheader: "%plugin.name.base%.ui.wholesale_rulesets_subheader"
+            header: "%plugin.name.base%.ui.wholesale_rulesets.header"
+            subheader: "%plugin.name.base%.ui.wholesale_rulesets.subheader"
         index:
             icon: block layout
   type: sylius.resource
