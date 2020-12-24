@@ -7,3 +7,8 @@ services:
     public: true
     autowire: true
     class: Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Context\Ui\Admin\ManagingWholesaleSuiteRulesetsContext
+
+  skyboundtech_sylius_wholesale_suite_plugin.context.ui.admin.create_wholesale_rulesets:
+    public: true
+    autowire: true
+    class: Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Context\Ui\Admin\CreateWholesaleSuiteRulesetsContext
