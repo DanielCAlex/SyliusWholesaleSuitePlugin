@@ -4,5 +4,6 @@ default:
       contexts:
         - sylius.behat.context.setup.admin_security
         - skyboundtech_sylius_wholesale_suite_plugin.context.ui.admin.managing_wholesale_rulesets
+        - skyboundtech_sylius_wholesale_suite_plugin.context.ui.admin.create_wholesale_rulesets
       filters:
         tags: "@managing_wholesale_rulesets && ui"
