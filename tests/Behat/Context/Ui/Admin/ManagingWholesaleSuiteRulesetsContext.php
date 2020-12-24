@@ -23,7 +23,6 @@ use Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Context\Hooks\TruncateCo
 
 final class ManagingWholesaleSuiteRulesetsContext extends MinkContext
 {
-
     /**
      * @var TruncateContext
      */
@@ -54,11 +53,12 @@ final class ManagingWholesaleSuiteRulesetsContext extends MinkContext
     }
 
     /**
-     * @BeforeSuite
+     * @BeforeScenario
      * Truncate the table beforehand so we don't get unique constraint errors
      */
     public static function truncate()
     {
+        echo 'Truncating tables.';
         $tablesToTruncate = [
             0 => new WholesaleRuleset(),
         ];
