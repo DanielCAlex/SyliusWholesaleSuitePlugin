@@ -63,9 +63,8 @@ final class CreateWholesaleSuiteRulesetsContext extends RawMinkContext
         // present, because a successful submission would mean it redirects to edit
         do {
             echo 'PRESSING THE SAVE BUTTON UNTIL IT WORKS' . "\n";
-
             $page->pressButton('Create');
-
+            $this->getSession()->wait(700);
             $buttonIsPresent = $page->findButton('Create') ? true : false;
         } while ($buttonIsPresent === true);
     }
