@@ -5,14 +5,22 @@
         <service
                 id="skyboundtech_sylius_wholesale_suite_plugin.context.ui.admin.managing_wholesale_rulesets"
                 class="Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Context\Ui\Admin\ManagingWholesaleSuiteRulesetsContext"
-                autowire="true" public="true"
-        />
+                autowire="false" public="true"
+        >
+            <argument type="service" id="Doctrine\ORM\EntityManagerInterface"/>
+            <argument type="service"
+                      id="Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Context\Hooks\TruncateContext"/>
+            <argument type="service" id="Behat\Mink\Session"/>
+            <argument type="service" id="router.default"/>
+
+        </service>
         <service
                 id="skyboundtech_sylius_wholesale_suite_plugin.context.ui.admin.create_wholesale_rulesets"
                 class="Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Context\Ui\Admin\CreateWholesaleSuiteRulesetsContext"
-                autowire="true" public="true"
-        />
-
+                autowire="false" public="true"
+        >
+            <argument type="service" id="Doctrine\ORM\EntityManagerInterface"/>
+        </service>
 
     </services>
 </container>

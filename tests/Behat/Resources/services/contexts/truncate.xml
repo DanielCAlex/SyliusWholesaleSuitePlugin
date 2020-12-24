@@ -5,8 +5,10 @@
         <service
                 id="skyboundtech.sylius_wholesale_suite_plugin.behat.context.hooks.truncate_context"
                 class="Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Context\Hooks\TruncateContext"
-                autowire="true" public="true"
-        />
+                autowire="false" public="true"
+        >
+            <argument type="service" id="Doctrine\ORM\EntityManagerInterface"/>
+        </service>
 
         <service id="Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Context\Hooks\TruncateContext"
                  alias="skyboundtech.sylius_wholesale_suite_plugin.behat.context.hooks.truncate_context">
