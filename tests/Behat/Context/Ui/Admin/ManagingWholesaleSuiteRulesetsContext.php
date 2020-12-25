@@ -18,6 +18,7 @@ use Behat\Gherkin\Node\TableNode;
 use Doctrine\ORM\EntityManagerInterface;
 use Behat\MinkExtension\Context\MinkContext;
 use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\DependencyInjection\Container;
 use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleset;
 use Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Context\Hooks\TruncateContext;
 
@@ -39,17 +40,23 @@ final class ManagingWholesaleSuiteRulesetsContext extends MinkContext
      * @var RouterInterface
      */
     protected $router;
+    /**
+     * @var Container
+     */
+    protected $container;
 
     public function __construct(
         EntityManagerInterface $entityManager,
         TruncateContext $truncateContext,
         Session $session,
-        RouterInterface $router
+        RouterInterface $router,
+        Container $container
     ) {
         $this->entityManager = $entityManager;
         self::$truncateContext = $truncateContext;
         $this->session = $session;
         $this->router = $router;
+        $this->container = $container;
     }
 
     /**
@@ -70,8 +77,12 @@ final class ManagingWholesaleSuiteRulesetsContext extends MinkContext
      */
     public function theFollowingWholesaleRulesetsExist(TableNode $table): void
     {
+        $factory = $this->container->get('skyboundtech.factory.wholesale_ruleset');
+        $manager = $this->container->get('skyboundtech.manager.wholesale_ruleset');
         foreach ($table as $node) {
-            $ruleset = new WholesaleRuleset();
+
+            /** @var WholesaleRuleset $product */
+            $ruleset = $factory->createNew();
 
             /** @var string $name */
             $name = $node['name'];
@@ -94,17 +105,16 @@ final class ManagingWholesaleSuiteRulesetsContext extends MinkContext
             $ruleset->setDescription($description);
             $ruleset->setIsEnabled($isEnabled);
 
-            $this->entityManager->persist($ruleset);
+            $manager->persist($ruleset);
         }
-        $this->entityManager->flush();
+        $manager->flush();
 
-        $rulesets = $this->entityManager
-            ->getRepository(WholesaleRuleset::class)
-            ->findAll()
-        ;
+        $repository = $this->container->get('skyboundtech.repository.wholesale_ruleset');
+
+        $rulesets = $repository->findAll();
 
         if (count($rulesets) !== 4 || $rulesets === null) {
-            throw new Exception('The rulesets were not created.');
+            throw new Exception('The required rulesets were not created.');
         }
     }
 

@@ -12,7 +12,7 @@
                       id="Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Context\Hooks\TruncateContext"/>
             <argument type="service" id="Behat\Mink\Session"/>
             <argument type="service" id="router.default"/>
-
+            <argument type="service" id="service_container"/>
         </service>
         <service
                 id="skyboundtech_sylius_wholesale_suite_plugin.context.ui.admin.create_wholesale_rulesets"
