@@ -1,5 +1,4 @@
 <?php
-
 /*
  * This file was created by a developer at SkyBound Tech.
  * @author Daniel Alexandre <daniel.alexandre@skyboundtech.co>
@@ -11,12 +10,14 @@
 
 declare(strict_types=1);
 
-namespace SkyBoundTech\SyliusWholesaleSuitePlugin;
+namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Entity;
 
-use Sylius\Bundle\CoreBundle\Application\SyliusPluginTrait;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
-
-final class SkyBoundTechSyliusWholesaleSuitePlugin extends Bundle
+class BaseEntity
 {
-    use SyliusPluginTrait;
+    public function getEntityName(): string
+    {
+        return static::class;
+    }
+
+    //TODO Look into doctrine documentation for a more "correct" approach to shared methods amongst entities.
 }

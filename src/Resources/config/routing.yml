@@ -1,0 +1,10 @@
+"%plugin.name.admin.base%":
+  resource: "@SkyBoundTechSyliusWholesaleSuitePlugin/Resources/config/routing/admin.yml"
+  prefix: /admin
+
+#skyboundtech_sylius_wholesale_suite_plugin_shop:
+#  resource: "@SkyboundtechSyliusWholesaleSuitePlugin/Resources/config/routing/shop.yml"
+#  prefix: /{_locale}
+
+#sylius_sitemap:
+#  resource: "@SitemapPlugin/Resources/config/routing.yml"

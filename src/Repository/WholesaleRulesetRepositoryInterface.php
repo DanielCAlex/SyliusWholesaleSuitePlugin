@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file was created by a developer at SkyBound Tech.
  * @author Daniel Alexandre <daniel.alexandre@skyboundtech.co>
@@ -9,14 +11,9 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
+namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Repository;
 
-namespace SkyBoundTech\SyliusWholesaleSuitePlugin;
-
-use Sylius\Bundle\CoreBundle\Application\SyliusPluginTrait;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
-
-final class SkyBoundTechSyliusWholesaleSuitePlugin extends Bundle
+interface WholesaleRulesetRepositoryInterface
 {
-    use SyliusPluginTrait;
+    public function findAll() : array;
 }

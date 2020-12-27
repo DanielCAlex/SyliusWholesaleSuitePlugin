@@ -1,0 +1,31 @@
+sylius_grid:
+  grids:
+    "%plugin.name.admin.base%_wholesale_ruleset":
+      driver:
+        name: doctrine/orm
+        options:
+          class: SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleset
+      fields:
+        name:
+          type: string
+          label: sylius.ui.name
+        description:
+          type: string
+          label: sylius.ui.description
+        type:
+          type: string
+          label: "%plugin.name.base%.ui.wholesale_rulesets.type"
+        enabled:
+          type: twig
+          label: sylius.ui.enabled
+          options:
+            template: "@SyliusUi/Grid/Field/enabled.html.twig"
+      actions:
+        main:
+          create:
+            type: create
+        item:
+          update:
+            type: update
+          delete:
+            type: delete

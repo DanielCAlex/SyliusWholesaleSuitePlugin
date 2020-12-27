@@ -1,0 +1,6 @@
+sylius_resource:
+  resources:
+    skyboundtech.wholesale_ruleset:
+      driver: doctrine/orm
+      classes:
+        model: SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleset

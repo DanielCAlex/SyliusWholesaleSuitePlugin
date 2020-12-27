@@ -1,0 +1,2 @@
+imports:
+  - { resource: "@SkyBoundTechSyliusWholesaleSuitePlugin/Resources/config/grids/admin.yml" }

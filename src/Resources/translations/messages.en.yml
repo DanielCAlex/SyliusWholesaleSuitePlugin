@@ -1,0 +1,8 @@
+skyboundtech.ui.wholesale_rulesets: Wholesale Rulesets
+
+skyboundtech_sylius_wholesale_suite_plugin:
+  ui:
+    wholesale_rulesets:
+      header: Wholesale Purchase Rulesets
+      subheader: Manage rulesets
+      type: Ruleset Type
