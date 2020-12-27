@@ -4,5 +4,6 @@
     <imports>
         <import resource="services/Repository/WholesaleRulesetRepository.xml"/>
         <import resource="services/Menus/AdminMenuListener.xml"/>
+        <import resource="services/Form/Type/WholesaleRulesetCreateType.xml"/>
     </imports>
 </container>
