@@ -2,7 +2,8 @@
   resource: |
     alias: skyboundtech.wholesale_ruleset
     section: admin
-    templates: "@SyliusAdmin\\Crud"
+    #templates: "@SyliusAdmin\\Crud"
+    templates: "@SkyBoundTechSyliusWholesaleSuitePlugin/CrudUi"
     redirect: update
     grid: "%plugin.name.admin.base%_wholesale_ruleset"
     vars:
