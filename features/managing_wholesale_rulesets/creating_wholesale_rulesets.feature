@@ -12,5 +12,5 @@ Feature: Creating wholesale rulesets
     When I visit the page "skyboundtech_admin_wholesale_ruleset_index"
     Then I should see "Create"
     When I visit the page "skyboundtech_admin_wholesale_ruleset_create"
-    And I select "Global" for "Scope"
+    And I select "Global" from "Scope"
     Then I should see "This ruleset will apply to all products."
