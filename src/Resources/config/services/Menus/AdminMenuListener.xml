@@ -4,7 +4,7 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services
         https://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="sky_bound_tech.sylius_wholesale_suite_plugin.admin_menu_listener"
+        <service id="skyboundtech.sylius_wholesale_suite_plugin.admin_menu_listener"
                  class="SkyBoundTech\SyliusWholesaleSuitePlugin\EventListener\AdminMenuListener"
                  autowire="false">
             <tag name="kernel.event_listener" event="sylius.menu.admin.main" method="addAdminMenuItems"/>

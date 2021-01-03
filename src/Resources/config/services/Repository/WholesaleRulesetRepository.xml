@@ -5,12 +5,12 @@
         https://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
         <service class="SkyBoundTech\SyliusWholesaleSuitePlugin\Repository\WholesaleRulesetRepository"
-                 id="sky_bound_tech.wholesale_suite.wholesale_ruleset_repository"
+                 id="skyboundtech.wholesale_suite.wholesale_ruleset_repository"
                  autowire="true">
         </service>
 
         <service id="SkyBoundTech\SyliusWholesaleSuitePlugin\Repository\WholesaleRulesetRepositoryInterface"
-                 alias="sky_bound_tech.wholesale_suite.wholesale_ruleset_repository"
+                 alias="skyboundtech.wholesale_suite.wholesale_ruleset_repository"
         />
     </services>
 </container>
