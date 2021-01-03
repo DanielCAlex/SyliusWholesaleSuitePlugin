@@ -4,8 +4,9 @@
         {{ form_row(form.name) }}
     </div>
     <div class="six wide column">
-        {{ form_row(form.scope) }}
-        <p style="color: purple">This ruleset applies to all products in the store.</p>
+        {{ form_row(form.scope)}}
+        <div class="ui yellow message" id="scope-warning">
+        </div>
     </div>
     <div class="twelve wide column">
         {{ form_row(form.description) }}
