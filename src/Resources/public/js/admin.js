@@ -1,25 +1,29 @@
 $(document).ready(function () {
+
     let rulesetScopeValues = [
         'ruleset_scope_global',
         'ruleset_scope_product_taxonomy',
         'ruleset_scope_product',
         'ruleset_scope_product_variant',
-    ]
+    ];
+    let rulesetScopeSelectText = $('#wholesale_ruleset_create_scope :selected').text();
     //Ruleset scope notifications.
-    determineScopeMessage();
-    $('#wholesale_ruleset_create_scope').change(determineScopeMessage);
+    determineScopeInfoMessage();
+    $('#wholesale_ruleset_create_scope').change(determineScopeInfoMessage);
+
 
     function changeScopeWarningText(desiredText) {
-        $('#scope-warning').text(
+        $('#scope-info').text(
             desiredText
         );
     }
 
-    function determineScopeMessage() {
+    function determineScopeInfoMessage() {
         switch ($('#wholesale_ruleset_create_scope').val()) {
             case rulesetScopeValues[0]:
                 changeScopeWarningText(
-                    'This ruleset will apply to all products.'
+                    rulesetScopeSelectText +
+                    ': This ruleset will apply to ALL products.'
                 )
                 break;
             default:
