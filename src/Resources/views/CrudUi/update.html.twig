@@ -1,7 +1,7 @@
 {% extends '@SyliusAdmin/layout.html.twig' %}
 
-{% set header = configuration.vars.header|default(metadata.applicationName~'.ui.new_'~metadata.name) %}
-{% set event_prefix = metadata.applicationName ~ '.admin.' ~ metadata.name ~ '.create' %}
+{% set header = configuration.vars.header|default(metadata.applicationName~'.ui.edit_'~metadata.name) %}
+{% set event_prefix = metadata.applicationName ~ '.admin.' ~ metadata.name ~ '.update' %}
 
 {% block title %}{{ header|trans }} {{ parent() }}{% endblock %}
 
@@ -22,11 +22,11 @@
 {% block stylesheets %}
     {{ parent() }}
 
-    {{ sylius_template_event([event_prefix ~ '.stylesheets', 'sylius.admin.create.stylesheets'], { 'metadata': metadata }) }}
+    {{ sylius_template_event([event_prefix ~ '.stylesheets', 'sylius.admin.update.stylesheets'], { 'metadata': metadata }) }}
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
 
-    {{ sylius_template_event([event_prefix ~ '.javascripts', 'sylius.admin.create.javascripts'], { 'metadata': metadata }) }}
+    {{ sylius_template_event([event_prefix ~ '.javascripts', 'sylius.admin.update.javascripts'], { 'metadata': metadata }) }}
 {% endblock %}
