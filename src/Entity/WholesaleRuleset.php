@@ -13,7 +13,9 @@ declare(strict_types=1);
 
 namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Resource\Model\ResourceInterface;
+use Sylius\Component\Core\Model\ProductTaxonInterface;
 
 class WholesaleRuleset extends BaseEntity implements ResourceInterface
 {
@@ -29,6 +31,27 @@ class WholesaleRuleset extends BaseEntity implements ResourceInterface
     protected $description;
     /** @var boolean */
     protected $isEnabled;
+    /** @var Collection|ProductTaxonInterface */
+    protected $rulesetProductTaxons;
+
+    public function addRulesetProductTaxon($rulesetProductTaxon): void
+    {
+        $this->rulesetProductTaxons->add($rulesetProductTaxon);
+        // uncomment if you want to update other side
+        $rulesetProductTaxon->setWholesaleRuleset($this);
+    }
+
+    public function removeRulesetProductTaxon($rulesetProductTaxon): void
+    {
+        $this->rulesetProductTaxons->removeElement($rulesetProductTaxon);
+        // uncomment if you want to update other side
+        $rulesetProductTaxon->setWholesaleRuleset(null);
+    }
+
+    public function getRulesetProductTaxons()
+    {
+        return $this->rulesetProductTaxons;
+    }
 
     /**
      * @return int
@@ -37,6 +60,7 @@ class WholesaleRuleset extends BaseEntity implements ResourceInterface
     {
         return $this->id;
     }
+
 
     /**
      * @return string
