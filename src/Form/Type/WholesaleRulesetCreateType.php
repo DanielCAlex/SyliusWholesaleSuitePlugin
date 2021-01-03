@@ -37,6 +37,18 @@ class WholesaleRulesetCreateType extends AbstractResourceType
                     ],
                 ]
             )
+            ->add(
+                'type',
+                ChoiceType::class,
+                [
+                    'choices' => [
+                        'Quantity Step' => 'quantity_step',
+                        'Tiered Pricing' => 'tiered_pricing',
+                        'Backorder' => 'backorder',
+                        'Minimum/Maximum Order' => 'min_max_order',
+                    ],
+                ]
+            )
             ->add('description', TextareaType::class)
         ;
     }
