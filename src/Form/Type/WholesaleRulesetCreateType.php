@@ -50,6 +50,13 @@ class WholesaleRulesetCreateType extends AbstractResourceType
                 ]
             )
             ->add('description', TextareaType::class)
+            ->add(
+                'isEnabled',
+                null,
+                [
+                    'label' => 'Enabled?',
+                ]
+            )
         ;
     }
 
