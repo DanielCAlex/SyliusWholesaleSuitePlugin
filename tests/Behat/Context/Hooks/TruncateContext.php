@@ -41,7 +41,7 @@ final class TruncateContext implements Context
             $connection->executeStatement(
                 $platform->getTruncateTableSQL(
                     $tableName,
-                    false
+                    true
                 )
             );
 
