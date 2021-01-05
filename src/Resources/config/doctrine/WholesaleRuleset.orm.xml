@@ -41,7 +41,7 @@
 
         <field name="isEnabled" column="enabled" type="boolean" nullable="false"/>
 
-        <many-to-many field="rulesetProductTaxons"
+        <many-to-many field="productTaxons"
                       inversed-by="skyboundWholesaleRulesets"
                       target-entity="Sylius\Component\Core\Model\ProductTaxon">
             <join-table name="skybound_wholesale_ruleset_product_taxon">

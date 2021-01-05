@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Entity;
 
 use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Core\Model\ProductTaxonInterface;
 
@@ -31,26 +32,33 @@ class WholesaleRuleset extends BaseEntity implements ResourceInterface
     protected $description;
     /** @var boolean */
     protected $isEnabled;
-    /** @var Collection|ProductTaxonInterface */
-    protected $rulesetProductTaxons;
+    /** @var ArrayCollection|ProductTaxonInterface */
+    protected $productTaxons;
 
-    public function addRulesetProductTaxon($rulesetProductTaxon): void
+    /**
+     * @param mixed $productTaxon
+     */
+    public function addProductTaxon($productTaxon)
     {
-        $this->rulesetProductTaxons->add($rulesetProductTaxon);
+        $this->productTaxons->add($productTaxon);
         // uncomment if you want to update other side
-        $rulesetProductTaxon->setWholesaleRuleset($this);
+        $productTaxon->setWholesaleRuleset($this);
     }
 
-    public function removeRulesetProductTaxon($rulesetProductTaxon): void
+    /**
+     * @param mixed $productTaxon
+     */
+    public function removeProductTaxon($productTaxon)
     {
-        $this->rulesetProductTaxons->removeElement($rulesetProductTaxon);
+        $this->productTaxons->removeElement($productTaxon);
         // uncomment if you want to update other side
-        $rulesetProductTaxon->setWholesaleRuleset(null);
+        $productTaxon->setWholesaleRuleset(null);
     }
+
 
     public function getRulesetProductTaxons()
     {
-        return $this->rulesetProductTaxons;
+        return $this->productTaxons;
     }
 
     /**
