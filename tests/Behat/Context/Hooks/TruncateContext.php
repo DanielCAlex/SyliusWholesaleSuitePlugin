@@ -38,12 +38,9 @@ final class TruncateContext implements Context
             ;
 
             //Truncate the entity stored in the current key
-            $connection->executeStatement(
-                $platform->getTruncateTableSQL(
-                    $tableName,
-                    true
-                )
-            );
+            $sql = sprintf('DELETE FROM %s;', $tableName);
+            $statement = $connection->prepare($sql);
+            $statement->execute();
 
             //Get the entity repository based off a method from BaseEntity. Polymorphic call (sorry BitBag).
             $entityRepository = $this->entityManager
