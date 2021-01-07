@@ -12,15 +12,33 @@ declare(strict_types=1);
 
 namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Form\Type;
 
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
+use Doctrine\ORM\EntityManagerInterface;
+use Sylius\Component\Core\Model\ProductTaxon;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleset;
+use Sylius\Bundle\TaxonomyBundle\Form\Type\TaxonAutocompleteChoiceType;
 
-class WholesaleRulesetCreateType extends AbstractResourceType
+final class WholesaleRulesetCreateType extends AbstractResourceType
 {
+    /**
+     * @var EntityManagerInterface
+     */
+    protected $entityManager;
+
+    public function __construct(
+        string $dataClass,
+        EntityManagerInterface $entityManager
+    ) {
+        parent::__construct($dataClass);
+        $this->entityManager = $entityManager;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -57,7 +75,49 @@ class WholesaleRulesetCreateType extends AbstractResourceType
                     'label' => 'Enabled?',
                 ]
             )
+            ->addEventListener(
+                FormEvents::PRE_SET_DATA,
+                function (FormEvent $event) {
+                    $form = $event->getForm();
+
+                    if ($this->entityHasRecords(ProductTaxon::class) !== null) {
+//                        $form->add(
+//                            'productTaxons',
+//                            CollectionType::class,
+//                            [
+//                                'entry_type' => EntityType::class,
+//                                'entry_options' => [
+//                                    'class' => Taxon::class,
+//                                    'query_builder' => function (EntityRepository $entityRepository) {
+//                                        $er = $entityRepository->createQueryBuilder('t');
+//                                        return $er
+//                                            ->orderBy('t.code', 'ASC');
+//                                    },
+//                                    'choice_label' => 'code'
+//                                ],
+//                                'allow_add' => true,
+//                                'allow_delete' => true,
+//                                'by_reference' => false,
+//                            ],
+//                        );
+                        $form->add(
+                            'productTaxons',
+                            TaxonAutocompleteChoiceType::class,
+                            [
+                                'multiple' => true,
+                            ]
+                        );
+                    }
+                }
+            )
         ;
+    }
+
+    public function entityHasRecords(string $entityName): ?array
+    {
+        $repository = $this->entityManager->getRepository($entityName);
+
+        return $repository->findAll();
     }
 
     public function configureOptions(OptionsResolver $resolver): void

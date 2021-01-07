@@ -9,6 +9,7 @@
                  autowire="false">
             <tag name="form.type"/>
             <argument type="string" id="WholesaleRulesetType::class"/>
+            <argument type="service" id="Doctrine\ORM\EntityManagerInterface"/>
         </service>
     </services>
 </container>
