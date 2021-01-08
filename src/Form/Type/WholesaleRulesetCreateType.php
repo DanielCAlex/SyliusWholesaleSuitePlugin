@@ -49,10 +49,10 @@ final class WholesaleRulesetCreateType extends AbstractResourceType
                 ChoiceType::class,
                 [
                     'choices' => [
-                        'Global' => 'ruleset_scope_global',
-                        'Product Taxanomy' => 'ruleset_scope_product_taxonomy',
-                        'Product' => 'ruleset_scope_product',
-                        'Product Variant' => 'ruleset_scope_product_variant',
+                        'Global' => 'Global',
+                        'Product Taxonomy' => 'Product Taxonomy',
+                        'Product' => 'Product',
+                        'Product Variant' => 'Product Variant',
                     ],
                 ]
             )
@@ -61,10 +61,10 @@ final class WholesaleRulesetCreateType extends AbstractResourceType
                 ChoiceType::class,
                 [
                     'choices' => [
-                        'Quantity Step' => 'quantity_step',
-                        'Tiered Pricing' => 'tiered_pricing',
-                        'Backorder' => 'backorder',
-                        'Minimum/Maximum Order' => 'min_max_order',
+                        'Quantity Step' => 'Quantity Step',
+                        'Tiered Pricing' => 'Tiered Pricing',
+                        'Backorder' => 'Backorder',
+                        'Minimum/Maximum Order' => 'Min or Max Order',
                     ],
                 ]
             )
