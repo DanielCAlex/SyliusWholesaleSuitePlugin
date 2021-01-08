@@ -1,3 +1,10 @@
+sylius_taxonomy:
+  resources:
+    taxon:
+      classes:
+        model: SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\Taxon
+
+# New resources
 sylius_resource:
   resources:
     skyboundtech.wholesale_ruleset:
