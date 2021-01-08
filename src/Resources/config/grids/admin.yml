@@ -32,3 +32,26 @@ sylius_grid:
             type: update
           delete:
             type: delete
+        bulk:
+          delete:
+            type: delete
+            label: sylius.ui.delete
+            enabled: true
+            position: 100
+      filters:
+        name:
+          type: string
+          label: sylius.ui.name
+        isEnabled:
+          type: boolean
+          label: sylius.ui.enabled
+        scope:
+          type: string
+          label: "%plugin.name.base%.ui.wholesale_rulesets.scope"
+        rulesetTaxons:
+          type: entities
+          label: sylius.ui.taxonomy
+          form_options:
+            class: "%sylius.model.taxon.class%"
+          options:
+            field: "rulesetTaxons.id"
