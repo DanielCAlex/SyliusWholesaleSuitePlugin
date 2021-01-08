@@ -59,7 +59,7 @@ class WholesaleRuleset extends BaseEntity implements ResourceInterface
         $taxon->removeSkyBoundTechWholesaleRuleset($this);
     }
 
-    public function getRulesetTaxons(): Collection
+    public function getRulesetTaxons(): ?Collection
     {
         return $this->rulesetTaxons;
     }
