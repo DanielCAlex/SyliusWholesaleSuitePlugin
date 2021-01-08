@@ -1,10 +1,10 @@
 $(document).ready(function () {
 
     let rulesetScopeValues = [
-        'ruleset_scope_global',
-        'ruleset_scope_product_taxonomy',
-        'ruleset_scope_product',
-        'ruleset_scope_product_variant',
+        'Global',
+        'Product Taxanomy',
+        'Product',
+        'Product Variant',
     ];
     let rulesetScopeSelectText = $('#wholesale_ruleset_create_scope :selected').text();
     //Ruleset scope notifications.
