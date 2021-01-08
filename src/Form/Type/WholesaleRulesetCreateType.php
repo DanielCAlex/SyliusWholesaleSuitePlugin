@@ -17,12 +17,13 @@ use Symfony\Component\Form\FormEvents;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Component\Core\Model\ProductTaxon;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\Taxon;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleset;
-use Sylius\Bundle\TaxonomyBundle\Form\Type\TaxonAutocompleteChoiceType;
 
 final class WholesaleRulesetCreateType extends AbstractResourceType
 {
@@ -81,30 +82,14 @@ final class WholesaleRulesetCreateType extends AbstractResourceType
                     $form = $event->getForm();
 
                     if ($this->entityHasRecords(ProductTaxon::class) !== null) {
-//                        $form->add(
-//                            'productTaxons',
-//                            CollectionType::class,
-//                            [
-//                                'entry_type' => EntityType::class,
-//                                'entry_options' => [
-//                                    'class' => Taxon::class,
-//                                    'query_builder' => function (EntityRepository $entityRepository) {
-//                                        $er = $entityRepository->createQueryBuilder('t');
-//                                        return $er
-//                                            ->orderBy('t.code', 'ASC');
-//                                    },
-//                                    'choice_label' => 'code'
-//                                ],
-//                                'allow_add' => true,
-//                                'allow_delete' => true,
-//                                'by_reference' => false,
-//                            ],
-//                        );
                         $form->add(
-                            'productTaxons',
-                            TaxonAutocompleteChoiceType::class,
+                            'rulesetTaxons',
+                            EntityType::class,
                             [
                                 'multiple' => true,
+                                'class' => Taxon::class,
+                                'by_reference' => 'false',
+                                'choice_label' => 'code',
                             ]
                         );
                     }
