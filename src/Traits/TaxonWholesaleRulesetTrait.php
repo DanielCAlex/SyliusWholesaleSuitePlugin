@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Traits;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleset;
 
@@ -47,5 +48,10 @@ trait TaxonWholesaleRulesetTrait
         }
         $this->skyBoundTechWholesaleRulesets->removeElement($wholesaleRuleset);
         $wholesaleRuleset->removeRulesetTaxon($this);
+    }
+
+    public function getSkyBoundTechWholesaleRulesets(): ?Collection
+    {
+        return $this->skyBoundTechWholesaleRulesets;
     }
 }
