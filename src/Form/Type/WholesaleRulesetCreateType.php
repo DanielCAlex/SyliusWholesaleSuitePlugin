@@ -16,14 +16,12 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Sylius\Component\Core\Model\ProductTaxon;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\Taxon;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
-use SkyBoundTech\SyliusWholesaleSuitePlugin\Services\EntityHelper;
 use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleset;
+use Sylius\Bundle\TaxonomyBundle\Form\Type\TaxonAutocompleteChoiceType;
 use SkyBoundTech\SyliusWholesaleSuitePlugin\Services\EntityHelperInterface;
 
 final class WholesaleRulesetCreateType extends AbstractResourceType
@@ -86,12 +84,10 @@ final class WholesaleRulesetCreateType extends AbstractResourceType
                     if ($this->entityHelper->entityHasRecords(ProductTaxon::class) !== null) {
                         $form->add(
                             'rulesetTaxons',
-                            EntityType::class,
+                            TaxonAutocompleteChoiceType::class,
                             [
                                 'multiple' => true,
-                                'class' => Taxon::class,
                                 'by_reference' => 'false',
-                                'choice_label' => 'code',
                             ]
                         );
                     }
