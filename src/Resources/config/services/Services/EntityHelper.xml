@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+        https://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service class="SkyBoundTech\SyliusWholesaleSuitePlugin\Services\EntityHelper"
+                 id="skyboundtech.sylius_wholesale_suite_plugin.services.entity_helper"
+                 autowire="false">
+            <argument type="service" id="Doctrine\ORM\EntityManagerInterface"/>
+        </service>
+
+        <service id="SkyBoundTech\SyliusWholesaleSuitePlugin\Services\EntityHelperInterface"
+                 alias="skyboundtech.sylius_wholesale_suite_plugin.services.entity_helper"
+        />
+    </services>
+</container>
