@@ -11,5 +11,12 @@
                  method="onBlockEvent"/>
             <argument>@SkyBoundTechSyliusWholesaleSuitePlugin/Admin/_javascripts.html.twig</argument>
         </service>
+        <service class="Sylius\Bundle\UiBundle\Block\BlockEventListener"
+                 id="skyboundtech_wholesale_ruleset.block_event_listener.admin.layout.stylesheets"
+        >
+            <tag name="kernel.event_listener" event="sonata.block.event.sylius.admin.layout.stylesheets"
+                 method="onBlockEvent"/>
+            <argument>@SkyBoundTechSyliusWholesaleSuitePlugin/Admin/_stylesheets.html.twig</argument>
+        </service>
     </services>
 </container>
