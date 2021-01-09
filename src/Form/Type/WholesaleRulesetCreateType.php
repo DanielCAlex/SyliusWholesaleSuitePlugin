@@ -14,7 +14,6 @@ namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Form\Type;
 
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
-use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Component\Core\Model\ProductTaxon;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -23,21 +22,24 @@ use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\Taxon;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
+use SkyBoundTech\SyliusWholesaleSuitePlugin\Services\EntityHelper;
 use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleset;
+use SkyBoundTech\SyliusWholesaleSuitePlugin\Services\EntityHelperInterface;
 
 final class WholesaleRulesetCreateType extends AbstractResourceType
 {
+
     /**
-     * @var EntityManagerInterface
+     * @var EntityHelperInterface
      */
-    protected $entityManager;
+    protected $entityHelper;
 
     public function __construct(
         string $dataClass,
-        EntityManagerInterface $entityManager
+        EntityHelperInterface $entityHelper
     ) {
         parent::__construct($dataClass);
-        $this->entityManager = $entityManager;
+        $this->entityHelper = $entityHelper;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -81,7 +83,7 @@ final class WholesaleRulesetCreateType extends AbstractResourceType
                 function (FormEvent $event) {
                     $form = $event->getForm();
 
-                    if ($this->entityHasRecords(ProductTaxon::class) !== null) {
+                    if ($this->entityHelper->entityHasRecords(ProductTaxon::class) !== null) {
                         $form->add(
                             'rulesetTaxons',
                             EntityType::class,
@@ -96,13 +98,6 @@ final class WholesaleRulesetCreateType extends AbstractResourceType
                 }
             )
         ;
-    }
-
-    public function entityHasRecords(string $entityName): ?array
-    {
-        $repository = $this->entityManager->getRepository($entityName);
-
-        return $repository->findAll();
     }
 
     public function configureOptions(OptionsResolver $resolver): void
