@@ -14,7 +14,7 @@
 
     {{ sonata_block_render_event(event_prefix ~ '.after_header', {'resource': resource}) }}
 
-    {% include '@SkyBoundTechSyliusWholesaleSuitePlugin:CrudUi/Create:_content.html.twig %}
+    {% include '@SkyBoundTechSyliusWholesaleSuitePlugin/CrudUi/Create/_content.html.twig' %}
 
     {{ sonata_block_render_event(event_prefix ~ '.after_content', {'resource': resource}) }}
 {% endblock %}
