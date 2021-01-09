@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file was created by a developer at SkyBound Tech.
  * @author Daniel Alexandre <daniel.alexandre@skyboundtech.co>
@@ -26,7 +27,7 @@ final class AdminMenuListener
         $this->router = $router;
     }
 
-    public function addAdminMenuItems(MenuBuilderEvent $event):void
+    public function addAdminMenuItems(MenuBuilderEvent $event): void
     {
         $menu = $event->getMenu();
 
@@ -36,10 +37,12 @@ final class AdminMenuListener
         ;
 
         $newSubmenu
-            ->addChild('wholesale-purchase-rules', [
-//                'route' => $this->router->generate('skyboundtech_admin_wholesale_ruleset_index')
-                'route' => 'skyboundtech_admin_wholesale_ruleset_index'
-            ])
+            ->addChild(
+                'wholesale-purchase-rules',
+                [
+                    'route' => 'skyboundtech_admin_wholesale_ruleset_index',
+                ]
+            )
             ->setLabel('Wholesale Purchase Rules')
         ;
     }
