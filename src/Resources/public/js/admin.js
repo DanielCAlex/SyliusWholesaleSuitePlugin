@@ -29,7 +29,7 @@ $(document).ready(function () {
             case rulesetScopeValues[1]:
                 changeScopeWarningText(
                     rulesetScopeSelectText +
-                    ': This ruleset will apply to products under the chosen product taxanomies.'
+                    ': This ruleset will apply to products under the chosen product taxonomies.'
                 )
                 break;
             default:
