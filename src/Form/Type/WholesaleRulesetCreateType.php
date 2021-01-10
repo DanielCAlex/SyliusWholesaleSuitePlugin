@@ -100,7 +100,9 @@ final class WholesaleRulesetCreateType extends AbstractResourceType
     {
         $resolver->setDefaults(
             [
-                'data_class' => WholesaleRuleset::class,
+                'validation_groups' => [
+                    'sylius',
+                ],
             ]
         );
     }
