@@ -88,8 +88,7 @@ final class WholesaleRulesetCreateType extends AbstractResourceType
                                 'class' => \SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\Taxon::class,
                                 'choice_label' => 'code',
                                 'multiple' => true,
-                                'required' => 'required',
-                                'disabled' => true,
+                                'required' => true,
                                 'by_reference' => 'false',
                             ]
                         );

@@ -14,13 +14,11 @@ Feature: Creating wholesale rulesets
     When I visit the page "skyboundtech_admin_wholesale_ruleset_create"
     And I select "Global" from "Scope"
     Then I should see "This ruleset will apply to ALL products."
+    And I should not see "Choose Ruleset Taxonomies"
 
   @ui @javascript @selecting_scope
   Scenario: Selecting Product Taxonomy scope
     When I visit the page "skyboundtech_admin_wholesale_ruleset_create"
-    And I select "Global" from "Scope"
-    Then I should not see "Choose Product Taxonomies"
-
-    When I select "Product Taxonomy" from "Scope"
-    Then I should see "Choose Product Taxonomies"
+    And I select "Product Taxonomy" from "Scope"
+    Then I should see "Choose Ruleset Taxonomies"
     And I should see "This ruleset will apply to products under the chosen product taxonomies."
