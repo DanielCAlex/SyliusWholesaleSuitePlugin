@@ -7,9 +7,10 @@
     </div>
     <div class="eight wide column">
         {{ form_row(form.scope) }}
-        {{ form_row(form.rulesetTaxons, {
-            'label': 'Choose Product Taxonomies'
-        }) }}
+
+        <div id="ruleset-taxons">
+            {{ form_row(form.rulesetTaxons) }}
+        </div>
     </div>
     <div class="sixteen wide column">
         {{ form_row(form.description) }}
