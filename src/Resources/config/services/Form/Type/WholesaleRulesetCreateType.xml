@@ -8,7 +8,7 @@
                  class="SkyBoundTech\SyliusWholesaleSuitePlugin\Form\Type\WholesaleRulesetCreateType"
                  autowire="false">
             <tag name="form.type"/>
-            <argument type="string" id="WholesaleRulesetType::class"/>
+            <argument type="string" id="SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleset::class"/>
             <argument type="service" id="skyboundtech.sylius_wholesale_suite_plugin.services.entity_helper"/>
         </service>
     </services>
