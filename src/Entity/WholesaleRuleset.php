@@ -17,6 +17,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\Taxon as SkyBoundTechSyliusTaxonExtension;
+use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\Product as SkyBoundTechSyliusProductExtension;
 
 class WholesaleRuleset extends BaseEntity implements ResourceInterface
 {
@@ -32,13 +33,18 @@ class WholesaleRuleset extends BaseEntity implements ResourceInterface
     protected $description;
     /** @var boolean */
     protected $isEnabled;
+
     /** @var ArrayCollection|SkyBoundTechSyliusTaxonExtension */
     protected $rulesetTaxons;
+
+    /** @var ArrayCollection|SkyBoundTechSyliusProductExtension */
+    protected $rulesetProducts;
 
 
     public function __construct()
     {
         $this->rulesetTaxons = new ArrayCollection();
+        $this->rulesetProducts = new ArrayCollection();
     }
 
     public function addRulesetTaxon(SkyBoundTechSyliusTaxonExtension $taxon): void
@@ -62,6 +68,29 @@ class WholesaleRuleset extends BaseEntity implements ResourceInterface
     public function getRulesetTaxons(): ?Collection
     {
         return $this->rulesetTaxons;
+    }
+
+    public function addRulesetProduct(SkyBoundTechSyliusProductExtension $product): void
+    {
+        if ($this->rulesetTaxons->contains($product)) {
+            return;
+        }
+        $this->rulesetTaxons->add($product);
+        $product->addSkyBoundTechWholesaleRuleset($this);
+    }
+
+    public function removeRulesetProduct(SkyBoundTechSyliusProductExtension $product): void
+    {
+        if (!$this->rulesetTaxons->contains($product)) {
+            return;
+        }
+        $this->rulesetTaxons->removeElement($product);
+        $product->removeSkyBoundTechWholesaleRuleset($this);
+    }
+
+    public function getRulesetProducts(): ?Collection
+    {
+        return $this->rulesetProducts;
     }
 
     /**

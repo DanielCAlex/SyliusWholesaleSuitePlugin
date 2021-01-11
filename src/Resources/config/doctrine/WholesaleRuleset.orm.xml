@@ -42,8 +42,8 @@
         <field name="isEnabled" column="enabled" type="boolean" nullable="false"/>
 
         <many-to-many field="rulesetTaxons"
-                      inversed-by="skyBoundTechWholesaleRulesets"
                       target-entity="Sylius\Component\Core\Model\Taxon"
+                      inversed-by="skyBoundTechWholesaleRulesets"
                       orphan-removal="true">
             <cascade>
                 <cascade-all/>
@@ -54,6 +54,23 @@
                 </join-columns>
                 <inverse-join-columns>
                     <join-column name="taxon_id" referenced-column-name="id" on-delete="CASCADE"/>
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+
+        <many-to-many field="rulesetProducts"
+                      target-entity="Sylius\Component\Core\Model\Product"
+                      inversed-by="skyBoundTechWholesaleRulesets"
+                      orphan-removal="true">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+            <join-table name="skyboundtech_wholesale_ruleset_product">
+                <join-columns>
+                    <join-column name="wholesale_ruleset_id" referenced-column-name="id" on-delete="CASCADE"/>
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="product_id" referenced-column-name="id" on-delete="CASCADE"/>
                 </inverse-join-columns>
             </join-table>
         </many-to-many>
