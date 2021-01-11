@@ -21,4 +21,11 @@ Feature: Creating wholesale rulesets
     When I visit the page "skyboundtech_admin_wholesale_ruleset_create"
     And I select "Product Taxonomy" from "Scope"
     Then I should see "Choose Ruleset Taxonomies"
-    And I should see "This ruleset will apply to products under the chosen product taxonomies."
+    And I should see "This ruleset will apply to products under the chosen taxonomies."
+
+  @ui @javascript @selecting_scope
+  Scenario: Selecting Product scope
+    When I visit the page "skyboundtech_admin_wholesale_ruleset_create"
+    And I select "Product" from "Scope"
+    Then I should see "Choose Ruleset Products"
+    And I should see "This ruleset will apply to the chosen products."

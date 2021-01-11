@@ -14,13 +14,15 @@ namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Form\Type;
 
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
-use Sylius\Component\Core\Model\ProductTaxon;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\Taxon;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\Product;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
+use Sylius\Bundle\ProductBundle\Form\Type\ProductAutocompleteChoiceType;
 use SkyBoundTech\SyliusWholesaleSuitePlugin\Services\EntityHelperInterface;
 
 final class WholesaleRulesetCreateType extends AbstractResourceType
@@ -80,7 +82,7 @@ final class WholesaleRulesetCreateType extends AbstractResourceType
                 function (FormEvent $event) {
                     $form = $event->getForm();
 
-                    if ($this->entityHelper->entityHasRecords(ProductTaxon::class) !== null) {
+                    if ($this->entityHelper->entityHasRecords(Taxon::class) !== null) {
                         $form->add(
                             'rulesetTaxons',
                             EntityType::class,
@@ -90,6 +92,16 @@ final class WholesaleRulesetCreateType extends AbstractResourceType
                                 'multiple' => true,
                                 'required' => true,
                                 'by_reference' => 'false',
+                            ]
+                        );
+                    }
+
+                    if ($this->entityHelper->entityHasRecords(Product::class)) {
+                        $form->add(
+                            'rulesetProducts',
+                            ProductAutocompleteChoiceType::class,
+                            [
+                                'multiple' => true,
                             ]
                         );
                     }

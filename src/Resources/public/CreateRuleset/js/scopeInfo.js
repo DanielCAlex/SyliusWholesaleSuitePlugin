@@ -29,9 +29,16 @@ $(document).ready(function () {
             case rulesetScopeValues[1]:
                 changeScopeWarningText(
                     rulesetScopeSelectText +
-                    ': This ruleset will apply to products under the chosen product taxonomies.'
+                    ': This ruleset will apply to products under the chosen taxonomies.'
                 )
                 break;
+            case rulesetScopeValues[2]:
+                changeScopeWarningText(
+                    rulesetScopeSelectText +
+                    ': This ruleset will apply to the chosen products.'
+                )
+                break;
+
             default:
                 changeScopeWarningText(
                     'TODO'
