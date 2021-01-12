@@ -4,6 +4,12 @@ sylius_taxonomy:
       classes:
         model: SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\Taxon
 
+sylius_product:
+  resources:
+    product:
+      classes:
+        model: SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\Product
+
 # New resources
 sylius_resource:
   resources:
