@@ -18,6 +18,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\Taxon as SkyBoundTechSyliusTaxonExtension;
 use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\Product as SkyBoundTechSyliusProductExtension;
+use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\ProductVariant as SkyBoundTechSyliusProductVariantExtension;
 
 class WholesaleRuleset extends BaseEntity implements ResourceInterface
 {
@@ -40,11 +41,15 @@ class WholesaleRuleset extends BaseEntity implements ResourceInterface
     /** @var ArrayCollection|SkyBoundTechSyliusProductExtension */
     protected $rulesetProducts;
 
+    /** @var ArrayCollection|SkyBoundTechSyliusProductVariantExtension */
+    private $rulesetProductVariants;
+
 
     public function __construct()
     {
         $this->rulesetTaxons = new ArrayCollection();
         $this->rulesetProducts = new ArrayCollection();
+        $this->rulesetProductVariants = new ArrayCollection();
     }
 
     public function addRulesetTaxon(SkyBoundTechSyliusTaxonExtension $taxon): void
@@ -91,6 +96,32 @@ class WholesaleRuleset extends BaseEntity implements ResourceInterface
     public function getRulesetProducts(): ?Collection
     {
         return $this->rulesetProducts;
+    }
+
+    public function addRulesetProductVariant(SkyBoundTechSyliusProductExtension $productVariant): void
+    {
+        if ($this->rulesetProductVariants->contains($productVariant)) {
+            return;
+        }
+        $this->rulesetProductVariants->add($productVariant);
+        $productVariant->addSkyBoundTechWholesaleRuleset($this);
+    }
+
+    public function removeRulesetProductVariant(SkyBoundTechSyliusProductExtension $productVariant): void
+    {
+        if (!$this->rulesetProductVariants->contains($productVariant)) {
+            return;
+        }
+        $this->rulesetProductVariants->removeElement($productVariant);
+        $productVariant->removeSkyBoundTechWholesaleRuleset($this);
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getRulesetProductVariants(): ?Collection
+    {
+        return $this->rulesetProductVariants;
     }
 
     /**
