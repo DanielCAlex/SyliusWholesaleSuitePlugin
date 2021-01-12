@@ -36,5 +36,5 @@ Feature: Creating wholesale rulesets
   Scenario: Selecting Product Variant scope
     When I go to the create Wholesale Ruleset page
     And I select the scope "Product Variant"
-    Then I should see "Choose Product Variants"
+    Then I should see "Choose Ruleset Product Variants"
     And I should see "This ruleset will apply to the chosen product variants."

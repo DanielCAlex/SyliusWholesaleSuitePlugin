@@ -41,7 +41,7 @@ $(document).ready(function () {
 
             default:
                 changeScopeWarningText(
-                    'TODO'
+                    'This ruleset will apply to the chosen product variants.'
                 );
         }
     }

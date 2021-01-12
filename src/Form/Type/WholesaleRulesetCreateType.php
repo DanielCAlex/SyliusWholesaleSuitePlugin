@@ -16,7 +16,9 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Sylius\Component\Core\Model\Taxon;
 use Sylius\Component\Core\Model\Product;
+use Sylius\Component\Core\Model\ProductVariant;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -102,6 +104,20 @@ final class WholesaleRulesetCreateType extends AbstractResourceType
                                 'multiple' => true,
                                 'by_reference' => false,
                                 'required' => true,
+                            ]
+                        );
+                    }
+
+                    if ($this->entityHelper->entityHasRecords(ProductVariant::class)) {
+                        $form->add(
+                            'rulesetProductVariants',
+                            EntityType::class,
+                            [
+                                'multiple' => true,
+                                'by_reference' => false,
+                                'required' => true,
+                                'class' => ProductVariant::class,
+                                'choice_label' => 'code',
                             ]
                         );
                     }

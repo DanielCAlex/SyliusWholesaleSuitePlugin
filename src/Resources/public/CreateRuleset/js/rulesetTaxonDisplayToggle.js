@@ -2,6 +2,7 @@ let rulesetScopeSelector = $('#wholesale_ruleset_create_scope');
 
 let rulesetTaxonSelectorContainer = $('#ruleset-taxons');
 let rulesetProductSelectorContainer = $('#ruleset-products');
+let rulesetProducVarianttSelectorContainer = $('#ruleset-product-variants');
 
 let rulesetTaxonSelector = $('#wholesale_ruleset_create_rulesetTaxons');
 
@@ -22,4 +23,11 @@ function determineSelectorVisibility() {
     } else {
         rulesetProductSelectorContainer.css('display', 'none');
     }
+
+    if (rulesetScopeSelector.val() === "Product Variant") {
+        rulesetProducVarianttSelectorContainer.css('display', 'block');
+    } else {
+        rulesetProducVarianttSelectorContainer.css('display', 'none');
+    }
+
 }
