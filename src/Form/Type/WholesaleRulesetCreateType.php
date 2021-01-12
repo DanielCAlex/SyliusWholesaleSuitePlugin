@@ -14,6 +14,7 @@ namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Form\Type;
 
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
+use Sylius\Component\Core\Model\Taxon;
 use Sylius\Component\Core\Model\Product;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
