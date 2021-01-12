@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service
+                id="tests.sky_bound_tech.sylius_wholesale_suite_plugin.behat.page.admin.wholesale_ruleset.create"
+                class="Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Page\Admin\WholesaleRuleset\CreatePage"
+                parent="sylius.behat.page.admin.crud.create"
+                public="false"
+        >
+            <argument type="string">skyboundtech_admin_wholesale_ruleset_create</argument>
+        </service>
+    </services>
+</container>
