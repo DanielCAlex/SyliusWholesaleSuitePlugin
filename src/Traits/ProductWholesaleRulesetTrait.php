@@ -16,7 +16,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleset;
 
-trait SyliusProductWholesaleRulesetTrait
+trait ProductWholesaleRulesetTrait
 {
     /**
      * @var ArrayCollection<WholesaleRuleset>

@@ -6,7 +6,7 @@
 
     <mapped-superclass name="SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\Product" table="sylius_product">
         <many-to-many target-entity="SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleset"
-                      mapped-by="rulesetTaxons"
+                      mapped-by="rulesetProducts"
                       field="skyBoundTechWholesaleRulesets"
                       orphan-removal="true">
             <cascade>

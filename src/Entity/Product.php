@@ -13,11 +13,11 @@ declare(strict_types=1);
 namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Entity;
 
 use Sylius\Component\Core\Model\Product as BaseProduct;
-use SkyBoundTech\SyliusWholesaleSuitePlugin\Traits\TaxonWholesaleRulesetTrait;
+use SkyBoundTech\SyliusWholesaleSuitePlugin\Traits\ProductWholesaleRulesetTrait;
 
 class Product extends BaseProduct
 {
-    use TaxonWholesaleRulesetTrait;
+    use ProductWholesaleRulesetTrait;
 
     public function __construct()
     {
