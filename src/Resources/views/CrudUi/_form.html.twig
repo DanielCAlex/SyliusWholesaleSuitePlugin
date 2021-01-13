@@ -22,7 +22,9 @@
 
         <div id="ruleset-product-variants">
             {{ form_row(form.rulesetProductVariants, {
-                'label': 'Choose Ruleset Product Variants'
+                'label': 'Choose Ruleset Product Variants',
+                'remote_url': 'skyboundtech_sylius_wholesale_suite_plugin_admin_ajax_product_variants_all',
+                'load_edit_url': 'skyboundtech_sylius_wholesale_suite_plugin_admin_ajax_product_variants_all'
             }) }}
         </div>
     </div>

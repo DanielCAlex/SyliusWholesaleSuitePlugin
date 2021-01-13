@@ -26,7 +26,7 @@ final class ProductVariantAutocompleteChoiceType extends AbstractType
             [
                 'resource' => 'sylius.product_variant',
                 'choice_name' => 'name',
-                'choice_value' => 'code',z
+                'choice_value' => 'code',
             ]
         );
     }
