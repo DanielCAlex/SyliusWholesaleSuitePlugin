@@ -1,0 +1,3 @@
+"%plugin.name.admin.base%_product_variants":
+  resource: "@SkyBoundTechSyliusWholesaleSuitePlugin/Resources/config/routing/admin/ajax/product_variant.yml"
+  prefix: /wholesale-suite-product-variants
