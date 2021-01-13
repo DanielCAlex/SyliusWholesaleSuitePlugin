@@ -36,7 +36,7 @@ final class WholesaleRulesetCreateType extends AbstractResourceType
 
     public function __construct(
         string $dataClass,
-        EntityHelperInterface $entityHelper,
+        EntityHelperInterface $entityHelper
     ) {
         parent::__construct($dataClass);
         $this->entityHelper = $entityHelper;
@@ -115,8 +115,6 @@ final class WholesaleRulesetCreateType extends AbstractResourceType
                                 'multiple' => true,
                                 'by_reference' => false,
                                 'required' => true,
-//                                'class' => ProductVariant::class,
-//                                'choice_label' => 'code',
                             ]
                         );
                     }
