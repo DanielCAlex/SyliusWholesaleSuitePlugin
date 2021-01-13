@@ -98,7 +98,7 @@ class WholesaleRuleset extends BaseEntity implements ResourceInterface
         return $this->rulesetProducts;
     }
 
-    public function addRulesetProductVariant(SkyBoundTechSyliusProductExtension $productVariant): void
+    public function addRulesetProductVariant(SkyBoundTechSyliusProductVariantExtension $productVariant): void
     {
         if ($this->rulesetProductVariants->contains($productVariant)) {
             return;
@@ -107,7 +107,7 @@ class WholesaleRuleset extends BaseEntity implements ResourceInterface
         $productVariant->addSkyBoundTechWholesaleRuleset($this);
     }
 
-    public function removeRulesetProductVariant(SkyBoundTechSyliusProductExtension $productVariant): void
+    public function removeRulesetProductVariant(SkyBoundTechSyliusProductVariantExtension $productVariant): void
     {
         if (!$this->rulesetProductVariants->contains($productVariant)) {
             return;
