@@ -12,6 +12,7 @@ sylius_product:
     product_variant:
       classes:
         model: SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\ProductVariant
+        repository: SkyBoundTech\SyliusWholesaleSuitePlugin\Repository\ProductVariantRepository
 
 # New resources
 sylius_resource:
