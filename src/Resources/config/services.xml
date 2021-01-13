@@ -4,7 +4,7 @@
     <imports>
         <import resource="services/Repository/WholesaleRulesetRepository.xml"/>
         <import resource="services/Menus/AdminMenuListener.xml"/>
-        <import resource="services/Form/Type/WholesaleRulesetCreateType.xml"/>
+        <import resource="services/Form/**/*"/>
         <import resource="services/Sonata Event Listeners/sonata_events.xml"/>
         <import resource="services/Services/EntityHelper.xml"/>
     </imports>
