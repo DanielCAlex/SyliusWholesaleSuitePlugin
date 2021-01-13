@@ -12,10 +12,10 @@ declare(strict_types=1);
 
 namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Entity;
 
-use Sylius\Component\Core\Model\Product as BaseProduct;
+use Sylius\Component\Core\Model\ProductVariant as BaseProductVariant;
 use SkyBoundTech\SyliusWholesaleSuitePlugin\Traits\ProductVariantWholesaleRulesetTrait;
 
-class ProductVariant extends BaseProduct
+class ProductVariant extends BaseProductVariant
 {
     use ProductVariantWholesaleRulesetTrait;
 
