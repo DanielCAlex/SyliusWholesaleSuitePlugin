@@ -25,7 +25,7 @@ final class ProductVariantAutocompleteChoiceType extends AbstractType
         $resolver->setDefaults(
             [
                 'resource' => 'sylius.product_variant',
-                'choice_name' => 'name',
+                'choice_name' => 'descriptor',
                 'choice_value' => 'code',
             ]
         );
