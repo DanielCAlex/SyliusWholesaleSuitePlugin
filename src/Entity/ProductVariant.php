@@ -15,7 +15,7 @@ namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Entity;
 use Sylius\Component\Core\Model\ProductVariant as BaseProductVariant;
 use SkyBoundTech\SyliusWholesaleSuitePlugin\Traits\ProductVariantWholesaleRulesetTrait;
 
-class ProductVariant extends BaseProductVariant
+class ProductVariant extends BaseProductVariant implements ProductVariantInterface
 {
     use ProductVariantWholesaleRulesetTrait;
 
@@ -23,5 +23,15 @@ class ProductVariant extends BaseProductVariant
     {
         parent::__construct();
         $this->initWholesaleRulesetTrait();
+    }
+
+    public function getDescriptor(string $pathDelimiter = ' / '): string
+    {
+        return sprintf(
+            '%s%s%s',
+            $this->getProduct()->getName(),
+            $pathDelimiter,
+            $this->getName()
+        );
     }
 }
