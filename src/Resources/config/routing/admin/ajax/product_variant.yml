@@ -8,11 +8,11 @@ skyboundtech_sylius_wholesale_suite_plugin_admin_ajax_product_variants_by_name_p
       serialization_groups: [Autocomplete]
       permission: true
       repository:
-        method: findByNamePart
+        method: findByProductNamePart
         arguments:
           phrase: $phrase
           locale: expr:service('sylius.context.locale').getLocaleCode()
-          limit: 25
+          limit: 10
 
 skyboundtech_sylius_wholesale_suite_plugin_admin_ajax_product_variants_by_code:
     path: /code

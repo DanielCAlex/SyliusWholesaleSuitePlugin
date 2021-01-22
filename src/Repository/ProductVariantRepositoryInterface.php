@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /*
  * This file was created by a developer at SkyBound Tech.
  * @author Daniel Alexandre <daniel.alexandre@skyboundtech.co>
@@ -8,13 +11,9 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
-
 namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Repository;
 
-use Sylius\Component\Core\Repository\ProductVariantRepositoryInterface
-    as BaseProductVariantRepositoryInterface;
-
-interface ProductVariantRepository extends BaseProductVariantRepositoryInterface
+interface ProductVariantRepositoryInterface
 {
+    public function findByProductNamePart(string $phrase, string $locale, ?int $limit = null): array;
 }

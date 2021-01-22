@@ -12,25 +12,47 @@ declare(strict_types=1);
 
 namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Repository;
 
+use Doctrine\ORM\Mapping;
+use Doctrine\ORM\EntityManager;
+use Sylius\Component\Core\Model\Product;
+use SyliusLabs\AssociationHydrator\AssociationHydrator;
 use Sylius\Bundle\CoreBundle\Doctrine\ORM\ProductVariantRepository as BaseProductVariantRepository;
 
-class ProductVariantRepository extends BaseProductVariantRepository
+final class ProductVariantRepository extends BaseProductVariantRepository
+    implements ProductVariantRepositoryInterface
 {
-    public function findByNamePart(string $phrase, string $locale, ?int $limit = null): array
+
+    /** @var AssociationHydrator */
+    protected $associationHydrator;
+
+    public function __construct(EntityManager $entityManager, Mapping\ClassMetadata $class)
     {
-        return $this->createQueryBuilder('o')
+        parent::__construct($entityManager, $class);
+        $this->associationHydrator = new AssociationHydrator($entityManager, $class);
+    }
+
+    public function findByProductNamePart(string $phrase, string $locale, ?int $limit = null): array
+    {
+        $productVariants = $this->createQueryBuilder('product_variant')
             ->innerJoin(
-                'o.translations',
-                'translation',
-                'WITH',
-                'translation.locale = :locale'
+                'product_variant.translations',
+                'product_variant_translation',
             )
-            ->andWhere('translation.name LIKE :name')
+            ->innerJoin(
+                'Sylius\Component\Core\Model\Product',
+                'product',
+                'WITH',
+                'product = product_variant.product'
+            )
+            ->andWhere('product.code LIKE :name')
+            ->andWhere('product_variant_translation.locale = :locale')
             ->setParameter('name', '%' . $phrase . '%')
             ->setParameter('locale', $locale)
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult()
-            ;
+        ;
+
+        return $productVariants;
     }
 }
