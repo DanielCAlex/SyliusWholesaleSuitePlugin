@@ -23,7 +23,7 @@ trait ProductVariantWholesaleRulesetTrait
      */
     protected $skyBoundTechWholesaleRulesets;
 
-    public function initWholesaleRulesetTrait()
+    public function initWholesaleRulesetTrait(): void
     {
         $this->skyBoundTechWholesaleRulesets = new ArrayCollection();
     }
