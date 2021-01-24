@@ -14,14 +14,12 @@ namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Repository;
 
 use Doctrine\ORM\Mapping;
 use Doctrine\ORM\EntityManager;
-use Sylius\Component\Core\Model\Product;
 use SyliusLabs\AssociationHydrator\AssociationHydrator;
 use Sylius\Bundle\CoreBundle\Doctrine\ORM\ProductVariantRepository as BaseProductVariantRepository;
 
 final class ProductVariantRepository extends BaseProductVariantRepository
     implements ProductVariantRepositoryInterface
 {
-
     /** @var AssociationHydrator */
     protected $associationHydrator;
 
@@ -34,18 +32,14 @@ final class ProductVariantRepository extends BaseProductVariantRepository
     public function findByProductNamePart(string $phrase, string $locale, ?int $limit = null): array
     {
         $productVariants = $this->createQueryBuilder('product_variant')
+            ->innerJoin('product_variant.product', 'product',)
             ->innerJoin(
-                'product_variant.translations',
-                'product_variant_translation',
-            )
-            ->innerJoin(
-                'Sylius\Component\Core\Model\Product',
-                'product',
+                'product.translations',
+                'product_translation',
                 'WITH',
-                'product = product_variant.product'
+                'product_translation.locale = :locale'
             )
-            ->andWhere('product.code LIKE :name')
-            ->andWhere('product_variant_translation.locale = :locale')
+            ->andWhere('product_translation.name LIKE :name')
             ->setParameter('name', '%' . $phrase . '%')
             ->setParameter('locale', $locale)
             ->setMaxResults($limit)
