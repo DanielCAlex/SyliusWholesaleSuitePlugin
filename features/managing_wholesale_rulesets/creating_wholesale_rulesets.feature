@@ -38,3 +38,9 @@ Feature: Creating wholesale rulesets
     And I select the scope "Product Variant"
     Then I should see "Choose Ruleset Product Variants"
     And I should see "This ruleset will apply to the chosen product variants."
+
+  @ui @javascript @selecting_type @quantity_step
+  Scenario: Selecting quantity step ruleset type
+    When I go to the create Wholesale Ruleset page
+    And I select the type "Quantity Step"
+
