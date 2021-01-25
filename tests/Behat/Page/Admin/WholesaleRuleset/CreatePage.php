@@ -21,11 +21,15 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $this->getDocument()->fillField($field, $value);
     }
 
-    public function fillName(string $name): void
+    public function fillRulesetName(string $name): void
     {
         $this->getDocument()->fillField('Name', $name);
     }
 
+    public function fillRulesetDescription(string $description): void
+    {
+        $this->getDocument()->fillField('description', $description);
+    }
     public function selectScope(string $scope): void
     {
         $this->getDocument()->selectFieldOption('Scope', $scope);
@@ -36,10 +40,6 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $this->getDocument()->selectFieldOption('Type', $type);
     }
 
-    public function fillDescription(string $description): void
-    {
-        $this->getDocument()->fillField('description', $description);
-    }
 
     public function disable(): void
     {

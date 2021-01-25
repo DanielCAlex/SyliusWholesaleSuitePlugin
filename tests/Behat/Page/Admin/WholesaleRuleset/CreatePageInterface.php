@@ -20,13 +20,13 @@ interface CreatePageInterface extends BaseCreatePageInterface
 {
     public function fillField(string $field, string $value): void;
 
-    public function fillName(string $name): void;
+    public function fillRulesetName(string $name): void;
 
     public function selectScope(string $scope): void;
 
     public function selectType(string $type): void;
 
-    public function fillDescription(string $description): void;
+    public function fillRulesetDescription(string $description): void;
 
     public function disable(): void;
 
