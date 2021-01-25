@@ -50,4 +50,20 @@ final class WholesaleSuiteRulesetContext extends BaseMinkContext implements Cont
     {
         $this->createPage->selectType($scope);
     }
+
+    /**
+     * @When I fill ruleset name with :rulesetName
+     */
+    public function iFillRulesetNameWith($rulesetName)
+    {
+        $this->createPage->fillRulesetName($rulesetName);
+    }
+
+    /**
+     * @When I fill the ruleset description with :rulesetDescription
+     */
+    public function iFillTheRulesetDescriptionWith($rulesetDescription)
+    {
+        $this->createPage->fillRulesetDescription($rulesetDescription);
+    }
 }
