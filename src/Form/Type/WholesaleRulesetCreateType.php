@@ -14,6 +14,7 @@ namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Form\Type;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use SkyBoundTech\SyliusWholesaleSuitePlugin\Services\EntityHelperInterface;
@@ -37,8 +38,20 @@ final class WholesaleRulesetCreateType extends AbstractResourceType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('description', TextareaType::class)
+            ->add(
+                'name',
+                TextType::class,
+                [
+                    'label' => 'skyboundtech_sylius_wholesale_suite_plugin.ui.wholesale_rulesets.ruleset_name',
+                ]
+            )
+            ->add(
+                'description',
+                TextareaType::class,
+                [
+                    'label' => 'skyboundtech_sylius_wholesale_suite_plugin.ui.wholesale_rulesets.ruleset_description',
+                ]
+            )
             ->add(
                 'enabled',
                 null,
