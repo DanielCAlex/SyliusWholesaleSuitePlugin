@@ -3,35 +3,11 @@
     {{ form_start(form) }}
     <div class="eight wide column">
         {{ form_row(form.name) }}
-        {{ form_row(form.type) }}
     </div>
-    <div class="eight wide column">
-        {{ form_row(form.scope) }}
-
-        <div id="ruleset-taxons">
-            {{ form_row(form.rulesetTaxons, {
-                'label': 'Choose Ruleset Taxonomies'
-            }) }}
-        </div>
-
-        <div id="ruleset-products">
-            {{ form_row(form.rulesetProducts, {
-                'label': 'Choose Ruleset Products'
-            }) }}
-        </div>
-
-        <div id="ruleset-product-variants">
-            {{ form_row(form.rulesetProductVariants, {
-                'label': 'Choose Ruleset Product Variants',
-                'remote_url': path('skyboundtech_sylius_wholesale_suite_plugin_admin_ajax_product_variants_by_name_phrase'),
-                'load_edit_url': path('skyboundtech_sylius_wholesale_suite_plugin_admin_ajax_product_variants_by_code')
-            }) }}
-        </div>
-    </div>
-    <div class="sixteen wide column">
+    <div class="ten wide column">
         {{ form_row(form.description) }}
     </div>
     <div class="twelve wide column">
-        {{ form_row(form.isEnabled) }}
+        {{ form_row(form.enabled) }}
     </div>
 </div>

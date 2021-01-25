@@ -13,12 +13,7 @@ declare(strict_types=1);
 
 namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Entity;
 
-use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\ArrayCollection;
 use Sylius\Component\Resource\Model\ResourceInterface;
-use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\Taxon as SkyBoundTechSyliusTaxonExtension;
-use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\Product as SkyBoundTechSyliusProductExtension;
-use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\ProductVariant as SkyBoundTechSyliusProductVariantExtension;
 
 class WholesaleRuleset extends BaseEntity implements ResourceInterface
 {
@@ -26,103 +21,10 @@ class WholesaleRuleset extends BaseEntity implements ResourceInterface
     protected $id;
     /** @var string */
     protected $name;
-    /** @var string */
-    protected $type;
-    /** @var string */
-    protected $scope;
     /** @var string|null */
     protected $description;
     /** @var boolean */
-    protected $isEnabled;
-
-    /** @var ArrayCollection|SkyBoundTechSyliusTaxonExtension */
-    protected $rulesetTaxons;
-
-    /** @var ArrayCollection|SkyBoundTechSyliusProductExtension */
-    protected $rulesetProducts;
-
-    /** @var ArrayCollection|SkyBoundTechSyliusProductVariantExtension */
-    private $rulesetProductVariants;
-
-
-    public function __construct()
-    {
-        $this->rulesetTaxons = new ArrayCollection();
-        $this->rulesetProducts = new ArrayCollection();
-        $this->rulesetProductVariants = new ArrayCollection();
-    }
-
-    public function addRulesetTaxon(SkyBoundTechSyliusTaxonExtension $taxon): void
-    {
-        if ($this->rulesetTaxons->contains($taxon)) {
-            return;
-        }
-        $this->rulesetTaxons->add($taxon);
-        $taxon->addSkyBoundTechWholesaleRuleset($this);
-    }
-
-    public function removeRulesetTaxon(SkyBoundTechSyliusTaxonExtension $taxon): void
-    {
-        if (!$this->rulesetTaxons->contains($taxon)) {
-            return;
-        }
-        $this->rulesetTaxons->removeElement($taxon);
-        $taxon->removeSkyBoundTechWholesaleRuleset($this);
-    }
-
-    public function getRulesetTaxons(): ?Collection
-    {
-        return $this->rulesetTaxons;
-    }
-
-    public function addRulesetProduct(SkyBoundTechSyliusProductExtension $product): void
-    {
-        if ($this->rulesetProducts->contains($product)) {
-            return;
-        }
-        $this->rulesetProducts->add($product);
-        $product->addSkyBoundTechWholesaleRuleset($this);
-    }
-
-    public function removeRulesetProduct(SkyBoundTechSyliusProductExtension $product): void
-    {
-        if (!$this->rulesetProducts->contains($product)) {
-            return;
-        }
-        $this->rulesetProducts->removeElement($product);
-        $product->removeSkyBoundTechWholesaleRuleset($this);
-    }
-
-    public function getRulesetProducts(): ?Collection
-    {
-        return $this->rulesetProducts;
-    }
-
-    public function addRulesetProductVariant(SkyBoundTechSyliusProductVariantExtension $productVariant): void
-    {
-        if ($this->rulesetProductVariants->contains($productVariant)) {
-            return;
-        }
-        $this->rulesetProductVariants->add($productVariant);
-        $productVariant->addSkyBoundTechWholesaleRuleset($this);
-    }
-
-    public function removeRulesetProductVariant(SkyBoundTechSyliusProductVariantExtension $productVariant): void
-    {
-        if (!$this->rulesetProductVariants->contains($productVariant)) {
-            return;
-        }
-        $this->rulesetProductVariants->removeElement($productVariant);
-        $productVariant->removeSkyBoundTechWholesaleRuleset($this);
-    }
-
-    /**
-     * @return Collection
-     */
-    public function getRulesetProductVariants(): ?Collection
-    {
-        return $this->rulesetProductVariants;
-    }
+    protected $enabled;
 
     /**
      * @return int
@@ -149,38 +51,6 @@ class WholesaleRuleset extends BaseEntity implements ResourceInterface
     }
 
     /**
-     * @return string
-     */
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param string $type
-     */
-    public function setType(string $type): void
-    {
-        $this->type = $type;
-    }
-
-    /**
-     * @return string
-     */
-    public function getScope(): ?string
-    {
-        return $this->scope;
-    }
-
-    /**
-     * @param string $scope
-     */
-    public function setScope(string $scope): void
-    {
-        $this->scope = $scope;
-    }
-
-    /**
      * @return string|null
      */
     public function getDescription(): ?string
@@ -199,16 +69,16 @@ class WholesaleRuleset extends BaseEntity implements ResourceInterface
     /**
      * @return bool
      */
-    public function isEnabled(): ?bool
+    public function enabled(): ?bool
     {
-        return $this->isEnabled;
+        return $this->enabled;
     }
 
     /**
-     * @param bool $isEnabled
+     * @param bool $enabled
      */
-    public function setIsEnabled(bool $isEnabled): void
+    public function setEnabled(bool $enabled): void
     {
-        $this->isEnabled = $isEnabled;
+        $this->enabled = $enabled;
     }
 }

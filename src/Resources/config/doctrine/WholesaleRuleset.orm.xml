@@ -14,75 +14,9 @@
         <field name="name" column="name" type="string" length="100"
                nullable="false" unique="true"/>
 
-        <field name="type" column="type" type="string" length="50"
-               nullable="false">
-            <options>
-                <option name="comment">
-                    The type of wholesale ruleset.
-                </option>
-            </options>
-        </field>
-
-        <field name="scope" column="scope" type="string" length="50"
-               nullable="false">
-            <options>
-                <option name="comment">
-                    The scope at which the ruleset applies for the enabled channels.
-                    Scope: Global applies the rule to all products.
-                    Scope: Product Taxonomy applies to all products under a chosen sylius_product_taxon.
-                    Scope: Product applies to a chosen product and all its variants.
-                    Scope: Product Variant applies to the chosen product variant.
-                </option>
-            </options>
-        </field>
-
         <field name="description" column="description" type="string" length="255"
                nullable="true"/>
 
-        <field name="isEnabled" column="enabled" type="boolean" nullable="false"/>
-
-        <many-to-many field="rulesetTaxons"
-                      target-entity="Sylius\Component\Core\Model\Taxon"
-                      inversed-by="skyBoundTechWholesaleRulesets"
-                      orphan-removal="true">
-            <join-table name="skyboundtech_wholesale_ruleset_taxon">
-                <join-columns>
-                    <join-column name="wholesale_ruleset_id" referenced-column-name="id"/>
-                </join-columns>
-                <inverse-join-columns>
-                    <join-column name="taxon_id" referenced-column-name="id"/>
-                </inverse-join-columns>
-            </join-table>
-        </many-to-many>
-
-        <many-to-many field="rulesetProducts"
-                      target-entity="Sylius\Component\Core\Model\Product"
-                      inversed-by="skyBoundTechWholesaleRulesets"
-                      orphan-removal="true">
-            <join-table name="skyboundtech_wholesale_ruleset_product">
-                <join-columns>
-                    <join-column name="wholesale_ruleset_id" referenced-column-name="id"/>
-                </join-columns>
-                <inverse-join-columns>
-                    <join-column name="product_id" referenced-column-name="id"/>
-                </inverse-join-columns>
-            </join-table>
-        </many-to-many>
-
-        <many-to-many field="rulesetProductVariants"
-                      target-entity="Sylius\Component\Core\Model\ProductVariant"
-                      inversed-by="skyBoundTechWholesaleRulesets"
-                      orphan-removal="true"
-                      >
-            <join-table name="skyboundtech_wholesale_ruleset_product_variant">
-                <join-columns>
-                    <join-column name="wholesale_ruleset_id" referenced-column-name="id"/>
-                </join-columns>
-                <inverse-join-columns>
-                    <join-column name="product_variant_id" referenced-column-name="id"/>
-                </inverse-join-columns>
-            </join-table>
-        </many-to-many>
-
+        <field name="enabled" column="enabled" type="boolean" nullable="false"/>
     </mapped-superclass>
 </doctrine-mapping>
