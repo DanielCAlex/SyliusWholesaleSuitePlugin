@@ -31,6 +31,11 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $this->getDocument()->selectFieldOption('Scope', $scope);
     }
 
+    public function selectType(string $type): void
+    {
+        $this->getDocument()->selectFieldOption('Type', $type);
+    }
+
     public function fillDescription(string $description): void
     {
         $this->getDocument()->fillField('description', $description);
@@ -50,5 +55,4 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
     {
         $this->getDocument()->hasContent($desiredText);
     }
-
 }

@@ -24,6 +24,8 @@ interface CreatePageInterface extends BaseCreatePageInterface
 
     public function selectScope(string $scope): void;
 
+    public function selectType(string $type): void;
+
     public function fillDescription(string $description): void;
 
     public function disable(): void;
