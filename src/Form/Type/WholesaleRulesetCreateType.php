@@ -66,7 +66,7 @@ final class WholesaleRulesetCreateType extends AbstractResourceType
                         'Quantity Step' => 'Quantity Step',
                         'Tiered Pricing' => 'Tiered Pricing',
                         'Backorder' => 'Backorder',
-                        'Minimum/Maximum Order' => 'Min or Max Order',
+                        'Minimum/Maximum Order' => 'Min/Max Order',
                     ],
                 ]
             )
@@ -120,6 +120,15 @@ final class WholesaleRulesetCreateType extends AbstractResourceType
                     }
                 }
             )
+        ;
+
+        $builder->get('type')->addEventListener(
+            FormEvents::POST_SUBMIT,
+            function (FormEvent $event) {
+                $ruletsetType = $event->getForm()->getData();
+                $form = $event->getForm()->getParent();
+            }
+        )
         ;
     }
 
