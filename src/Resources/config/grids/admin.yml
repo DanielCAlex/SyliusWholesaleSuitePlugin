@@ -12,12 +12,6 @@ sylius_grid:
         description:
           type: string
           label: sylius.ui.description
-        type:
-          type: string
-          label: "%plugin.name.base%.ui.wholesale_rulesets.type"
-        scope:
-          type: string
-          label: "%plugin.name.base%.ui.wholesale_rulesets.scope"
         enabled:
           type: twig
           label: sylius.ui.enabled
@@ -45,13 +39,19 @@ sylius_grid:
         isEnabled:
           type: boolean
           label: sylius.ui.enabled
-        scope:
-          type: string
-          label: "%plugin.name.base%.ui.wholesale_rulesets.scope"
-        rulesetTaxons:
-          type: entities
-          label: sylius.ui.taxonomy
-          form_options:
-            class: "%sylius.model.taxon.class%"
-          options:
-            field: "rulesetTaxons.id"
+#        type:
+#          type: string
+#          label: "%plugin.name.base%.ui.wholesale_rulesets.type"
+#        scope:
+#          type: string
+#          label: "%plugin.name.base%.ui.wholesale_rulesets.scope"
+##        scope:
+##          type: string
+##          label: "%plugin.name.base%.ui.wholesale_rulesets.scope"
+##        rulesetTaxons:
+##          type: entities
+##          label: sylius.ui.taxonomy
+##          form_options:
+##            class: "%sylius.model.taxon.class%"
+##          options:
+##            field: "rulesetTaxons.id"

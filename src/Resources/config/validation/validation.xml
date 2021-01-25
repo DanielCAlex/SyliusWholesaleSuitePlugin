@@ -21,11 +21,11 @@
             </constraint>
         </property>
         <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+            <option name="fields">name</option>
             <option name="message">
                 A ruleset with the name {{ value }} already exists.
             </option>
             <option name="groups">sylius</option>
-            <option name="fields">name</option>
         </constraint>
     </class>
 </constraint-mapping>

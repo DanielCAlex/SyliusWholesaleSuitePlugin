@@ -5,5 +5,5 @@ skyboundtech_sylius_wholesale_suite_plugin:
     wholesale_rulesets:
       header: Wholesale Purchase Rulesets
       subheader: Manage rulesets
-      type: Ruleset Type
-      scope: Ruleset Scope
+      ruleset_name: Ruleset Name
+      ruleset_description: Ruleset Description
