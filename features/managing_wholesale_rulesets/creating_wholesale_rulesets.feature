@@ -7,8 +7,16 @@ Feature: Creating wholesale rulesets
   Background:
     Given I am logged in as an administrator
 
-  @ui @javascript
+  @ui @javascript @ruleset_info
   Scenario: Selecting the name and description of the ruleset
     When I go to the create Wholesale Ruleset page
     And I fill ruleset name with "Behat Ruleset 1"
     And I fill the ruleset description with "This is the first ruleset behat added."
+
+  @ui @javascript @rules
+  Scenario: The form tabs for the different types of wholesale rules exist
+    When I go to the create Wholesale Ruleset page
+    Then I should see "Quantity Step Rules"
+    And I should see "Tiered Pricing Rules"
+    And I should see "Minimum/Maximum Purchase Rules"
+    And I should see "Backorder Rules"
