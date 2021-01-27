@@ -31,16 +31,6 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $this->getDocument()->fillField('Ruleset Description', $description);
     }
 
-    public function selectScope(string $scope): void
-    {
-        $this->getDocument()->selectFieldOption('Scope', $scope);
-    }
-
-    public function selectType(string $type): void
-    {
-        $this->getDocument()->selectFieldOption('Type', $type);
-    }
-
     public function disable(): void
     {
         $this->getDocument()->uncheckField('Enabled?');

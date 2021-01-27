@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Context\Ui\Admin;
 
+use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use Behat\MinkExtension\Context\MinkContext as BaseMinkContext;
 use Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Page\Admin\WholesaleRuleset\CreatePageInterface;
@@ -33,22 +34,6 @@ final class WholesaleSuiteRulesetContext extends BaseMinkContext implements Cont
     public function iGoToTheCreateWholesaleRulesetPage(): void
     {
         $this->createPage->open();
-    }
-
-    /**
-     * @When I select the scope :scope
-     */
-    public function iSelectTheScope($scope)
-    {
-        $this->createPage->selectScope($scope);
-    }
-
-    /**
-     * @When I select the type :type
-     */
-    public function iSelectTheType($scope)
-    {
-        $this->createPage->selectType($scope);
     }
 
     /**

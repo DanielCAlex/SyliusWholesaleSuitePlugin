@@ -22,10 +22,6 @@ interface CreatePageInterface extends BaseCreatePageInterface
 
     public function fillRulesetName(string $name): void;
 
-    public function selectScope(string $scope): void;
-
-    public function selectType(string $type): void;
-
     public function fillRulesetDescription(string $description): void;
 
     public function disable(): void;
