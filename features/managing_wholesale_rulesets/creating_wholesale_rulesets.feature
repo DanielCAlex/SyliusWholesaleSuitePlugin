@@ -21,3 +21,7 @@ Feature: Creating wholesale rulesets
     And I should see "Minimum-Maximum Purchase Rules"
     And I should see "Backorder Rules"
 
+    When I click the "Quantity Step Rules" tab
+    And I should see "Quantity Step Rule by Taxonomy"
+    And I should see "Quantity Step Rule by Product"
+    And I should see "Quantity Step Rule by Product Variant"
