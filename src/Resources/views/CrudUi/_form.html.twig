@@ -7,24 +7,11 @@
     <div class="ten wide column">
         {{ form_row(form.description) }}
     </div>
-    <div class="ui top attached tabular menu">
-        <a class="item active" data-tab="first">Quantity Step Rules</a>
-        <a class="item" data-tab="second">Tiered Pricing Rules</a>
-        <a class="item" data-tab="third">Minimum/Maximum Purchase Rules</a>
-        <a class="item" data-tab="fourth">Backorder Rules</a>
+
+    <div class="sixteen wide column">
+        {{ include('@SkyBoundTechSyliusWholesaleSuitePlugin/CrudUi/_ruleTabs,html.twig') }}
     </div>
-    <div class="ui bottom attached tab segment active" data-tab="first">
-        First
-    </div>
-    <div class="ui bottom attached tab segment" data-tab="second">
-        Second
-    </div>
-    <div class="ui bottom attached tab segment" data-tab="third">
-        Third
-    </div>
-    <div class="ui bottom attached tab segment" data-tab="fourth">
-        Fourth
-    </div>
+
     <div class="twelve wide column">
         {{ form_row(form.enabled) }}
     </div>
