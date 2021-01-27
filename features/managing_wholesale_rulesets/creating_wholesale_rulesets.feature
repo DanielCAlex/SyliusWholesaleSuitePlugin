@@ -18,5 +18,6 @@ Feature: Creating wholesale rulesets
     When I go to the create Wholesale Ruleset page
     Then I should see "Quantity Step Rules"
     And I should see "Tiered Pricing Rules"
-    And I should see "Minimum/Maximum Purchase Rules"
+    And I should see "Minimum-Maximum Purchase Rules"
     And I should see "Backorder Rules"
+
