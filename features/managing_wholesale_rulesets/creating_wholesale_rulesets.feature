@@ -8,13 +8,13 @@ Feature: Creating wholesale rulesets
     Given I am logged in as an administrator
 
   @ui @javascript @ruleset_info
-  Scenario: Selecting the name and description of the ruleset
+  Scenario: Admin fills the name and description of the ruleset
     When I go to the create Wholesale Ruleset page
     And I fill ruleset name with "Behat Ruleset 1"
     And I fill the ruleset description with "This is the first ruleset behat added."
 
   @ui @javascript @rules
-  Scenario: The form tabs for the different types of wholesale rules exist
+  Scenario: Admin can see the form tabs for the different types of wholesale rules and their scopes.
     When I go to the create Wholesale Ruleset page
     Then I should see "Quantity Step Rules"
     And I should see "Tiered Pricing Rules"
@@ -22,6 +22,21 @@ Feature: Creating wholesale rulesets
     And I should see "Backorder Rules"
 
     When I click the "Quantity Step Rules" tab
-    And I should see "Quantity Step Rule by Taxonomy"
-    And I should see "Quantity Step Rule by Product"
-    And I should see "Quantity Step Rule by Product Variant"
+    And I should see "Quantity Step Rules by Taxonomy"
+    And I should see "Quantity Step Rules by Product"
+    And I should see "Quantity Step Rules by Product Variant"
+
+    When I click the "Tiered Pricing Rules" tab
+    And I should see "Tiered Pricing Rules by Taxonomy"
+    And I should see "Tiered Pricing Rules by Product"
+    And I should see "Tiered Pricing Rules by Product Variant"
+
+    When I click the "Minimum-Maximum Purchase Rules" tab
+    And I should see "Minimum-Maximum Purchase Rules by Taxonomy"
+    And I should see "Minimum-Maximum Purchase Rules by Product"
+    And I should see "Minimum-Maximum Purchase Rules by Product Variant"
+
+    When I click the "Backorder Rules" tab
+    And I should see "Backorder Rules by Taxonomy"
+    And I should see "Backorder Rules by Product"
+    And I should see "Backorder Rules by Product Variant"
