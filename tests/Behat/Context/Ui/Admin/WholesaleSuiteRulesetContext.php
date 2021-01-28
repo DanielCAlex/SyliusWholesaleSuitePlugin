@@ -12,7 +12,6 @@ declare(strict_types=1);
 
 namespace Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Context\Ui\Admin;
 
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use Behat\MinkExtension\Context\MinkContext as BaseMinkContext;
 use Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Page\Admin\WholesaleRuleset\CreatePageInterface;
@@ -50,5 +49,13 @@ final class WholesaleSuiteRulesetContext extends BaseMinkContext implements Cont
     public function iFillTheRulesetDescriptionWith($rulesetDescription)
     {
         $this->createPage->fillRulesetDescription($rulesetDescription);
+    }
+
+    /**
+     * @When I click the :tab tab
+     */
+    public function iClickTheTab(string $tab)
+    {
+        $this->createPage->clickTab($tab);
     }
 }
