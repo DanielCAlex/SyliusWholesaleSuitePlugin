@@ -31,6 +31,20 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $this->getDocument()->fillField('Ruleset Description', $description);
     }
 
+    public function clickTab(string $tab): void
+    {
+        $tab = $this->getDocument()->find(
+            'css',
+            sprintf(
+                '[data-tab="%s"]',
+                $tab
+            )
+        )
+        ;
+
+        $tab->click();
+    }
+
     public function disable(): void
     {
         $this->getDocument()->uncheckField('Enabled?');

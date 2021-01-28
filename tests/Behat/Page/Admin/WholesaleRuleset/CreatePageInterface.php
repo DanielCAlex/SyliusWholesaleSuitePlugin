@@ -24,6 +24,8 @@ interface CreatePageInterface extends BaseCreatePageInterface
 
     public function fillRulesetDescription(string $description): void;
 
+    public function clickTab(string $tab): void;
+
     public function disable(): void;
 
     public function enable(): void;
