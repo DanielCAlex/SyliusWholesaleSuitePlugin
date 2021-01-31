@@ -31,6 +31,21 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $this->getDocument()->fillField('Ruleset Description', $description);
     }
 
+    public function fillRuleName(string $name): void
+    {
+        $this->getDocument()->fillField('Rule Name', $name);
+    }
+
+    public function fillRuleDescription(string $description): void
+    {
+        $this->getDocument()->fillField('Rule Description', $description);
+    }
+
+    public function chooseRuleScope(string $scope): void
+    {
+        $this->getDocument()->selectFieldOption('Rule Scope', $scope);
+    }
+
     public function clickTab(string $tab): void
     {
         $tab = $this->getDocument()->find(
