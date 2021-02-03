@@ -4,12 +4,12 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services
         https://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="skyboundtech.sylius_wholesale_suite_plugin.wholesale_ruleset_create_type"
-                 class="SkyBoundTech\SyliusWholesaleSuitePlugin\Form\Type\WholesaleRulesetCreateType"
+        <service id="skyboundtech.sylius_wholesale_suite_plugin.wholesale_rule_quantity_step_type"
+                 class="SkyBoundTech\SyliusWholesaleSuitePlugin\Form\Type\WholesaleRuleQuantityStepType"
                  autowire="false">
             <tag name="form.type"/>
-            <argument type="string" id="SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleset::class"/>
-            <argument type="service" id="skyboundtech.sylius_wholesale_suite_plugin.services.entity_helper"/>
+            <argument type="string"
+                      id="SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleQuantityStepType::class"/>
         </service>
     </services>
 </container>
