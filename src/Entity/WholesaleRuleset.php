@@ -26,8 +26,13 @@ class WholesaleRuleset extends BaseEntity implements ResourceInterface
     protected $description;
     /** @var bool */
     protected $enabled;
-    /** @var ArrayCollection */
+    /** @var ArrayCollection<WholesaleRuleQuantityStep> */
     protected $quantityStepRules;
+
+    public function __construct()
+    {
+        $this->quantityStepRules = new ArrayCollection();
+    }
 
     /**
      * @return int
@@ -71,5 +76,10 @@ class WholesaleRuleset extends BaseEntity implements ResourceInterface
     public function setEnabled(bool $enabled): void
     {
         $this->enabled = $enabled;
+    }
+
+    public function getQuantityStepRules(): array
+    {
+        return $this->quantityStepRules->toArray();
     }
 }

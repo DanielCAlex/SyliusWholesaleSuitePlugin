@@ -14,8 +14,10 @@
             <a class="item" data-tab="{{ ruleType }}/b">{{ ruleType }} by Product</a>
             <a class="item" data-tab="{{ ruleType }}/c">{{ ruleType }} by Product Variant</a>
         </div>
-        <div class="ui bottom attached tab segment{% if ruleType == ruleTypes[0] %} active{% endif %}"
-             data-tab="{{ ruleType }}/a"></div>
+        <div class="ui bottom attached tab segment grid{% if ruleType == ruleTypes[0] %} active{% endif %}"
+             data-tab="{{ ruleType }}/a">
+                {{ form_row(form.quantityStepRules) }}
+        </div>
         <div class="ui bottom attached tab segment" data-tab="{{ ruleType }}/b"></div>
         <div class="ui bottom attached tab segment" data-tab="{{ ruleType }}/c"></div>
     </div>
