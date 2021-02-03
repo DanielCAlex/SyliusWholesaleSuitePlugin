@@ -22,3 +22,8 @@ sylius_resource:
       classes:
         model: SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleset
         form: SkyBoundTech\SyliusWholesaleSuitePlugin\Form\Type\WholesaleRulesetCreateType
+
+    skyboundtech.wholesale_rule_quantity_step:
+      driver: doctrine/orm
+      classes:
+        model: SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleQuantityStep
