@@ -78,4 +78,9 @@ class WholesaleRuleQuantityStep extends BaseEntity implements WholesaleRuleQuant
     {
         $this->enabled = $enabled;
     }
+
+    public function setRuleset(WholesaleRuleset $ruleset): void
+    {
+        $this->ruleset = $ruleset;
+    }
 }

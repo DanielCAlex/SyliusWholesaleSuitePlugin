@@ -30,5 +30,7 @@ interface WholesaleRuleQuantityStepInterface
 
     public function setEnabled(bool $enabledStatus): void;
 
+    public function setRuleset(WholesaleRuleset $ruleset): void;
+
     public function isEnabled(): bool;
 }
