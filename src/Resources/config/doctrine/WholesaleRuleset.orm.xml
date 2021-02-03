@@ -18,5 +18,9 @@
                nullable="true"/>
 
         <field name="enabled" column="enabled" type="boolean" nullable="false"/>
+
+        <one-to-many field="quantityStepRules"
+                     target-entity="SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleQuantityStep"
+                     mapped-by="ruleset"/>
     </mapped-superclass>
 </doctrine-mapping>

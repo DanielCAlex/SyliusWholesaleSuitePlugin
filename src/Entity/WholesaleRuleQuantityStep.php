@@ -24,6 +24,8 @@ class WholesaleRuleQuantityStep extends BaseEntity implements WholesaleRuleQuant
     protected $quantityStep;
     /** @var bool */
     protected $enabled;
+    /** @var WholesaleRuleset */
+    protected $ruleset;
 
     /**
      * @return int

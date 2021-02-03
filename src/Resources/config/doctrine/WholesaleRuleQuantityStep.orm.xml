@@ -20,5 +20,11 @@
         <field name="quantityStep" column="quantity_step" type="integer"/>
 
         <field name="enabled" column="enabled" type="boolean" nullable="false"/>
+
+        <many-to-one field="ruleset" target-entity="SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleset"
+                     inversed-by="quantityStepRules"
+        >
+            <join-column name="ruleset_id" referenced-column-name="id"/>
+        </many-to-one>
     </mapped-superclass>
 </doctrine-mapping>

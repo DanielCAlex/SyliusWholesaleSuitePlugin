@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
 class WholesaleRuleset extends BaseEntity implements ResourceInterface
@@ -23,8 +24,10 @@ class WholesaleRuleset extends BaseEntity implements ResourceInterface
     protected $name;
     /** @var string|null */
     protected $description;
-    /** @var boolean */
+    /** @var bool */
     protected $enabled;
+    /** @var ArrayCollection */
+    protected $quantityStepRules;
 
     /**
      * @return int
@@ -42,25 +45,16 @@ class WholesaleRuleset extends BaseEntity implements ResourceInterface
         return $this->name;
     }
 
-    /**
-     * @param string $name
-     */
     public function setName(string $name): void
     {
         $this->name = $name;
     }
 
-    /**
-     * @return string|null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * @param string|null $description
-     */
     public function setDescription(?string $description): void
     {
         $this->description = $description;
@@ -74,9 +68,6 @@ class WholesaleRuleset extends BaseEntity implements ResourceInterface
         return $this->enabled;
     }
 
-    /**
-     * @param bool $enabled
-     */
     public function setEnabled(bool $enabled): void
     {
         $this->enabled = $enabled;
