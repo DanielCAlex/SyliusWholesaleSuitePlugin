@@ -14,7 +14,7 @@ namespace spec\SkyBoundTech\SyliusWholesaleSuitePlugin\Entity;
 
 use PhpSpec\ObjectBehavior;
 use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\BaseEntity;
-use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\RuleInterface;
+use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleQuantityStepInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
 final class WholesaleRulesetSpec extends ObjectBehavior
@@ -38,7 +38,7 @@ final class WholesaleRulesetSpec extends ObjectBehavior
         $this->enabled()->shouldReturn(false);
     }
 
-    public function it_associates_rules(RuleInterface $firstRule, RuleInterface $secondRule
+    public function it_associates_rules(WholesaleRuleQuantityStepInterface $firstRule, WholesaleRuleQuantityStepInterface $secondRule
     ): void {
         $this->addRule($firstRule);
         $this->hasRule($firstRule)->shouldReturn(true);
@@ -47,7 +47,7 @@ final class WholesaleRulesetSpec extends ObjectBehavior
         $this->hasRule($secondRule)->shouldReturn(true);
     }
 
-    public function it_removes_rules(RuleInterface $firstRule): void
+    public function it_removes_rules(WholesaleRuleQuantityStepInterface $firstRule): void
     {
         $this->addRule($firstRule);
         $this->hasRule($firstRule)->shouldReturn(true);
