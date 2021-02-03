@@ -16,12 +16,12 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use SkyBoundTech\SyliusWholesaleSuitePlugin\Services\EntityHelperInterface;
 
-final class WholesaleRulesetCreateType extends AbstractResourceType
+final class WholesaleRulesetType extends AbstractResourceType
 {
-
     /**
      * @var EntityHelperInterface
      */
@@ -57,6 +57,16 @@ final class WholesaleRulesetCreateType extends AbstractResourceType
                 null,
                 [
                     'label' => 'Enabled?',
+                ]
+            )
+            ->add(
+                'quantityStepRules',
+                CollectionType::class,
+                [
+                    'entry_type' => WholesaleRuleQuantityStepType::class,
+                    'allow_add' => true,
+                    'allow_delete' => true,
+                    'by_reference' => false,
                 ]
             )
         ;
