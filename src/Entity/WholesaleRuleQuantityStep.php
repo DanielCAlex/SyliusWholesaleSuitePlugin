@@ -49,7 +49,7 @@ class WholesaleRuleQuantityStep extends BaseEntity implements WholesaleRuleQuant
         $this->name = $name;
     }
 
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
