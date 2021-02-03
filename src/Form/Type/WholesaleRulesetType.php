@@ -35,7 +35,7 @@ final class WholesaleRulesetType extends AbstractResourceType
         $this->entityHelper = $entityHelper;
     }
 
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add(
