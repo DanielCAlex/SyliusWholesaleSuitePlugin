@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
@@ -26,11 +27,15 @@ class WholesaleRuleset extends BaseEntity implements ResourceInterface
     protected $description;
     /** @var bool */
     protected $enabled;
-    /** @var ArrayCollection<WholesaleRuleQuantityStep> */
+    /**
+     * @var Collection|WholesaleRuleQuantityStepInterface[]
+     * @psalm-var Collection<array-key, WholesaleRuleQuantityStepInterface>
+     */
     protected $quantityStepRules;
 
     public function __construct()
     {
+        /* @var  ArrayCollection<array-key, WholesaleRuleQuantityStepInterface> $this- >quantityStepRules */
         $this->quantityStepRules = new ArrayCollection();
     }
 
@@ -81,5 +86,31 @@ class WholesaleRuleset extends BaseEntity implements ResourceInterface
     public function getQuantityStepRules(): array
     {
         return $this->quantityStepRules->toArray();
+    }
+
+    public function addQuantityStepRule(WholesaleRuleQuantityStepInterface $quantityStepRule): void
+    {
+        if ($this->quantityStepRules->contains($quantityStepRule)) {
+            return;
+        }
+        $this->quantityStepRules->add($quantityStepRule);
+        $quantityStepRule->setRuleset($this);
+    }
+
+    public function removeQuantityStepRule(WholesaleRuleQuantityStepInterface $quantityStepRule): void
+    {
+        if (!$this->quantityStepRules->contains($quantityStepRule)) {
+            return;
+        }
+        $this->quantityStepRules->removeElement($quantityStepRule);
+    }
+
+    public function hasQuantityStepRule(WholesaleRuleQuantityStepInterface $quantityStepRule): bool
+    {
+        if ($this->quantityStepRules->contains($quantityStepRule)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
