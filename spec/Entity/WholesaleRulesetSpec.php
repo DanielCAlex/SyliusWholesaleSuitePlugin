@@ -38,21 +38,23 @@ final class WholesaleRulesetSpec extends ObjectBehavior
         $this->enabled()->shouldReturn(false);
     }
 
-    public function it_associates_rules(WholesaleRuleQuantityStepInterface $firstRule, WholesaleRuleQuantityStepInterface $secondRule
+    public function it_associates_quantity_step_rules(
+        WholesaleRuleQuantityStepInterface $firstRule,
+        WholesaleRuleQuantityStepInterface $secondRule
     ): void {
-        $this->addRule($firstRule);
-        $this->hasRule($firstRule)->shouldReturn(true);
+        $this->addQuantityStepRule($firstRule);
+        $this->hasQuantityStepRule($firstRule)->shouldReturn(true);
 
-        $this->addRule($secondRule);
-        $this->hasRule($secondRule)->shouldReturn(true);
+        $this->addQuantityStepRule($secondRule);
+        $this->hasQuantityStepRule($secondRule)->shouldReturn(true);
     }
 
     public function it_removes_rules(WholesaleRuleQuantityStepInterface $firstRule): void
     {
-        $this->addRule($firstRule);
-        $this->hasRule($firstRule)->shouldReturn(true);
+        $this->addQuantityStepRule($firstRule);
+        $this->hasQuantityStepRule($firstRule)->shouldReturn(true);
 
-        $this->removeRule($firstRule);
-        $this->hasRule($firstRule)->shouldReturn(false);
+        $this->removeQuantityStepRule($firstRule);
+        $this->hasQuantityStepRule($firstRule)->shouldReturn(false);
     }
 }
