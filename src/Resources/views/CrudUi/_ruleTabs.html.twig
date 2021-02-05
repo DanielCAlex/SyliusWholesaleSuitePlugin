@@ -16,7 +16,13 @@
         </div>
         <div class="ui bottom attached tab segment grid{% if ruleType == ruleTypes[0] %} active{% endif %}"
              data-tab="{{ ruleType }}/a">
-                {{ form_row(form.quantityStepRules) }}
+            <div class="ui info yellow message">
+                <i class="close icon"></i>
+                <div class="ui small header">
+                    These rules will apply to their selected taxonomies.
+                </div>
+            </div>
+            {{ form_row(form.quantityStepRules) }}
         </div>
         <div class="ui bottom attached tab segment" data-tab="{{ ruleType }}/b"></div>
         <div class="ui bottom attached tab segment" data-tab="{{ ruleType }}/c"></div>
