@@ -7,3 +7,9 @@ skyboundtech_sylius_wholesale_suite_plugin:
       subheader: Manage rulesets
       ruleset_name: Ruleset Name
       ruleset_description: Ruleset Description
+    wholesale_rules:
+      rule_name: Rule Name
+      rule_description: Rule Description
+      quantity_step:
+        quantity: 'Purchased in set of:'
+        scope: Quantity Set Scope

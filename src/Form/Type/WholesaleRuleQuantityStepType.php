@@ -12,19 +12,40 @@ declare(strict_types=1);
 
 namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Form\Type;
 
-use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
-use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleQuantityStep;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
+use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleQuantityStep;
 
 final class WholesaleRuleQuantityStepType extends AbstractResourceType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name')
-            ->add('description')
-            ->add('quantityStep')
+            ->add(
+                'name',
+                TextType::class,
+                [
+                    'label' => 'skyboundtech_sylius_wholesale_suite_plugin.ui.wholesale_rules.rule_name',
+                ]
+            )
+            ->add(
+                'description',
+                TextareaType::class,
+                [
+                    'label' => 'skyboundtech_sylius_wholesale_suite_plugin.ui.wholesale_rules.rule_description',
+                ]
+            )
+            ->add(
+                'quantityStep',
+                IntegerType::class,
+                [
+                    'label' => 'skyboundtech_sylius_wholesale_suite_plugin.ui.wholesale_rules.quantity_step.quantity',
+                ]
+            )
             ->add('enabled')
         ;
     }
