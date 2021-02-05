@@ -46,20 +46,6 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $this->getDocument()->selectFieldOption('Rule Scope', $scope);
     }
 
-    public function clickTab(string $tab): void
-    {
-        $tab = $this->getDocument()->find(
-            'css',
-            sprintf(
-                '[data-tab="%s"]',
-                $tab
-            )
-        )
-        ;
-
-        $tab->click();
-    }
-
     public function disable(): void
     {
         $this->getDocument()->uncheckField('Enabled?');
@@ -73,5 +59,33 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
     public function find(string $desiredText): void
     {
         $this->getDocument()->hasContent($desiredText);
+    }
+
+    public function addQuantityStepRule(string $scope): void
+    {
+        $this->clickTab('Quantity Step Rules');
+        $this->clickTab(sprintf('Quantity Step Rules/%s', $scope));
+
+        $addButton = $this->getDocument()->find(
+            'css',
+            '#wholesale_ruleset_quantityStepRules>a[data-form-collection="add"]'
+        )
+        ;
+
+        $addButton->click();
+    }
+
+    public function clickTab(string $tab): void
+    {
+        $tab = $this->getDocument()->find(
+            'css',
+            sprintf(
+                '[data-tab="%s"]',
+                $tab
+            )
+        )
+        ;
+
+        $tab->click();
     }
 }

@@ -37,4 +37,6 @@ interface CreatePageInterface extends BaseCreatePageInterface
     public function enable(): void;
 
     public function find(string $desiredText): void;
+
+    public function addQuantityStepRule(string $scope): void;
 }
