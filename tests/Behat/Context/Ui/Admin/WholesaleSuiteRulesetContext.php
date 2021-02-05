@@ -83,4 +83,12 @@ final class WholesaleSuiteRulesetContext extends BaseMinkContext implements Cont
     {
         throw new PendingException();
     }
+
+    /**
+     * @When I click the add rule button for the Quantity Step Rules by Taxonomy tab
+     */
+    public function addRuleForQuantityStepRulesByTaxonomy()
+    {
+        $this->createPage->addQuantityStepRule('a');
+    }
 }
