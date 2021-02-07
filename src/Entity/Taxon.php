@@ -12,16 +12,16 @@ declare(strict_types=1);
 
 namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Entity;
 
+use SkyBoundTech\SyliusWholesaleSuitePlugin\Traits\WholesaleRuleQuantityStepTrait;
 use Sylius\Component\Core\Model\Taxon as BaseTaxon;
-use SkyBoundTech\SyliusWholesaleSuitePlugin\Traits\TaxonWholesaleRulesetTrait;
 
 class Taxon extends BaseTaxon
 {
-    use TaxonWholesaleRulesetTrait;
+    use WholesaleRuleQuantityStepTrait;
 
     public function __construct()
     {
         parent::__construct();
-        $this->initWholesaleRulesetTrait();
+        $this->initWholesaleRuleQuantityStepTrait();
     }
 }
