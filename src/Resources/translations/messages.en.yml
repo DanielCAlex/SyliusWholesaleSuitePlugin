@@ -13,3 +13,4 @@ skyboundtech_sylius_wholesale_suite_plugin:
       quantity_step:
         quantity: 'Purchased in set of:'
         scope: Quantity Set Scope
+        select_taxons: Select taxonomies
