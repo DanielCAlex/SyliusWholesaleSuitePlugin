@@ -13,7 +13,7 @@ Feature: Creating wholesale rulesets
     And I fill ruleset name with "Behat Ruleset 1"
     And I fill the ruleset description with "This is the first ruleset behat added."
 
-  @ui @javascript @rules
+  @ui @javascript @ruleset
   Scenario: Admin can see the form tabs for the different types of wholesale rules and their scopes.
     When I go to the create Wholesale Ruleset page
     Then I should see "Quantity Step Rules"
