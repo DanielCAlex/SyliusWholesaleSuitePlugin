@@ -27,6 +27,8 @@ class WholesaleRuleQuantityStep extends BaseEntity implements WholesaleRuleQuant
     protected $description;
     /** @var int */
     protected $quantityStep;
+    /** @var string */
+    protected $scope;
     /** @var bool */
     protected $enabled;
     /** @var WholesaleRulesetInterface */
@@ -80,6 +82,16 @@ class WholesaleRuleQuantityStep extends BaseEntity implements WholesaleRuleQuant
     public function setQuantityStep(int $quantityStep): void
     {
         $this->quantityStep = $quantityStep;
+    }
+
+    public function getScope(): string
+    {
+        return $this->scope;
+    }
+
+    public function setScope(string $scope): void
+    {
+        $this->scope = $scope;
     }
 
     public function isEnabled(): bool
