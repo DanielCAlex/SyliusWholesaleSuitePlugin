@@ -7,7 +7,7 @@ Feature: Creating wholesale rules
   Background:
     Given I am logged in as an administrator
 
-  @ui @javascript @rules
+  @ui @javascript @rule
   Scenario: Admin adds a Quantity Step Rule by Taxonomy
     When I go to the create Wholesale Ruleset page
     And I click the add rule button for the Quantity Step Rules by Taxonomy tab
@@ -16,7 +16,7 @@ Feature: Creating wholesale rules
     And I fill the rule description with "This is the first quantity step rule by taxonomy created by Behat."
     And I should see "Select taxonomies"
 
-  @ui @javascript @rules
+  @ui @javascript @rule
   Scenario: Admin adds a Quantity Step Rule by Product
     When I go to the create Wholesale Ruleset page
     And I click the add rule button for the Quantity Step Rules by Product tab
