@@ -17,7 +17,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
-class WholesaleRuleset extends BaseEntity implements ResourceInterface
+class WholesaleRuleset extends BaseEntity implements ResourceInterface, WholesaleRulesetInterface
 {
     /** @var int */
     protected $id;
