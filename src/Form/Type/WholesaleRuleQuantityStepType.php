@@ -12,13 +12,14 @@ declare(strict_types=1);
 
 namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Form\Type;
 
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleQuantityStep;
+use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
+use Sylius\Bundle\TaxonomyBundle\Form\Type\TaxonAutocompleteChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
-use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleQuantityStep;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class WholesaleRuleQuantityStepType extends AbstractResourceType
 {
@@ -46,8 +47,15 @@ final class WholesaleRuleQuantityStepType extends AbstractResourceType
                     'label' => 'skyboundtech_sylius_wholesale_suite_plugin.ui.wholesale_rules.quantity_step.quantity',
                 ]
             )
-            ->add('enabled')
-        ;
+            ->add(
+                'taxons',
+                TaxonAutocompleteChoiceType::class,
+                [
+                    'multiple' => true,
+                    'label' => 'skyboundtech_sylius_wholesale_suite_plugin.ui.wholesale_rules.quantity_step.select_taxons'
+                ]
+            )
+            ->add('enabled');
     }
 
     public function configureOptions(OptionsResolver $resolver): void
