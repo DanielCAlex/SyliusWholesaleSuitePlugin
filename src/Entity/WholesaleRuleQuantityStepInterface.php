@@ -31,6 +31,10 @@ interface WholesaleRuleQuantityStepInterface
 
     public function setQuantityStep(int $quantityStep): void;
 
+    public function getScope(): string;
+
+    public function setScope(string $scope): void;
+
     public function setEnabled(bool $enabledStatus): void;
 
     public function isEnabled(): bool;
