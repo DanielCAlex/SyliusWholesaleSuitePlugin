@@ -91,4 +91,13 @@ final class WholesaleSuiteRulesetContext extends BaseMinkContext implements Cont
     {
         $this->createPage->addQuantityStepRule('a');
     }
+
+
+    /**
+     * @When I click the add rule button for the Quantity Step Rules by Product tab
+     */
+    public function addRuleForQuantityStepRulesByProduct()
+    {
+        $this->createPage->addQuantityStepRule('b');
+    }
 }
