@@ -3,12 +3,12 @@ sylius_taxonomy:
     taxon:
       classes:
         model: SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\Taxon
-#
-#sylius_product:
-#  resources:
-#    product:
-#      classes:
-#        model: SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\Product
+
+sylius_product:
+  resources:
+    product:
+      classes:
+        model: SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\Product
 #    product_variant:
 #      classes:
 #        model: SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\ProductVariant
