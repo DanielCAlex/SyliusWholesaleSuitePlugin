@@ -14,6 +14,7 @@ namespace spec\SkyBoundTech\SyliusWholesaleSuitePlugin\Entity;
 
 use PhpSpec\ObjectBehavior;
 use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\BaseEntity;
+use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleQuantityStepInterface;
 use Sylius\Component\Core\Model\TaxonInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
@@ -29,12 +30,16 @@ class WholesaleRuleQuantityStepSpec extends ObjectBehavior
         $this->shouldBeAnInstanceOf(BaseEntity::class);
     }
 
+    public function it_implements_wholesale_rule_quantity_step_interface(): void
+    {
+        $this->shouldImplement(WholesaleRuleQuantityStepInterface::class);
+    }
+
     public function it_has_a_scope(): void
     {
         $this->setScope('Taxonomy');
         $this->getScope()->shouldReturn('Taxonomy');
         $this->getScope()->shouldNotReturn('Product');
-
     }
 
     public function it_toggles(): void
@@ -57,5 +62,10 @@ class WholesaleRuleQuantityStepSpec extends ObjectBehavior
 
         $this->removeTaxon($taxonOne);
         $this->hasTaxon($taxonTwo)->shouldReturn(true);
+    }
+
+    public function it_has_no_taxons_by_default(): void
+    {
+        $this->getTaxons()->toArray()->shouldReturn([]);
     }
 }
