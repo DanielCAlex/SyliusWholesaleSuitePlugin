@@ -12,16 +12,16 @@ declare(strict_types=1);
 
 namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Entity;
 
+use SkyBoundTech\SyliusWholesaleSuitePlugin\Traits\WholesaleRuleQuantityStepTrait;
 use Sylius\Component\Core\Model\Product as BaseProduct;
-use SkyBoundTech\SyliusWholesaleSuitePlugin\Traits\ProductWholesaleRulesetTrait;
 
-class Product extends BaseProduct
+class Product extends BaseProduct implements AssociatesQuantityStepRulesInterface
 {
-    use ProductWholesaleRulesetTrait;
+    use WholesaleRuleQuantityStepTrait;
 
     public function __construct()
     {
         parent::__construct();
-        $this->initWholesaleRulesetTrait();
+        $this->initWholesaleRuleQuantityStepTrait();
     }
 }

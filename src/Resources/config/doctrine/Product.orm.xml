@@ -5,13 +5,10 @@
 >
 
     <mapped-superclass name="SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\Product" table="sylius_product">
-        <many-to-many target-entity="SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleset"
-                      mapped-by="rulesetProducts"
-                      field="skyBoundTechWholesaleRulesets"
+        <many-to-many target-entity="SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleQuantityStepInterface"
+                      mapped-by="products"
+                      field="skyBoundTechWholesaleQuantityStepRules"
                       orphan-removal="true">
-            <cascade>
-                <cascade-all/>
-            </cascade>
         </many-to-many>
     </mapped-superclass>
 </doctrine-mapping>
