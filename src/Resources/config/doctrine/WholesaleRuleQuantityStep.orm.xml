@@ -19,6 +19,8 @@
 
         <field name="quantityStep" column="quantity_step" type="integer"/>
 
+        <field name="scope" column="scope" type="string"/>
+
         <field name="enabled" column="enabled" type="boolean" nullable="false"/>
 
         <many-to-one field="ruleset" target-entity="SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleset"
