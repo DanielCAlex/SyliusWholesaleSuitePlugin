@@ -29,6 +29,14 @@ class WholesaleRuleQuantityStepSpec extends ObjectBehavior
         $this->shouldBeAnInstanceOf(BaseEntity::class);
     }
 
+    public function it_has_a_scope(): void
+    {
+        $this->setScope('Taxonomy');
+        $this->getScope()->shouldReturn('Taxonomy');
+        $this->getScope()->shouldNotReturn('Product');
+
+    }
+
     public function it_toggles(): void
     {
         $this->setEnabled(false);
