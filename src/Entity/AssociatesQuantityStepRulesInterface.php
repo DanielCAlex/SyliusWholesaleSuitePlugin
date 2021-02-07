@@ -15,7 +15,7 @@ namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Entity;
 
 use Doctrine\Common\Collections\Collection;
 
-interface TaxonInterface
+interface AssociatesQuantityStepRulesInterface
 {
     /**
      * @param WholesaleRuleQuantityStepInterface $quantityStepRule
