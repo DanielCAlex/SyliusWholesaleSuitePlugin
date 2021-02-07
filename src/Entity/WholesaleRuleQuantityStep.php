@@ -12,6 +12,9 @@ declare(strict_types=1);
 
 namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Sylius\Component\Core\Model\TaxonInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
 class WholesaleRuleQuantityStep extends BaseEntity implements WholesaleRuleQuantityStepInterface, ResourceInterface
@@ -26,8 +29,18 @@ class WholesaleRuleQuantityStep extends BaseEntity implements WholesaleRuleQuant
     protected $quantityStep;
     /** @var bool */
     protected $enabled;
-    /** @var WholesaleRuleset */
+    /** @var WholesaleRulesetInterface */
     protected $ruleset;
+    /**
+     * @var Collection|TaxonInterface[]
+     * @Psalm-var Collection<array-key, TaxonInterface>
+     */
+    protected $taxons;
+
+    public function __construct()
+    {
+        $this->taxons = new ArrayCollection();
+    }
 
     public function getId(): int
     {
@@ -74,13 +87,44 @@ class WholesaleRuleQuantityStep extends BaseEntity implements WholesaleRuleQuant
         return $this->enabled;
     }
 
-    public function setEnabled(bool $enabled): void
+    public function setEnabled(bool $enabledStatus): void
     {
-        $this->enabled = $enabled;
+        $this->enabled = $enabledStatus;
     }
 
-    public function setRuleset(WholesaleRuleset $ruleset): void
+    public function getRuleset(): WholesaleRulesetInterface
+    {
+        return $this->getRuleset();
+    }
+
+    public function setRuleset(WholesaleRulesetInterface $ruleset): void
     {
         $this->ruleset = $ruleset;
+    }
+
+    public function getTaxons(): ?Collection
+    {
+        return $this->taxons;
+    }
+
+    public function addTaxon(TaxonInterface $taxon): void
+    {
+        if ($this->taxons->contains($taxon)) {
+            return;
+        }
+        $this->taxons->add($taxon);
+    }
+
+    public function removeTaxon(TaxonInterface $taxon): void
+    {
+        if (!$this->taxons->contains($taxon)) {
+            return;
+        }
+        $this->taxons->removeElement($taxon);
+    }
+
+    public function hasTaxon(TaxonInterface $taxon): bool
+    {
+        return $this->taxons->contains($taxon);
     }
 }

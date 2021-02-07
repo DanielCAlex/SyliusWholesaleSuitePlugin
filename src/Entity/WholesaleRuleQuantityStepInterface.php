@@ -12,6 +12,9 @@ declare(strict_types=1);
 
 namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Entity;
 
+use Doctrine\Common\Collections\Collection;
+use Sylius\Component\Core\Model\TaxonInterface;
+
 interface WholesaleRuleQuantityStepInterface
 {
     public function getId(): int;
@@ -20,17 +23,27 @@ interface WholesaleRuleQuantityStepInterface
 
     public function getName(): string;
 
-    public function setDescription(string $description): void;
-
     public function getDescription(): ?string;
 
-    public function setQuantityStep(int $quantityStep): void;
+    public function setDescription(string $description): void;
 
     public function getQuantityStep(): int;
 
+    public function setQuantityStep(int $quantityStep): void;
+
     public function setEnabled(bool $enabledStatus): void;
 
-    public function setRuleset(WholesaleRuleset $ruleset): void;
-
     public function isEnabled(): bool;
+
+    public function setRuleset(WholesaleRulesetInterface $ruleset): void;
+
+    public function getRuleset(): WholesaleRulesetInterface;
+
+    public function getTaxons(): ?Collection;
+
+    public function addTaxon(TaxonInterface $taxon): void;
+
+    public function removeTaxon(TaxonInterface $taxon): void;
+
+    public function hasTaxon(TaxonInterface $taxon): bool;
 }
