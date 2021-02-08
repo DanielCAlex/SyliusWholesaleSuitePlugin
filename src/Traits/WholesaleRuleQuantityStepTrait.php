@@ -51,7 +51,7 @@ trait WholesaleRuleQuantityStepTrait
         return $this->skyBoundTechWholesaleQuantityStepRules->contains($quantityStepRule);
     }
 
-    public function getSkyBoundTechWholesaleQuantityStepRules(): Collection
+    public function getQuantityStepRules(): Collection
     {
         return $this->skyBoundTechWholesaleQuantityStepRules;
     }
