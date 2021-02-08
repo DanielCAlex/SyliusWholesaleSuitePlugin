@@ -5,7 +5,7 @@
         https://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
         <service id="skyboundtech.sylius_wholesale_suite_plugin.wholesale_rule_quantity_step_by_taxonomy_type"
-                 class="SkyBoundTech\SyliusWholesaleSuitePlugin\Form\Type\WholesaleRuleQuantityStepByTaxonomyType"
+                 class="SkyBoundTech\SyliusWholesaleSuitePlugin\Form\Type\WholesaleRuleQuantityStepByTaxonType"
                  autowire="false">
             <tag name="form.type"/>
             <argument type="string"
