@@ -15,6 +15,7 @@ namespace spec\SkyBoundTech\SyliusWholesaleSuitePlugin\Entity;
 use PhpSpec\ObjectBehavior;
 use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\BaseEntity;
 use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleQuantityStepInterface;
+use Sylius\Component\Core\Model\Product;
 use Sylius\Component\Core\Model\TaxonInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
@@ -61,11 +62,27 @@ class WholesaleRuleQuantityStepSpec extends ObjectBehavior
         $this->hasTaxon($taxonTwo)->shouldReturn(true);
 
         $this->removeTaxon($taxonOne);
-        $this->hasTaxon($taxonTwo)->shouldReturn(true);
+        $this->hasTaxon($taxonOne)->shouldReturn(false);
     }
 
     public function it_has_no_taxons_by_default(): void
     {
         $this->getTaxons()->toArray()->shouldReturn([]);
+    }
+
+    public function it_associates_products(Product $productOne, Product $productTwo): void
+    {
+        $this->addProduct($productOne);
+        $this->hasProduct($productOne)->shouldReturn(true);
+        $this->addProduct($productTwo);
+        $this->hasProduct($productTwo)->shouldReturn(true);
+
+        $this->removeProduct($productOne);
+        $this->hasProduct($productOne)->shouldReturn(false);
+    }
+
+    public function it_has_no_products_by_default(): void
+    {
+        $this->getProducts()->toArray()->shouldReturn([]);
     }
 }
