@@ -13,12 +13,15 @@ declare(strict_types=1);
 
 namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Entity;
 
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use SkyBoundTech\SyliusWholesaleSuitePlugin\Traits\WholesaleRulesetQuantityStepStepRulesTrait;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
 class WholesaleRuleset extends BaseEntity implements ResourceInterface, WholesaleRulesetInterface
 {
+    use WholesaleRulesetQuantityStepStepRulesTrait;
+
     /** @var int */
     protected $id;
     /** @var string */
@@ -37,6 +40,7 @@ class WholesaleRuleset extends BaseEntity implements ResourceInterface, Wholesal
     {
         /* @var  ArrayCollection<array-key, WholesaleRuleQuantityStepInterface> $this- >quantityStepRules */
         $this->quantityStepRules = new ArrayCollection();
+        $this->initWholesaleRulesetQuantityStepStepRulesTrait();
     }
 
     /**
@@ -81,36 +85,5 @@ class WholesaleRuleset extends BaseEntity implements ResourceInterface, Wholesal
     public function setEnabled(bool $enabled): void
     {
         $this->enabled = $enabled;
-    }
-
-    public function getQuantityStepRules(): array
-    {
-        return $this->quantityStepRules->toArray();
-    }
-
-    public function addQuantityStepRule(WholesaleRuleQuantityStepInterface $quantityStepRule): void
-    {
-        if ($this->quantityStepRules->contains($quantityStepRule)) {
-            return;
-        }
-        $this->quantityStepRules->add($quantityStepRule);
-        $quantityStepRule->setRuleset($this);
-    }
-
-    public function removeQuantityStepRule(WholesaleRuleQuantityStepInterface $quantityStepRule): void
-    {
-        if (!$this->quantityStepRules->contains($quantityStepRule)) {
-            return;
-        }
-        $this->quantityStepRules->removeElement($quantityStepRule);
-    }
-
-    public function hasQuantityStepRule(WholesaleRuleQuantityStepInterface $quantityStepRule): bool
-    {
-        if ($this->quantityStepRules->contains($quantityStepRule)) {
-            return true;
-        } else {
-            return false;
-        }
     }
 }
