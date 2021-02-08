@@ -11,7 +11,7 @@ skyboundtech_sylius_wholesale_suite_plugin:
       rule_name: Rule Name
       rule_description: Rule Description
       quantity_step:
-        quantity: 'Purchased in set of:'
+        quantity: 'The products will be purchased in sets of:'
         scope: Quantity Set Scope
         select_taxons: Select Taxonomies
         select_products: Select Products
