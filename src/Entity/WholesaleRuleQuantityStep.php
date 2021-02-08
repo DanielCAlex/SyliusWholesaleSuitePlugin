@@ -14,6 +14,7 @@ namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Sylius\Component\Core\Model\Product;
 use Sylius\Component\Core\Model\TaxonInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
@@ -33,15 +34,23 @@ class WholesaleRuleQuantityStep extends BaseEntity implements WholesaleRuleQuant
     protected $enabled;
     /** @var WholesaleRulesetInterface */
     protected $ruleset;
+
     /**
      * @var Collection|TaxonInterface[]
      * @Psalm-var Collection<array-key, TaxonInterface>
      */
     protected $taxons;
 
+    /**
+     * @var Collection|Product[]
+     * @Psalm-var Collection<array-key, Product>
+     */
+    protected $products;
+
     public function __construct()
     {
         $this->taxons = new ArrayCollection();
+        $this->products = new ArrayCollection();
     }
 
     public function getId(): int
@@ -138,5 +147,31 @@ class WholesaleRuleQuantityStep extends BaseEntity implements WholesaleRuleQuant
     public function hasTaxon(TaxonInterface $taxon): bool
     {
         return $this->taxons->contains($taxon);
+    }
+
+    public function getProducts(): ?Collection
+    {
+        return $this->products;
+    }
+
+    public function addProduct(Product $product): void
+    {
+        if ($this->products->contains($product)) {
+            return;
+        }
+        $this->products->add($product);
+    }
+
+    public function removeProduct(Product $product): void
+    {
+        if (!$this->products->contains($product)) {
+            return;
+        }
+        $this->products->removeElement($product);
+    }
+
+    public function hasProduct(Product $product): bool
+    {
+        return $this->products->contains($product);
     }
 }

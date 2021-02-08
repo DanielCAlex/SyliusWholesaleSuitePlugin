@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Entity;
 
 use Doctrine\Common\Collections\Collection;
+use Sylius\Component\Core\Model\Product;
 use Sylius\Component\Core\Model\TaxonInterface;
 
 interface WholesaleRuleQuantityStepInterface
@@ -102,4 +103,25 @@ interface WholesaleRuleQuantityStepInterface
      * @return bool
      */
     public function hasTaxon(TaxonInterface $taxon): bool;
+
+    /**
+     * @return Collection|null
+     */
+    public function getProducts(): ?Collection;
+
+    /**
+     * @param Product $product
+     */
+    public function addProduct(Product $product): void;
+
+    /**
+     * @param Product $product
+     */
+    public function removeProduct(Product $product): void;
+
+    /**
+     * @param Product $product
+     * @return bool
+     */
+    public function hasProduct(Product $product): bool;
 }

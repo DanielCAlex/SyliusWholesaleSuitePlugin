@@ -5,7 +5,7 @@
                                       http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
     <mapped-superclass name="SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleQuantityStep"
-                       table="skyboundtech_wholesale_rule_quantity_step">
+            table="skyboundtech_wholesale_rule_quantity_step">
 
         <id name="id" column="id" type="integer">
             <generator strategy="AUTO"/>
@@ -43,6 +43,20 @@
                 </join-columns>
                 <inverse-join-columns>
                     <join-column name="taxon_id" referenced-column-name="id" nullable="false"/>
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+
+        <many-to-many field="products"
+                      target-entity="Sylius\Component\Core\Model\Product"
+                      inversed-by="skyBoundTechWholesaleQuantityStepRules"
+        >
+            <join-table name="skyboundtech_wholesale_quantity_step_rule_product">
+                <join-columns>
+                    <join-column name="quantity_step_rule_id" referenced-column-name="id" nullable="false"/>
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="product_id" referenced-column-name="id" nullable="false"/>
                 </inverse-join-columns>
             </join-table>
         </many-to-many>
