@@ -68,9 +68,11 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
 
         $addButton = $this->getDocument()->find(
             'css',
-            '#wholesale_ruleset_quantityStepRules>a[data-form-collection="add"]'
-        )
-        ;
+            sprintf(
+                'div[data-tab="Quantity Step Rules/%s"] > * a[data-form-collection="add"]',
+                $scope
+            )
+        );
 
         $addButton->click();
     }
@@ -83,8 +85,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
                 '[data-tab="%s"]',
                 $tab
             )
-        )
-        ;
+        );
 
         $tab->click();
     }
