@@ -8,8 +8,10 @@
                  class="SkyBoundTech\SyliusWholesaleSuitePlugin\Form\Type\WholesaleRulesetType"
                  autowire="false">
             <tag name="form.type"/>
-            <argument type="string" id="SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleset::class"/>
-            <argument type="service" id="skyboundtech.sylius_wholesale_suite_plugin.services.entity_helper"/>
+            <argument type="string">SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleset</argument>
+            <argument type="collection" key="$validationGroups">
+                <argument>sylius</argument>
+            </argument>
         </service>
     </services>
 </container>

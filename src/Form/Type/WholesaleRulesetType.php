@@ -12,29 +12,14 @@ declare(strict_types=1);
 
 namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Form\Type;
 
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
-use SkyBoundTech\SyliusWholesaleSuitePlugin\Services\EntityHelperInterface;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormBuilderInterface;
 
 final class WholesaleRulesetType extends AbstractResourceType
 {
-    /**
-     * @var EntityHelperInterface
-     */
-    protected $entityHelper;
-
-    public function __construct(
-        string $dataClass,
-        EntityHelperInterface $entityHelper
-    ) {
-        parent::__construct($dataClass);
-        $this->entityHelper = $entityHelper;
-    }
-
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -68,18 +53,6 @@ final class WholesaleRulesetType extends AbstractResourceType
                     'allow_delete' => true,
                     'by_reference' => false,
                 ]
-            )
-        ;
-    }
-
-    public function configureOptions(OptionsResolver $resolver): void
-    {
-        $resolver->setDefaults(
-            [
-                'validation_groups' => [
-                    'sylius',
-                ],
-            ]
-        );
+            );
     }
 }
