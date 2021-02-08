@@ -45,13 +45,14 @@ final class WholesaleRulesetType extends AbstractResourceType
                 ]
             )
             ->add(
-                'quantityStepRules',
+                'quantityStepRulesByTaxonomy',
                 CollectionType::class,
                 [
-                    'entry_type' => WholesaleRuleQuantityStepType::class,
+                    'entry_type' => WholesaleRuleQuantityStepByTaxonomyType::class,
                     'allow_add' => true,
                     'allow_delete' => true,
                     'by_reference' => false,
+                    'mapped' => false,
                 ]
             );
     }
