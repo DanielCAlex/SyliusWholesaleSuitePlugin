@@ -15,12 +15,12 @@ namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use SkyBoundTech\SyliusWholesaleSuitePlugin\Traits\WholesaleRulesetQuantityStepStepRulesTrait;
+use SkyBoundTech\SyliusWholesaleSuitePlugin\Traits\WholesaleRulesetQuantityStepRulesTrait;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
 class WholesaleRuleset extends BaseEntity implements ResourceInterface, WholesaleRulesetInterface
 {
-    use WholesaleRulesetQuantityStepStepRulesTrait;
+    use WholesaleRulesetQuantityStepRulesTrait;
 
     /** @var int */
     protected $id;

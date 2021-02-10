@@ -17,7 +17,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleQuantityStepInterface;
 
-trait WholesaleRulesetQuantityStepStepRulesTrait
+trait WholesaleRulesetQuantityStepRulesTrait
 {
     /**
      * @var Collection|WholesaleRuleQuantityStepInterface[]
@@ -70,9 +70,10 @@ trait WholesaleRulesetQuantityStepStepRulesTrait
 
     public function addQuantityStepRuleByTaxon(WholesaleRuleQuantityStepInterface $quantityStepRule): void
     {
-        if ($this->quantityStepRulesByTaxon->contains(
-                $quantityStepRule
-            ) || 'Taxonomy' !== $quantityStepRule->getScope()) {
+        if ($this->quantityStepRulesByTaxon->contains($quantityStepRule)) {
+            return;
+        }
+        if ('Taxonomy' !== $quantityStepRule->getScope()) {
             return;
         }
         $this->quantityStepRulesByTaxon->add($quantityStepRule);
