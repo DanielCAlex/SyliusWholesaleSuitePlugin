@@ -31,10 +31,18 @@ trait WholesaleRulesetQuantityStepRulesTrait
      */
     protected $quantityStepRulesByTaxon;
 
+    /**
+     * @var Collection|WholesaleRuleQuantityStepInterface[]
+     * @psalm-var Collection<array-key, WholesaleRuleQuantityStepInterface>
+     */
+    protected $quantityStepRulesByProduct;
+
+
     public function initWholesaleRulesetQuantityStepStepRulesTrait()
     {
         $this->quantityStepRules = new ArrayCollection();
         $this->quantityStepRulesByTaxon = new ArrayCollection();
+        $this->quantityStepRulesByProduct = new ArrayCollection();
     }
 
     public function addQuantityStepRule(WholesaleRuleQuantityStepInterface $quantityStepRule): void
@@ -86,4 +94,29 @@ trait WholesaleRulesetQuantityStepRulesTrait
         }
         $this->quantityStepRulesByTaxon->removeElement($quantityStepRule);
     }
+
+    public function getQuantityStepRulesByProduct(): Collection
+    {
+        return $this->quantityStepRulesByProduct;
+    }
+
+    public function addQuantityStepRuleByProduct(WholesaleRuleQuantityStepInterface $quantityStepRule): void
+    {
+        if ($this->quantityStepRulesByProduct->contains($quantityStepRule)) {
+            return;
+        }
+        if ('Productomy' !== $quantityStepRule->getScope()) {
+            return;
+        }
+        $this->quantityStepRulesByProduct->add($quantityStepRule);
+    }
+
+    public function removeQuantityStepRuleByProduct(WholesaleRuleQuantityStepInterface $quantityStepRule): void
+    {
+        if (!$this->quantityStepRulesByProduct->contains($quantityStepRule)) {
+            return;
+        }
+        $this->quantityStepRulesByProduct->removeElement($quantityStepRule);
+    }
+
 }

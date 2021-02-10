@@ -87,4 +87,21 @@ interface WholesaleRulesetInterface
      * @param WholesaleRuleQuantityStepInterface $quantityStepRule
      */
     public function removeQuantityStepRuleByTaxon(WholesaleRuleQuantityStepInterface $quantityStepRule): void;
+
+    /**
+     * @return Collection
+     */
+    public function getQuantityStepRulesByProduct(): Collection;
+
+    /**
+     * @param WholesaleRuleQuantityStepInterface $quantityStepRule
+     */
+    public function addQuantityStepRuleByProduct(WholesaleRuleQuantityStepInterface $quantityStepRule): void;
+
+    /**
+     * @param WholesaleRuleQuantityStepInterface $quantityStepRule
+     */
+    public function removeQuantityStepRuleByProduct(WholesaleRuleQuantityStepInterface $quantityStepRule): void;
+
+
 }
