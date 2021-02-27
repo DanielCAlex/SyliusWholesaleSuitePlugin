@@ -14,6 +14,7 @@ namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Entity;
 
 use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Core\Model\Product;
+use Sylius\Component\Core\Model\ProductVariantInterface;
 use Sylius\Component\Core\Model\TaxonInterface;
 
 interface WholesaleRuleQuantityStepInterface
@@ -124,4 +125,26 @@ interface WholesaleRuleQuantityStepInterface
      * @return bool
      */
     public function hasProduct(Product $product): bool;
+
+    /**
+     * @param ProductVariantInterface $productVariant
+     * @return Collection|null
+     */
+    public function getProductVariants(ProductVariantInterface $productVariant): ?Collection;
+
+    /**
+     * @param ProductVariantInterface $productVariant
+     */
+    public function addProductVariant(ProductVariantInterface $productVariant): void;
+
+    /**
+     * @param ProductVariantInterface $productVariant
+     */
+    public function removeProductVariant(ProductVariantInterface $productVariant): void;
+
+    /**
+     * @param ProductVariantInterface $productVariant
+     * @return bool
+     */
+    public function hasProductVariant(ProductVariantInterface $productVariant): bool;
 }

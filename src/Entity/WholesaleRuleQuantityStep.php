@@ -15,6 +15,7 @@ namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Core\Model\Product;
+use Sylius\Component\Core\Model\ProductVariantInterface;
 use Sylius\Component\Core\Model\TaxonInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
@@ -42,10 +43,16 @@ class WholesaleRuleQuantityStep extends BaseEntity implements WholesaleRuleQuant
     protected $taxons;
 
     /**
+     * @var Collection|ProductVariantInterface[]
+     * @Psalm-var Collection<array-key, ProductVariantInterface>
+     */
+    protected $products;
+
+    /**
      * @var Collection|Product[]
      * @Psalm-var Collection<array-key, Product>
      */
-    protected $products;
+    protected $productVariants;
 
     public function __construct()
     {
@@ -173,5 +180,31 @@ class WholesaleRuleQuantityStep extends BaseEntity implements WholesaleRuleQuant
     public function hasProduct(Product $product): bool
     {
         return $this->products->contains($product);
+    }
+
+    public function getProductVariants(ProductVariantInterface $productVariant): ?Collection
+    {
+        return $this->productVariants;
+    }
+
+    public function addProductVariant(ProductVariantInterface $productVariant): void
+    {
+        if ($this->productVariants->contains($productVariant)) {
+            return;
+        }
+        $this->productVariants->add($productVariant);
+    }
+
+    public function removeProductVariant(ProductVariantInterface $productVariant): void
+    {
+        if (!$this->productVariants->contains($productVariant)) {
+            return;
+        }
+        $this->productVariants->removeElement($productVariant);
+    }
+
+    public function hasProductVariant(ProductVariantInterface $productVariant): bool
+    {
+        return $this->productVariants->contains($productVariant);
     }
 }
