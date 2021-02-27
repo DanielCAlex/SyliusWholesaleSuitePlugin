@@ -118,5 +118,4 @@ trait WholesaleRulesetQuantityStepRulesTrait
         }
         $this->quantityStepRulesByProduct->removeElement($quantityStepRule);
     }
-
 }
