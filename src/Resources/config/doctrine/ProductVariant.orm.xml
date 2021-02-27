@@ -4,14 +4,12 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd"
 >
 
-    <mapped-superclass name="SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\ProductVariant" table="sylius_product_variant">
-        <many-to-many target-entity="SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleset"
-                      mapped-by="rulesetProducts"
-                      field="skyBoundTechWholesaleRulesets"
+    <mapped-superclass name="SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\ProductVariant"
+                       table="sylius_product_variant">
+        <many-to-many target-entity="SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleQuantityStepInterface"
+                      mapped-by="productVariants"
+                      field="skyBoundTechWholesaleQuantityStepRules"
                       orphan-removal="true">
-            <cascade>
-                <cascade-all/>
-            </cascade>
         </many-to-many>
     </mapped-superclass>
 </doctrine-mapping>

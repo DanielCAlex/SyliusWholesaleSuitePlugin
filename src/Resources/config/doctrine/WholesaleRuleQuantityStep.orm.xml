@@ -48,7 +48,7 @@
         </many-to-many>
 
         <many-to-many field="products"
-                      target-entity="Sylius\Component\Core\Model\Product"
+                      target-entity="Sylius\Component\Core\Model\ProductInterface"
                       inversed-by="skyBoundTechWholesaleQuantityStepRules"
         >
             <join-table name="skyboundtech_wholesale_quantity_step_rule_product">
@@ -57,6 +57,17 @@
                 </join-columns>
                 <inverse-join-columns>
                     <join-column name="product_id" referenced-column-name="id" nullable="false"/>
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+
+        <many-to-many field="product_variants" target-entity="Sylius\Component\Core\Model\ProductVariantInterface">
+            <join-table name="skyboundtech_wholesale_quantity_step_rule_product_variant">
+                <join-columns>
+                    <join-column name="quantity_step_rule_id" referenced-column-name="id" nullable="false"/>
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="product_variant_id" referenced-column-name="id" nullable="false"/>
                 </inverse-join-columns>
             </join-table>
         </many-to-many>
