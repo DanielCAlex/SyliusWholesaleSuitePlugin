@@ -37,6 +37,11 @@ trait WholesaleRulesetQuantityStepRulesTrait
      */
     protected $quantityStepRulesByProduct;
 
+    /**
+     * @var Collection|WholesaleRuleQuantityStepInterface[]
+     * @psalm-var Collection<array-key, WholesaleRuleQuantityStepInterface>
+     */
+    protected $quantityStepRulesByProductVariant;
 
     public function initWholesaleRulesetQuantityStepStepRulesTrait()
     {
@@ -105,7 +110,7 @@ trait WholesaleRulesetQuantityStepRulesTrait
         if ($this->quantityStepRulesByProduct->contains($quantityStepRule)) {
             return;
         }
-        if ('Productomy' !== $quantityStepRule->getScope()) {
+        if ('Product' !== $quantityStepRule->getScope()) {
             return;
         }
         $this->quantityStepRulesByProduct->add($quantityStepRule);
@@ -117,5 +122,29 @@ trait WholesaleRulesetQuantityStepRulesTrait
             return;
         }
         $this->quantityStepRulesByProduct->removeElement($quantityStepRule);
+    }
+
+    public function getQuantityStepRulesByProductVariant(): Collection
+    {
+        return $this->quantityStepRulesByProductVariant;
+    }
+
+    public function addQuantityStepRuleByProductVariant(WholesaleRuleQuantityStepInterface $quantityStepRule): void
+    {
+        if ($this->quantityStepRulesByProductVariant->contains($quantityStepRule)) {
+            return;
+        }
+        if ('Product Variant' !== $quantityStepRule->getScope()) {
+            return;
+        }
+        $this->quantityStepRulesByProductVariant->add($quantityStepRule);
+    }
+
+    public function removeQuantityStepRuleByProductVariant(WholesaleRuleQuantityStepInterface $quantityStepRule): void
+    {
+        if (!$this->quantityStepRulesByProductVariant->contains($quantityStepRule)) {
+            return;
+        }
+        $this->quantityStepRulesByProductVariant->removeElement($quantityStepRule);
     }
 }

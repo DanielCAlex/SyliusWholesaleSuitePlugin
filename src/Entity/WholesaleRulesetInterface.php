@@ -103,5 +103,18 @@ interface WholesaleRulesetInterface
      */
     public function removeQuantityStepRuleByProduct(WholesaleRuleQuantityStepInterface $quantityStepRule): void;
 
+    /**
+     * @return Collection
+     */
+    public function getQuantityStepRulesByProductVariant(): Collection;
 
+    /**
+     * @param WholesaleRuleQuantityStepInterface $quantityStepRule
+     */
+    public function addQuantityStepRuleByProductVariant(WholesaleRuleQuantityStepInterface $quantityStepRule): void;
+
+    /**
+     * @param WholesaleRuleQuantityStepInterface $quantityStepRule
+     */
+    public function removeQuantityStepRuleByProductVariant(WholesaleRuleQuantityStepInterface $quantityStepRule): void;
 }
