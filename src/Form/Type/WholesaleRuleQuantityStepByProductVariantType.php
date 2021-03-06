@@ -12,11 +12,13 @@ declare(strict_types=1);
 
 namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Form\Type;
 
+use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleQuantityStep;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class WholesaleRuleQuantityStepByProductVariantType extends AbstractResourceType
 {
@@ -54,5 +56,10 @@ class WholesaleRuleQuantityStepByProductVariantType extends AbstractResourceType
                 ]
             )
             ->add('enabled');
+    }
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults(['data_class' => WholesaleRuleQuantityStep::class]);
     }
 }
