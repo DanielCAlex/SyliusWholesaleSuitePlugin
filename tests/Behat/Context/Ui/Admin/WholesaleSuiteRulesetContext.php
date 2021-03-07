@@ -19,7 +19,6 @@ use Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Page\Admin\WholesaleRule
 
 final class WholesaleSuiteRulesetContext extends BaseMinkContext implements Context
 {
-
     /** @var CreatePageInterface */
     protected $createPage;
 
@@ -92,12 +91,19 @@ final class WholesaleSuiteRulesetContext extends BaseMinkContext implements Cont
         $this->createPage->addQuantityStepRule('a');
     }
 
-
     /**
      * @When I click the add rule button for the Quantity Step Rules by Product tab
      */
     public function addRuleForQuantityStepRulesByProduct()
     {
         $this->createPage->addQuantityStepRule('b');
+    }
+
+    /**
+     * @When I click the add rule button for the Quantity Step Rules by Product Variant tab
+     */
+    public function addRuleForQuantityStepRulesByProductVariant()
+    {
+        $this->createPage->addQuantityStepRule('c');
     }
 }

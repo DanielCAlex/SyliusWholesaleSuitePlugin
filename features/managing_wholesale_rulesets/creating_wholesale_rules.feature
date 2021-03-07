@@ -24,3 +24,12 @@ Feature: Creating wholesale rules
     And I fill rule name with "Behat Quantity Step Rule By Product Rule 1"
     And I fill the rule description with "This is the first quantity step rule by product created by Behat."
     And I should see "Select Products"
+
+  @ui @javascript @rule
+  Scenario: Admin adds a Quantity Step Rule by Product Variant
+    When I go to the create Wholesale Ruleset page
+    And I click the add rule button for the Quantity Step Rules by Product Variant tab
+    Then I should see "These rules will apply to the products variants you choose."
+    And I fill rule name with "Behat Quantity Step Rule By Product Rule 1"
+    And I fill the rule description with "This is the first quantity step rule by product variant created by Behat."
+    And I should see "Select Product Variants"
