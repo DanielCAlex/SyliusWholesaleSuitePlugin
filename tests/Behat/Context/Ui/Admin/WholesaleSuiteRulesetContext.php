@@ -88,7 +88,7 @@ final class WholesaleSuiteRulesetContext extends BaseMinkContext implements Cont
      */
     public function addRuleForQuantityStepRulesByTaxonomy()
     {
-        $this->createPage->addQuantityStepRule('a');
+        $this->createPage->addQuantityStepRule('taxonomy');
     }
 
     /**
@@ -96,7 +96,7 @@ final class WholesaleSuiteRulesetContext extends BaseMinkContext implements Cont
      */
     public function addRuleForQuantityStepRulesByProduct()
     {
-        $this->createPage->addQuantityStepRule('b');
+        $this->createPage->addQuantityStepRule('product');
     }
 
     /**
@@ -104,6 +104,6 @@ final class WholesaleSuiteRulesetContext extends BaseMinkContext implements Cont
      */
     public function addRuleForQuantityStepRulesByProductVariant()
     {
-        $this->createPage->addQuantityStepRule('c');
+        $this->createPage->addQuantityStepRule('product-variant');
     }
 }

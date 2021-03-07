@@ -10,12 +10,12 @@
 {% for ruleType in ruleTypes %}
     <div class="ui tab segment{% if ruleType == ruleTypes[0] %} active{% endif %}" data-tab="{{ ruleType }}">
         <div class="ui top attached tabular menu">
-            <a class="item active" data-tab="{{ ruleType }}/a">{{ ruleType }} by Taxonomy</a>
-            <a class="item" data-tab="{{ ruleType }}/b">{{ ruleType }} by Product</a>
-            <a class="item" data-tab="{{ ruleType }}/c">{{ ruleType }} by Product Variant</a>
+            <a class="item active" data-tab="{{ ruleType }}/taxonomy">{{ ruleType }} by Taxonomy</a>
+            <a class="item" data-tab="{{ ruleType }}/product">{{ ruleType }} by Product</a>
+            <a class="item" data-tab="{{ ruleType }}/product-variant">{{ ruleType }} by Product Variant</a>
         </div>
         <div class="ui bottom attached tab segment grid{% if ruleType == ruleTypes[0] %} active{% endif %}"
-             data-tab="{{ ruleType }}/a">
+             data-tab="{{ ruleType }}/taxonomy">
             <div class="ui info yellow message">
                 <i class="close icon"></i>
                 <div class="ui small header">
@@ -25,7 +25,7 @@
             {{ form_row(form.quantityStepRulesByTaxon) }}
         </div>
         <div class="ui bottom attached tab segment"
-             data-tab="{{ ruleType }}/b">
+             data-tab="{{ ruleType }}/product">
             <div class="ui info yellow message">
                 <i class="close icon"></i>
                 <div class="ui small header">
@@ -35,7 +35,7 @@
             {{ form_row(form.quantityStepRulesByProduct) }}
         </div>
         <div class="ui bottom attached tab segment"
-             data-tab="{{ ruleType }}/c">
+             data-tab="{{ ruleType }}/product-variant">
             <div class="ui info yellow message">
                 <i class="close icon"></i>
                 <div class="ui small header">
