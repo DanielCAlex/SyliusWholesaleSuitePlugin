@@ -24,7 +24,8 @@
             </div>
             {{ form_row(form.quantityStepRulesByTaxon) }}
         </div>
-        <div class="ui bottom attached tab segment" data-tab="{{ ruleType }}/b">
+        <div class="ui bottom attached tab segment"
+             data-tab="{{ ruleType }}/b">
             <div class="ui info yellow message">
                 <i class="close icon"></i>
                 <div class="ui small header">
@@ -33,6 +34,15 @@
             </div>
             {{ form_row(form.quantityStepRulesByProduct) }}
         </div>
-        <div class="ui bottom attached tab segment" data-tab="{{ ruleType }}/c"></div>
+        <div class="ui bottom attached tab segment"
+             data-tab="{{ ruleType }}/c">
+            <div class="ui info yellow message">
+                <i class="close icon"></i>
+                <div class="ui small header">
+                    These rules will apply to the products you choose.
+                </div>
+            </div>
+            {{ form_row(form.quantityStepRulesByProductVariant) }}
+        </div>
     </div>
 {% endfor %}
