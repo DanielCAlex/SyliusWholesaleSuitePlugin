@@ -52,7 +52,7 @@ final class WholesaleRuleQuantityStepType extends AbstractResourceType
                 TaxonAutocompleteChoiceType::class,
                 [
                     'multiple' => true,
-                    'label' => 'skyboundtech_sylius_wholesale_suite_plugin.ui.wholesale_rules.quantity_step.select_taxons'
+                    'label' => 'skyboundtech_sylius_wholesale_suite_plugin.ui.wholesale_rules.quantity_step.select_taxons',
                 ]
             )
             ->add('enabled');

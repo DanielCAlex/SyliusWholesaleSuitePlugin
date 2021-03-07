@@ -51,7 +51,7 @@ class WholesaleRuleQuantityStepByProductVariantType extends AbstractResourceType
                 ProductVariantAutocompleteChoiceType::class,
                 [
                     'multiple' => true,
-                    'label' => 'Choose Variants',
+                    'label' => 'skyboundtech_sylius_wholesale_suite_plugin.ui.wholesale_rules.quantity_step.select_product_variants',
                     'required' => true,
                 ]
             )
