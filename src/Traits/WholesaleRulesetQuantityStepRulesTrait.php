@@ -124,7 +124,7 @@ trait WholesaleRulesetQuantityStepRulesTrait
         $this->quantityStepRulesByProduct->removeElement($quantityStepRule);
     }
 
-    public function getQuantityStepRulesByProductVariant(): Collection
+    public function getQuantityStepRulesByProductVariant(): ?Collection
     {
         return $this->quantityStepRulesByProductVariant;
     }

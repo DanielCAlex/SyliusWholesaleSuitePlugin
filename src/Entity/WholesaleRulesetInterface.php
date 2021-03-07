@@ -106,7 +106,7 @@ interface WholesaleRulesetInterface
     /**
      * @return Collection
      */
-    public function getQuantityStepRulesByProductVariant(): Collection;
+    public function getQuantityStepRulesByProductVariant(): ?Collection;
 
     /**
      * @param WholesaleRuleQuantityStepInterface $quantityStepRule
