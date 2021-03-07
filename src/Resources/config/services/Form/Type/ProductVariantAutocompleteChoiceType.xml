@@ -8,6 +8,7 @@
                  class="SkyBoundTech\SyliusWholesaleSuitePlugin\Form\Type\ProductVariantAutocompleteChoiceType"
                  autowire="false">
             <tag name="form.type"/>
+            <argument type="service" id="Symfony\Component\Routing\Generator\UrlGeneratorInterface"/>
             <argument type="string" id="Sylius\Component\Core\Model\ProductVariant::class"/>
         </service>
     </services>

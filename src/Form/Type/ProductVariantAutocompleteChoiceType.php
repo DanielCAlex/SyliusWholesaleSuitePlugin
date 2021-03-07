@@ -12,14 +12,26 @@ declare(strict_types=1);
 
 namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Form\Type;
 
-use Symfony\Component\Form\FormView;
+use Sylius\Bundle\ResourceBundle\Form\Type\ResourceAutocompleteChoiceType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Sylius\Bundle\ResourceBundle\Form\Type\ResourceAutocompleteChoiceType;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 final class ProductVariantAutocompleteChoiceType extends AbstractType
 {
+
+    /**
+     * @var UrlGeneratorInterface
+     */
+    private $urlGenerator;
+
+    public function __construct(UrlGeneratorInterface $urlGenerator)
+    {
+        $this->urlGenerator = $urlGenerator;
+    }
+
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
@@ -35,6 +47,12 @@ final class ProductVariantAutocompleteChoiceType extends AbstractType
     {
         $view->vars['remote_criteria_type'] = 'contains';
         $view->vars['remote_criteria_name'] = 'phrase';
+        $view->vars['remote_url'] = $this->urlGenerator->generate(
+            'skyboundtech_sylius_wholesale_suite_plugin_admin_ajax_product_variants_by_name_phrase'
+        );
+        $view->vars['load_edit_url'] = $this->urlGenerator->generate(
+            'skyboundtech_sylius_wholesale_suite_plugin_admin_ajax_product_variants_by_name_phrase'
+        );
     }
 
     public function getBlockPrefix(): string
