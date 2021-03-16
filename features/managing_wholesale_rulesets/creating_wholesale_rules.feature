@@ -9,6 +9,7 @@ Feature: Creating wholesale rules
 
   @ui @javascript @rule
   Scenario: Admin adds a Quantity Step Rule by Taxonomy
+  MECO High Pressure Air Duster
     When I go to the create Wholesale Ruleset page
     And I click the add rule button for the Quantity Step Rules by Taxonomy tab
     Then I should see "These rules will apply to their selected taxonomies."

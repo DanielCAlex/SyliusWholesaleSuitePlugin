@@ -15,16 +15,39 @@ namespace Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Context\Ui\Admin;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\MinkExtension\Context\MinkContext as BaseMinkContext;
+use Doctrine\ORM\EntityManagerInterface;
+use Sylius\Component\Core\Model\TaxonInterface;
+use Sylius\Component\Taxonomy\Factory\TaxonFactoryInterface;
+use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Page\Admin\WholesaleRuleset\CreatePageInterface;
 
 final class WholesaleSuiteRulesetContext extends BaseMinkContext implements Context
 {
     /** @var CreatePageInterface */
     protected $createPage;
+    /**
+     * @var TaxonFactoryInterface
+     */
+    private $taxonFactory;
+    /**
+     * @var TaxonRepositoryInterface
+     */
+    private $taxonRepository;
+    /**
+     * @var EntityManagerInterface
+     */
+    private $entityManager;
 
-    public function __construct(CreatePageInterface $createPage)
-    {
+    public function __construct(
+        CreatePageInterface $createPage,
+        TaxonFactoryInterface $taxonFactory,
+        TaxonRepositoryInterface $taxonRepository,
+        EntityManagerInterface $entityManager
+    ) {
         $this->createPage = $createPage;
+        $this->taxonFactory = $taxonFactory;
+        $this->taxonRepository = $taxonRepository;
+        $this->entityManager = $entityManager;
     }
 
     /**
@@ -105,5 +128,21 @@ final class WholesaleSuiteRulesetContext extends BaseMinkContext implements Cont
     public function addRuleForQuantityStepRulesByProductVariant()
     {
         $this->createPage->addQuantityStepRule('product-variant');
+    }
+
+    /**
+     * @Given a taxon named :name exists
+     */
+    public function aTaxonNamedExists($name)
+    {
+        /** @var TaxonInterface $taxon */
+        $taxon = $this->taxonFactory->createNew();
+
+        $taxon->setName($name);
+        $taxon->setCode($name);
+        $taxon->setSlug($name);
+
+        $this->entityManager->persist($taxon);
+        $this->entityManager->flush();
     }
 }
