@@ -2,6 +2,7 @@ default:
   suites:
     ui_managing_wholesale_rulesets:
       contexts:
+        - sylius.behat.context.hook.doctrine_orm
         - sylius.behat.context.setup.admin_security
         - skyboundtech_sylius_wholesale_suite_plugin.context.ui.admin.wholesale_ruleset
       filters:
