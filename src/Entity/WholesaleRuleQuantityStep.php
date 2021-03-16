@@ -70,7 +70,7 @@ class WholesaleRuleQuantityStep extends BaseEntity implements WholesaleRuleQuant
         $this->id = $id;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -90,7 +90,7 @@ class WholesaleRuleQuantityStep extends BaseEntity implements WholesaleRuleQuant
         $this->description = $description;
     }
 
-    public function getQuantityStep(): int
+    public function getQuantityStep(): ?int
     {
         return $this->quantityStep;
     }
@@ -100,7 +100,7 @@ class WholesaleRuleQuantityStep extends BaseEntity implements WholesaleRuleQuant
         $this->quantityStep = $quantityStep;
     }
 
-    public function getScope(): string
+    public function getScope(): ?string
     {
         return $this->scope;
     }
@@ -110,7 +110,7 @@ class WholesaleRuleQuantityStep extends BaseEntity implements WholesaleRuleQuant
         $this->scope = $scope;
     }
 
-    public function isEnabled(): bool
+    public function isEnabled(): ?bool
     {
         return $this->enabled;
     }

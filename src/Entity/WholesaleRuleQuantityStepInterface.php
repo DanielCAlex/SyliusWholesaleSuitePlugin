@@ -32,7 +32,7 @@ interface WholesaleRuleQuantityStepInterface
     /**
      * @return string
      */
-    public function getName(): string;
+    public function getName(): ?string;
 
     /**
      * @return string|null
@@ -47,7 +47,7 @@ interface WholesaleRuleQuantityStepInterface
     /**
      * @return int
      */
-    public function getQuantityStep(): int;
+    public function getQuantityStep(): ?int;
 
     /**
      * @param int $quantityStep
@@ -57,7 +57,7 @@ interface WholesaleRuleQuantityStepInterface
     /**
      * @return string
      */
-    public function getScope(): string;
+    public function getScope(): ?string;
 
     /**
      * @param string $scope
@@ -72,7 +72,7 @@ interface WholesaleRuleQuantityStepInterface
     /**
      * @return bool
      */
-    public function isEnabled(): bool;
+    public function isEnabled(): ?bool;
 
     /**
      * @param WholesaleRulesetInterface $ruleset
