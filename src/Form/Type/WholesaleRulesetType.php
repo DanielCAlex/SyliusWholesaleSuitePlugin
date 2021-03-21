@@ -17,6 +17,8 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 
 final class WholesaleRulesetType extends AbstractResourceType
 {
@@ -52,6 +54,7 @@ final class WholesaleRulesetType extends AbstractResourceType
                     'allow_add' => true,
                     'allow_delete' => true,
                     'by_reference' => false,
+                    'mapped' => false,
                 ]
             )
             ->add(
@@ -62,6 +65,7 @@ final class WholesaleRulesetType extends AbstractResourceType
                     'allow_add' => true,
                     'allow_delete' => true,
                     'by_reference' => false,
+                    'mapped' => false,
                 ]
             )
             ->add(
@@ -72,7 +76,27 @@ final class WholesaleRulesetType extends AbstractResourceType
                     'allow_add' => true,
                     'allow_delete' => true,
                     'by_reference' => false,
+                    'mapped' => false,
                 ]
             );
+//        $builder->addEventListener(
+//            FormEvents::PRE_SUBMIT,
+//            function (FormEvent $event) {
+//                $ruleset = $event->getData();
+//
+//                $quantityStepRulesByTaxon = $ruleset['quantityStepRulesByTaxon'];
+//                $test = 'yes';
+//                $quantityStepRules = [];
+//                foreach ($quantityStepRulesByTaxon as $quantityStepRuleByTaxon) {
+//                    $ruleTaxons = $quantityStepRuleByTaxon['taxons'];
+//                    $ruleTaxons = explode(',', $ruleTaxons);
+//                    $quantityStepRuleByTaxon['scope'] = 'taxonomy';
+//
+//                    $quantityStepRuleByTaxon['taxons'] = $ruleTaxons;
+//
+//                    array_push($quantityStepRules, $quantityStepRuleByTaxon);
+//                }
+//            }
+//        );
     }
 }
