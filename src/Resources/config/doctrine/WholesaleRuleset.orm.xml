@@ -5,7 +5,7 @@
                                       http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
     <mapped-superclass name="SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleset"
-            table="skyboundtech_wholesale_ruleset">
+                       table="skyboundtech_wholesale_ruleset">
 
         <id name="id" column="id" type="integer">
             <generator strategy="AUTO"/>
@@ -21,6 +21,10 @@
 
         <one-to-many field="quantityStepRules"
                      target-entity="SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleQuantityStep"
-                     mapped-by="ruleset"/>
+                     mapped-by="ruleset">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+        </one-to-many>
     </mapped-superclass>
 </doctrine-mapping>
