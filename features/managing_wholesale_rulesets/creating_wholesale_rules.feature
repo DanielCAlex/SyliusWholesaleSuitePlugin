@@ -9,7 +9,6 @@ Feature: Creating wholesale rules
 
   @ui @javascript @rule
   Scenario: Admin adds a Quantity Step Rule by Taxonomy
-  MECO High Pressure Air Duster
     When I go to the create Wholesale Ruleset page
     And I click the add rule button for the Quantity Step Rules by Taxonomy tab
     Then I should see "These rules will apply to their selected taxonomies."
@@ -17,20 +16,20 @@ Feature: Creating wholesale rules
     And I fill the rule description with "This is the first quantity step rule by taxonomy created by Behat."
     And I should see "Select taxonomies"
 
-  @ui @javascript @rule
-  Scenario: Admin adds a Quantity Step Rule by Product
-    When I go to the create Wholesale Ruleset page
-    And I click the add rule button for the Quantity Step Rules by Product tab
-    Then I should see "These rules will apply to the products you choose."
-    And I fill rule name with "Behat Quantity Step Rule By Product Rule 1"
-    And I fill the rule description with "This is the first quantity step rule by product created by Behat."
-    And I should see "Select Products"
-
-  @ui @javascript @rule
-  Scenario: Admin adds a Quantity Step Rule by Product Variant
-    When I go to the create Wholesale Ruleset page
-    And I click the add rule button for the Quantity Step Rules by Product Variant tab
-    Then I should see "These rules will apply to the products variants you choose."
-    And I fill rule name with "Behat Quantity Step Rule By Product Rule 1"
-    And I fill the rule description with "This is the first quantity step rule by product variant created by Behat."
-    And I should see "Select Product Variants"
+#  @ui @javascript @rule
+#  Scenario: Admin adds a Quantity Step Rule by Product
+#    When I go to the create Wholesale Ruleset page
+#    And I click the add rule button for the Quantity Step Rules by Product tab
+#    Then I should see "These rules will apply to the products you choose."
+#    And I fill rule name with "Behat Quantity Step Rule By Product Rule 1"
+#    And I fill the rule description with "This is the first quantity step rule by product created by Behat."
+#    And I should see "Select Products"
+#
+#  @ui @javascript @rule
+#  Scenario: Admin adds a Quantity Step Rule by Product Variant
+#    When I go to the create Wholesale Ruleset page
+#    And I click the add rule button for the Quantity Step Rules by Product Variant tab
+#    Then I should see "These rules will apply to the products variants you choose."
+#    And I fill rule name with "Behat Quantity Step Rule By Product Rule 1"
+#    And I fill the rule description with "This is the first quantity step rule by product variant created by Behat."
+#    And I should see "Select Product Variants"
