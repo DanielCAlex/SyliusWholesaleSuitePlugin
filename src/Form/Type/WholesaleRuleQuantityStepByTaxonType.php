@@ -15,6 +15,7 @@ namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Form\Type;
 use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleQuantityStep;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\TaxonomyBundle\Form\Type\TaxonAutocompleteChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -47,6 +48,7 @@ final class WholesaleRuleQuantityStepByTaxonType extends AbstractResourceType
                     'label' => 'skyboundtech_sylius_wholesale_suite_plugin.ui.wholesale_rules.quantity_step.quantity',
                 ]
             )
+            ->add('scope', HiddenType::class)
             ->add(
                 'taxons',
                 TaxonAutocompleteChoiceType::class,

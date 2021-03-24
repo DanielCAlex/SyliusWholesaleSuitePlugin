@@ -55,6 +55,7 @@ final class WholesaleRuleQuantityStepType extends AbstractResourceType
                     'label' => 'skyboundtech_sylius_wholesale_suite_plugin.ui.wholesale_rules.quantity_step.select_taxons',
                 ]
             )
+            ->add('scope', TextType::class)
             ->add('enabled');
     }
 

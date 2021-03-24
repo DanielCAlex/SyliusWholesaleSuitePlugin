@@ -22,7 +22,7 @@
                     These rules will apply to their selected taxonomies.
                 </div>
             </div>
-            {{ form_row(form.quantityStepRulesByTaxon) }}
+            {{ form_row(form.quantityStepRules) }}
         </div>
         <div class="ui bottom attached tab segment"
              data-tab="{{ ruleType }}/product">
@@ -32,7 +32,7 @@
                     These rules will apply to the products you choose.
                 </div>
             </div>
-            {{ form_row(form.quantityStepRulesByProduct) }}
+{#            {{ form_row(form.quantityStepRulesByProduct) }}#}
         </div>
         <div class="ui bottom attached tab segment"
              data-tab="{{ ruleType }}/product-variant">
@@ -42,7 +42,7 @@
                     These rules will apply to the products variants you choose.
                 </div>
             </div>
-            {{ form_row(form.quantityStepRulesByProductVariant) }}
+{#            {{ form_row(form.quantityStepRulesByProductVariant) }}#}
         </div>
     </div>
 {% endfor %}

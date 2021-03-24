@@ -47,56 +47,27 @@ final class WholesaleRulesetType extends AbstractResourceType
                 ]
             )
             ->add(
-                'quantityStepRulesByTaxon',
+                'quantityStepRules',
                 CollectionType::class,
                 [
                     'entry_type' => WholesaleRuleQuantityStepByTaxonType::class,
                     'allow_add' => true,
                     'allow_delete' => true,
                     'by_reference' => false,
-                    'mapped' => false,
-                ]
-            )
-            ->add(
-                'quantityStepRulesByProduct',
-                CollectionType::class,
-                [
-                    'entry_type' => WholesaleRuleQuantityStepByProductType::class,
-                    'allow_add' => true,
-                    'allow_delete' => true,
-                    'by_reference' => false,
-                    'mapped' => false,
-                ]
-            )
-            ->add(
-                'quantityStepRulesByProductVariant',
-                CollectionType::class,
-                [
-                    'entry_type' => WholesaleRuleQuantityStepByProductVariantType::class,
-                    'allow_add' => true,
-                    'allow_delete' => true,
-                    'by_reference' => false,
-                    'mapped' => false,
                 ]
             );
-//        $builder->addEventListener(
-//            FormEvents::PRE_SUBMIT,
-//            function (FormEvent $event) {
-//                $ruleset = $event->getData();
-//
-//                $quantityStepRulesByTaxon = $ruleset['quantityStepRulesByTaxon'];
-//                $test = 'yes';
-//                $quantityStepRules = [];
-//                foreach ($quantityStepRulesByTaxon as $quantityStepRuleByTaxon) {
-//                    $ruleTaxons = $quantityStepRuleByTaxon['taxons'];
-//                    $ruleTaxons = explode(',', $ruleTaxons);
-//                    $quantityStepRuleByTaxon['scope'] = 'taxonomy';
-//
-//                    $quantityStepRuleByTaxon['taxons'] = $ruleTaxons;
-//
-//                    array_push($quantityStepRules, $quantityStepRuleByTaxon);
-//                }
-//            }
-//        );
+        $builder->addEventListener(
+            FormEvents::PRE_SUBMIT,
+            function (FormEvent $event) {
+                $data = $event->getData();
+                $quantityStepRules = &$data['quantityStepRules'];
+
+                foreach ($quantityStepRules as $key => $quantityStepRule) {
+                    $quantityStepRules[$key]['scope'] = 'taxonomy';
+                }
+
+                $event->setData($data);
+            }
+        );
     }
 }
