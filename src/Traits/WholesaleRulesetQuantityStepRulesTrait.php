@@ -55,6 +55,7 @@ trait WholesaleRulesetQuantityStepRulesTrait
         if ($this->quantityStepRules->contains($quantityStepRule)) {
             return;
         }
+        $quantityStepRule->setRuleset($this);
         $this->quantityStepRules->add($quantityStepRule);
     }
 

@@ -36,6 +36,7 @@ trait WholesaleRuleQuantityStepTrait
             return;
         }
         $this->skyBoundTechWholesaleQuantityStepRules->add($quantityStepRule);
+        $quantityStepRule->setRuleset($this);
     }
 
     public function removeQuantityStepRule(WholesaleRuleQuantityStepInterface $quantityStepRule): void
