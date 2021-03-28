@@ -17,8 +17,6 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormEvent;
-use Symfony\Component\Form\FormEvents;
 
 final class WholesaleRulesetType extends AbstractResourceType
 {
@@ -50,24 +48,26 @@ final class WholesaleRulesetType extends AbstractResourceType
                 'quantityStepRules',
                 CollectionType::class,
                 [
-                    'entry_type' => WholesaleRuleQuantityStepByTaxonType::class,
+                    'entry_type' => WholesaleRuleQuantityStepType::class,
                     'allow_add' => true,
                     'allow_delete' => true,
                     'by_reference' => false,
                 ]
-            );
-        $builder->addEventListener(
-            FormEvents::PRE_SUBMIT,
-            function (FormEvent $event) {
-                $data = $event->getData();
-                $quantityStepRules = &$data['quantityStepRules'];
-
-                foreach ($quantityStepRules as $key => $quantityStepRule) {
-                    $quantityStepRules[$key]['scope'] = 'taxonomy';
-                }
-
-                $event->setData($data);
-            }
-        );
+            )
+            ->add(
+                'taxonRules',
+                CollectionType::class,
+                [
+                    'entry_type' => WholesaleRuleQuantityStepByTaxonType::class,
+                    'allow_add' => true,
+                    'allow_delete' => true,
+                ]
+            )
+            ->add('productRules', CollectionType::class, [
+                'entry_type' => WholesaleRuleQuantityStepByProductType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+            ])
+        ;
     }
 }

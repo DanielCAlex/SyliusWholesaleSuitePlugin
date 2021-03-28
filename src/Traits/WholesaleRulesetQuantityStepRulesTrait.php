@@ -25,29 +25,9 @@ trait WholesaleRulesetQuantityStepRulesTrait
      */
     protected $quantityStepRules;
 
-    /**
-     * @var Collection|WholesaleRuleQuantityStepInterface[]
-     * @psalm-var Collection<array-key, WholesaleRuleQuantityStepInterface>
-     */
-    protected $quantityStepRulesByTaxon;
-
-    /**
-     * @var Collection|WholesaleRuleQuantityStepInterface[]
-     * @psalm-var Collection<array-key, WholesaleRuleQuantityStepInterface>
-     */
-    protected $quantityStepRulesByProduct;
-
-    /**
-     * @var Collection|WholesaleRuleQuantityStepInterface[]
-     * @psalm-var Collection<array-key, WholesaleRuleQuantityStepInterface>
-     */
-    protected $quantityStepRulesByProductVariant;
-
     public function initWholesaleRulesetQuantityStepStepRulesTrait()
     {
         $this->quantityStepRules = new ArrayCollection();
-        $this->quantityStepRulesByTaxon = new ArrayCollection();
-        $this->quantityStepRulesByProduct = new ArrayCollection();
     }
 
     public function addQuantityStepRule(WholesaleRuleQuantityStepInterface $quantityStepRule): void
@@ -77,75 +57,55 @@ trait WholesaleRulesetQuantityStepRulesTrait
         return $this->quantityStepRules;
     }
 
-    public function getQuantityStepRulesByTaxon(): Collection
+    public function addTaxonRule(WholesaleRuleQuantityStepInterface $rule): void
     {
-        return $this->quantityStepRulesByTaxon;
+        $rule->setRuleset($this);
+        $rule->setScope('taxonomy');
+        if (!in_array($rule, $this->getTaxonRules()) && 'taxonomy' === $rule->getScope()) {
+            $this->quantityStepRules->add($rule);
+        }
     }
 
-    public function addQuantityStepRuleByTaxon(WholesaleRuleQuantityStepInterface $quantityStepRule): void
+    public function getTaxonRules(): array
     {
-        if ($this->quantityStepRulesByTaxon->contains($quantityStepRule)) {
-            return;
-        }
-        if ('Taxonomy' !== $quantityStepRule->getScope()) {
-            return;
-        }
-        $this->quantityStepRulesByTaxon->add($quantityStepRule);
+        return array_filter(
+            $this->quantityStepRules->toArray(),
+            function ($rule) {
+                return 'taxonomy' == $rule->getScope();
+            }
+        );
     }
 
-    public function removeQuantityStepRuleByTaxon(WholesaleRuleQuantityStepInterface $quantityStepRule): void
+    public function removeTaxonRule(WholesaleRuleQuantityStepInterface $rule): void
     {
-        if (!$this->quantityStepRulesByTaxon->contains($quantityStepRule)) {
-            return;
+        if (in_array($rule, $this->getTaxonRules()) && 'taxonomy' === $rule->getScope()) {
+            $this->quantityStepRules->removeElement($rule);
         }
-        $this->quantityStepRulesByTaxon->removeElement($quantityStepRule);
     }
 
-    public function getQuantityStepRulesByProduct(): Collection
+    public function addProductRule(WholesaleRuleQuantityStepInterface $rule): void
     {
-        return $this->quantityStepRulesByProduct;
+        $rule->setRuleset($this);
+        $rule->setScope('product');
+        if (!in_array($rule, $this->getTaxonRules()) && 'product' === $rule->getScope()) {
+            $this->quantityStepRules->add($rule);
+        }
     }
 
-    public function addQuantityStepRuleByProduct(WholesaleRuleQuantityStepInterface $quantityStepRule): void
+    public function getProductRules(): array
     {
-        if ($this->quantityStepRulesByProduct->contains($quantityStepRule)) {
-            return;
-        }
-        if ('Product' !== $quantityStepRule->getScope()) {
-            return;
-        }
-        $this->quantityStepRulesByProduct->add($quantityStepRule);
+        return array_filter(
+            $this->quantityStepRules->toArray(),
+            function ($rule) {
+                return 'product' == $rule->getScope();
+            }
+        );
     }
 
-    public function removeQuantityStepRuleByProduct(WholesaleRuleQuantityStepInterface $quantityStepRule): void
+    public function removeProductRule(WholesaleRuleQuantityStepInterface $rule): void
     {
-        if (!$this->quantityStepRulesByProduct->contains($quantityStepRule)) {
-            return;
+        if (in_array($rule, $this->getTaxonRules()) && 'product' === $rule->getScope()) {
+            $this->quantityStepRules->removeElement($rule);
         }
-        $this->quantityStepRulesByProduct->removeElement($quantityStepRule);
-    }
-
-    public function getQuantityStepRulesByProductVariant(): ?Collection
-    {
-        return $this->quantityStepRulesByProductVariant;
-    }
-
-    public function addQuantityStepRuleByProductVariant(WholesaleRuleQuantityStepInterface $quantityStepRule): void
-    {
-        if ($this->quantityStepRulesByProductVariant->contains($quantityStepRule)) {
-            return;
-        }
-        if ('Product Variant' !== $quantityStepRule->getScope()) {
-            return;
-        }
-        $this->quantityStepRulesByProductVariant->add($quantityStepRule);
-    }
-
-    public function removeQuantityStepRuleByProductVariant(WholesaleRuleQuantityStepInterface $quantityStepRule): void
-    {
-        if (!$this->quantityStepRulesByProductVariant->contains($quantityStepRule)) {
-            return;
-        }
-        $this->quantityStepRulesByProductVariant->removeElement($quantityStepRule);
     }
 }

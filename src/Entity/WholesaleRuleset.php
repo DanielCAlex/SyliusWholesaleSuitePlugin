@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use SkyBoundTech\SyliusWholesaleSuitePlugin\Traits\WholesaleRulesetQuantityStepRulesTrait;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
@@ -30,16 +29,10 @@ class WholesaleRuleset extends BaseEntity implements ResourceInterface, Wholesal
     protected $description;
     /** @var bool */
     protected $enabled;
-    /**
-     * @var Collection|WholesaleRuleQuantityStepInterface[]
-     * @psalm-var Collection<array-key, WholesaleRuleQuantityStepInterface>
-     */
-    protected $quantityStepRules;
 
     public function __construct()
     {
         /* @var  ArrayCollection<array-key, WholesaleRuleQuantityStepInterface> $this- >quantityStepRules */
-        $this->quantityStepRules = new ArrayCollection();
         $this->initWholesaleRulesetQuantityStepStepRulesTrait();
     }
 

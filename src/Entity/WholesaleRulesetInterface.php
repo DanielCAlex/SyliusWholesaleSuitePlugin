@@ -72,49 +72,4 @@ interface WholesaleRulesetInterface
      * @return bool
      */
     public function hasQuantityStepRule(WholesaleRuleQuantityStepInterface $quantityStepRule): bool;
-
-    /**
-     * @return Collection
-     */
-    public function getQuantityStepRulesByTaxon(): Collection;
-
-    /**
-     * @param WholesaleRuleQuantityStepInterface $quantityStepRule
-     */
-    public function addQuantityStepRuleByTaxon(WholesaleRuleQuantityStepInterface $quantityStepRule): void;
-
-    /**
-     * @param WholesaleRuleQuantityStepInterface $quantityStepRule
-     */
-    public function removeQuantityStepRuleByTaxon(WholesaleRuleQuantityStepInterface $quantityStepRule): void;
-
-    /**
-     * @return Collection
-     */
-    public function getQuantityStepRulesByProduct(): Collection;
-
-    /**
-     * @param WholesaleRuleQuantityStepInterface $quantityStepRule
-     */
-    public function addQuantityStepRuleByProduct(WholesaleRuleQuantityStepInterface $quantityStepRule): void;
-
-    /**
-     * @param WholesaleRuleQuantityStepInterface $quantityStepRule
-     */
-    public function removeQuantityStepRuleByProduct(WholesaleRuleQuantityStepInterface $quantityStepRule): void;
-
-    /**
-     * @return Collection
-     */
-    public function getQuantityStepRulesByProductVariant(): ?Collection;
-
-    /**
-     * @param WholesaleRuleQuantityStepInterface $quantityStepRule
-     */
-    public function addQuantityStepRuleByProductVariant(WholesaleRuleQuantityStepInterface $quantityStepRule): void;
-
-    /**
-     * @param WholesaleRuleQuantityStepInterface $quantityStepRule
-     */
-    public function removeQuantityStepRuleByProductVariant(WholesaleRuleQuantityStepInterface $quantityStepRule): void;
 }
