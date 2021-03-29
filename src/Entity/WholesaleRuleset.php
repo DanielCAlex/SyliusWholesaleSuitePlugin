@@ -32,7 +32,7 @@ class WholesaleRuleset extends BaseEntity implements ResourceInterface, Wholesal
 
     public function __construct()
     {
-        /* @var  ArrayCollection<array-key, WholesaleRuleQuantityStepInterface> $this- >quantityStepRules */
+        /* @var  ArrayCollection<array-key, QuantityStepRuleInterface> $this- >quantityStepRules */
         $this->initWholesaleRulesetQuantityStepStepRulesTrait();
     }
 

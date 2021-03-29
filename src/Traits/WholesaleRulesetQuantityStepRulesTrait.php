@@ -15,13 +15,13 @@ namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Traits;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleQuantityStepInterface;
+use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\QuantityStepRuleInterface;
 
 trait WholesaleRulesetQuantityStepRulesTrait
 {
     /**
-     * @var Collection|WholesaleRuleQuantityStepInterface[]
-     * @psalm-var Collection<array-key, WholesaleRuleQuantityStepInterface>
+     * @var Collection|QuantityStepRuleInterface[]
+     * @psalm-var Collection<array-key, QuantityStepRuleInterface>
      */
     protected $quantityStepRules;
 
@@ -30,7 +30,7 @@ trait WholesaleRulesetQuantityStepRulesTrait
         $this->quantityStepRules = new ArrayCollection();
     }
 
-    public function addQuantityStepRule(WholesaleRuleQuantityStepInterface $quantityStepRule): void
+    public function addQuantityStepRule(QuantityStepRuleInterface $quantityStepRule): void
     {
         if ($this->quantityStepRules->contains($quantityStepRule)) {
             return;
@@ -39,7 +39,7 @@ trait WholesaleRulesetQuantityStepRulesTrait
         $this->quantityStepRules->add($quantityStepRule);
     }
 
-    public function removeQuantityStepRule(WholesaleRuleQuantityStepInterface $quantityStepRule): void
+    public function removeQuantityStepRule(QuantityStepRuleInterface $quantityStepRule): void
     {
         if (!$this->quantityStepRules->contains($quantityStepRule)) {
             return;
@@ -47,7 +47,7 @@ trait WholesaleRulesetQuantityStepRulesTrait
         $this->quantityStepRules->removeElement($quantityStepRule);
     }
 
-    public function hasQuantityStepRule(WholesaleRuleQuantityStepInterface $quantityStepRule): bool
+    public function hasQuantityStepRule(QuantityStepRuleInterface $quantityStepRule): bool
     {
         return $this->quantityStepRules->contains($quantityStepRule);
     }
@@ -57,11 +57,11 @@ trait WholesaleRulesetQuantityStepRulesTrait
         return $this->quantityStepRules;
     }
 
-    public function addTaxonRule(WholesaleRuleQuantityStepInterface $rule): void
+    public function addTaxonQuantityStepRule(QuantityStepRuleInterface $rule): void
     {
         $rule->setRuleset($this);
         $rule->setScope('taxonomy');
-        if (!in_array($rule, $this->getTaxonRules()) && 'taxonomy' === $rule->getScope()) {
+        if (!in_array($rule, $this->getTaxonQuantityStepRules()) && 'taxonomy' === $rule->getScope()) {
             $this->quantityStepRules->add($rule);
         }
     }
@@ -76,19 +76,10 @@ trait WholesaleRulesetQuantityStepRulesTrait
         );
     }
 
-    public function removeTaxonQuantityStepRule(WholesaleRuleQuantityStepInterface $rule): void
+    public function removeTaxonQuantityStepRule(QuantityStepRuleInterface $rule): void
     {
-        if (in_array($rule, $this->getTaxonRules()) && 'taxonomy' === $rule->getScope()) {
+        if (in_array($rule, $this->getTaxonQuantityStepRules()) && 'taxonomy' === $rule->getScope()) {
             $this->quantityStepRules->removeElement($rule);
-        }
-    }
-
-    public function addTaxonQuantityStepRule(WholesaleRuleQuantityStepInterface $rule): void
-    {
-        $rule->setRuleset($this);
-        $rule->setScope('product');
-        if (!in_array($rule, $this->getTaxonRules()) && 'product' === $rule->getScope()) {
-            $this->quantityStepRules->add($rule);
         }
     }
 }

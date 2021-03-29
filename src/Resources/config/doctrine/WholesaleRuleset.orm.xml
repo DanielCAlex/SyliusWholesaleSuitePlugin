@@ -20,7 +20,7 @@
         <field name="enabled" column="enabled" type="boolean" nullable="false"/>
 
         <one-to-many field="quantityStepRules"
-                     target-entity="SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleQuantityStep"
+                     target-entity="SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\QuantityStepRule"
                      mapped-by="ruleset">
             <cascade>
                 <cascade-all/>

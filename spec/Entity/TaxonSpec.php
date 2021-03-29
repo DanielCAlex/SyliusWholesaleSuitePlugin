@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace spec\SkyBoundTech\SyliusWholesaleSuitePlugin\Entity;
 
 use PhpSpec\ObjectBehavior;
-use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleQuantityStepInterface;
+use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\QuantityStepRuleInterface;
 use Sylius\Component\Core\Model\Taxon;
 
 class TaxonSpec extends ObjectBehavior
@@ -21,19 +21,5 @@ class TaxonSpec extends ObjectBehavior
     public function it_is_initializable(): void
     {
         $this->shouldHaveType(Taxon::class);
-    }
-
-    public function it_associtaes_quantity_step_rules(
-        WholesaleRuleQuantityStepInterface $quantityStepRuleOne,
-        WholesaleRuleQuantityStepInterface $quantityStepRuleTwo
-    ): void {
-        $this->addQuantityStepRule($quantityStepRuleOne);
-        $this->hasQuantityStepRule($quantityStepRuleOne)->shouldReturn(true);
-
-        $this->addQuantityStepRule($quantityStepRuleTwo);
-        $this->hasQuantityStepRule($quantityStepRuleTwo)->shouldReturn(true);
-
-        $this->removeQuantityStepRule($quantityStepRuleOne);
-        $this->hasQuantityStepRule($quantityStepRuleOne)->shouldReturn(false);
     }
 }

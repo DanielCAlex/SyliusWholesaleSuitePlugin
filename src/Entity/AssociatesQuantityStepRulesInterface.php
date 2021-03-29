@@ -18,20 +18,20 @@ use Doctrine\Common\Collections\Collection;
 interface AssociatesQuantityStepRulesInterface
 {
     /**
-     * @param WholesaleRuleQuantityStepInterface $quantityStepRule
+     * @param QuantityStepRuleInterface $quantityStepRule
      */
-    public function addQuantityStepRule(WholesaleRuleQuantityStepInterface $quantityStepRule): void;
+    public function addQuantityStepRule(QuantityStepRuleInterface $quantityStepRule): void;
 
     /**
-     * @param WholesaleRuleQuantityStepInterface $quantityStepRule
+     * @param QuantityStepRuleInterface $quantityStepRule
      */
-    public function removeQuantityStepRule(WholesaleRuleQuantityStepInterface $quantityStepRule): void;
+    public function removeQuantityStepRule(QuantityStepRuleInterface $quantityStepRule): void;
 
     /**
-     * @param WholesaleRuleQuantityStepInterface $quantityStepRule
+     * @param QuantityStepRuleInterface $quantityStepRule
      * @return bool
      */
-    public function hasQuantityStepRule(WholesaleRuleQuantityStepInterface $quantityStepRule): bool;
+    public function hasQuantityStepRule(QuantityStepRuleInterface $quantityStepRule): bool;
 
     /**
      * @return Collection|null

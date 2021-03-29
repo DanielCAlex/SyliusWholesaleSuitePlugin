@@ -15,13 +15,13 @@ namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Traits;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleQuantityStepInterface;
+use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\QuantityStepRuleInterface;
 
 trait WholesaleRuleQuantityStepTrait
 {
     /**
-     * @var Collection|WholesaleRuleQuantityStepInterface[]
-     * @psalm-var Collection<array-key, WholesaleRuleQuantityStepInterface>
+     * @var Collection|QuantityStepRuleInterface[]
+     * @psalm-var Collection<array-key, QuantityStepRuleInterface>
      */
     protected $skyBoundTechWholesaleQuantityStepRules;
 
@@ -30,7 +30,7 @@ trait WholesaleRuleQuantityStepTrait
         $this->skyBoundTechWholesaleQuantityStepRules = new ArrayCollection();
     }
 
-    public function addQuantityStepRule(WholesaleRuleQuantityStepInterface $quantityStepRule): void
+    public function addQuantityStepRule(QuantityStepRuleInterface $quantityStepRule): void
     {
         if ($this->skyBoundTechWholesaleQuantityStepRules->contains($quantityStepRule)) {
             return;
@@ -39,7 +39,7 @@ trait WholesaleRuleQuantityStepTrait
         $quantityStepRule->setRuleset($this);
     }
 
-    public function removeQuantityStepRule(WholesaleRuleQuantityStepInterface $quantityStepRule): void
+    public function removeQuantityStepRule(QuantityStepRuleInterface $quantityStepRule): void
     {
         if (!$this->skyBoundTechWholesaleQuantityStepRules->contains($quantityStepRule)) {
             return;
@@ -47,7 +47,7 @@ trait WholesaleRuleQuantityStepTrait
         $this->skyBoundTechWholesaleQuantityStepRules->removeElement($quantityStepRule);
     }
 
-    public function hasQuantityStepRule(WholesaleRuleQuantityStepInterface $quantityStepRule): bool
+    public function hasQuantityStepRule(QuantityStepRuleInterface $quantityStepRule): bool
     {
         return $this->skyBoundTechWholesaleQuantityStepRules->contains($quantityStepRule);
     }

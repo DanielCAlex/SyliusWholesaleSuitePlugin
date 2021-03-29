@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Form\Type;
 
-use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleQuantityStep;
+use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\QuantityStepRule;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\TaxonomyBundle\Form\Type\TaxonAutocompleteChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -63,6 +63,6 @@ final class WholesaleRuleQuantityStepByTaxonType extends AbstractResourceType
 
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults(['data_class' => WholesaleRuleQuantityStep::class]);
+        $resolver->setDefaults(['data_class' => QuantityStepRule::class]);
     }
 }

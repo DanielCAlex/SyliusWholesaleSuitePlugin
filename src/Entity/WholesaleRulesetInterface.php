@@ -33,15 +33,15 @@ interface WholesaleRulesetInterface
 
     public function getQuantityStepRules(): Collection;
 
-    public function addQuantityStepRule(WholesaleRuleQuantityStepInterface $quantityStepRule): void;
+    public function addQuantityStepRule(QuantityStepRuleInterface $quantityStepRule): void;
 
-    public function removeQuantityStepRule(WholesaleRuleQuantityStepInterface $quantityStepRule): void;
+    public function removeQuantityStepRule(QuantityStepRuleInterface $quantityStepRule): void;
 
-    public function hasQuantityStepRule(WholesaleRuleQuantityStepInterface $quantityStepRule): bool;
+    public function hasQuantityStepRule(QuantityStepRuleInterface $quantityStepRule): bool;
 
     public function getTaxonQuantityStepRules(): array;
 
-    public function addTaxonQuantityStepRule(WholesaleRuleQuantityStepInterface $rule): void;
+    public function addTaxonQuantityStepRule(QuantityStepRuleInterface $rule): void;
 
-    public function removeTaxonQuantityStepRule(WholesaleRuleQuantityStepInterface $rule): void;
+    public function removeTaxonQuantityStepRule(QuantityStepRuleInterface $rule): void;
 }

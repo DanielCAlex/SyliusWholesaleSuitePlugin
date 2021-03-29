@@ -26,5 +26,5 @@ sylius_resource:
     skyboundtech.wholesale_rule_quantity_step:
       driver: doctrine/orm
       classes:
-        model: SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleQuantityStep
-        interface: SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleQuantityStepInterface
+        model: SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\QuantityStepRule
+        interface: SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\QuantityStepRuleInterface

@@ -6,7 +6,7 @@
 
     <mapped-superclass name="SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\ProductVariant"
                        table="sylius_product_variant">
-        <many-to-many target-entity="SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\WholesaleRuleQuantityStepInterface"
+        <many-to-many target-entity="SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\QuantityStepRuleInterface"
                       mapped-by="productVariants"
                       field="skyBoundTechWholesaleQuantityStepRules"
                       orphan-removal="true">

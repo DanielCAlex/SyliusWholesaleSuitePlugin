@@ -19,7 +19,7 @@ use Sylius\Component\Core\Model\ProductVariantInterface;
 use Sylius\Component\Core\Model\TaxonInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
-class WholesaleRuleQuantityStep extends BaseEntity implements WholesaleRuleQuantityStepInterface, ResourceInterface
+class QuantityStepRule extends BaseEntity implements QuantityStepRuleInterface, ResourceInterface
 {
     /** @var int */
     protected $id;
