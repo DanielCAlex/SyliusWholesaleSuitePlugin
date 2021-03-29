@@ -66,7 +66,7 @@ trait WholesaleRulesetQuantityStepRulesTrait
         }
     }
 
-    public function getTaxonRules(): array
+    public function getTaxonQuantityStepRules(): array
     {
         return array_filter(
             $this->quantityStepRules->toArray(),
@@ -76,36 +76,19 @@ trait WholesaleRulesetQuantityStepRulesTrait
         );
     }
 
-    public function removeTaxonRule(WholesaleRuleQuantityStepInterface $rule): void
+    public function removeTaxonQuantityStepRule(WholesaleRuleQuantityStepInterface $rule): void
     {
         if (in_array($rule, $this->getTaxonRules()) && 'taxonomy' === $rule->getScope()) {
             $this->quantityStepRules->removeElement($rule);
         }
     }
 
-    public function addProductRule(WholesaleRuleQuantityStepInterface $rule): void
+    public function addTaxonQuantityStepRule(WholesaleRuleQuantityStepInterface $rule): void
     {
         $rule->setRuleset($this);
         $rule->setScope('product');
         if (!in_array($rule, $this->getTaxonRules()) && 'product' === $rule->getScope()) {
             $this->quantityStepRules->add($rule);
-        }
-    }
-
-    public function getProductRules(): array
-    {
-        return array_filter(
-            $this->quantityStepRules->toArray(),
-            function ($rule) {
-                return 'product' == $rule->getScope();
-            }
-        );
-    }
-
-    public function removeProductRule(WholesaleRuleQuantityStepInterface $rule): void
-    {
-        if (in_array($rule, $this->getTaxonRules()) && 'product' === $rule->getScope()) {
-            $this->quantityStepRules->removeElement($rule);
         }
     }
 }
