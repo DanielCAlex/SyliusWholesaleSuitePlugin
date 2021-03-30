@@ -7,7 +7,7 @@
     <mapped-superclass name="SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\Taxon" table="sylius_taxon">
         <many-to-many target-entity="SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\QuantityStepRuleInterface"
                       mapped-by="taxons"
-                      field="skyBoundTechWholesaleQuantityStepRules"
+                      field="quantityStepRules"
                       orphan-removal="true">
         </many-to-many>
     </mapped-superclass>

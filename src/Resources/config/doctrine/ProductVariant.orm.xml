@@ -8,7 +8,7 @@
                        table="sylius_product_variant">
         <many-to-many target-entity="SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\QuantityStepRuleInterface"
                       mapped-by="productVariants"
-                      field="skyBoundTechWholesaleQuantityStepRules"
+                      field="quantityStepRules"
                       orphan-removal="true">
         </many-to-many>
     </mapped-superclass>

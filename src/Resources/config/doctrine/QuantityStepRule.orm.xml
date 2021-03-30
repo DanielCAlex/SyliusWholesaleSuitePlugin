@@ -35,9 +35,9 @@
 
         <many-to-many field="taxons"
                       target-entity="Sylius\Component\Core\Model\TaxonInterface"
-                      inversed-by="skyBoundTechWholesaleQuantityStepRules"
+                      inversed-by="quantityStepRules"
         >
-            <join-table name="skyboundtech_wholesale_quantity_step_rule_taxon">
+            <join-table name="taxon_quantity_step_rule">
                 <join-columns>
                     <join-column name="quantity_step_rule_id" referenced-column-name="id" nullable="false"/>
                 </join-columns>
@@ -49,9 +49,9 @@
 
         <many-to-many field="products"
                       target-entity="Sylius\Component\Core\Model\ProductInterface"
-                      inversed-by="skyBoundTechWholesaleQuantityStepRules"
+                      inversed-by="quantityStepRules"
         >
-            <join-table name="skyboundtech_wholesale_quantity_step_rule_product">
+            <join-table name="product_quantity_step_rule">
                 <join-columns>
                     <join-column name="quantity_step_rule_id" referenced-column-name="id" nullable="false"/>
                 </join-columns>
@@ -62,7 +62,7 @@
         </many-to-many>
 
         <many-to-many field="productVariants" target-entity="Sylius\Component\Core\Model\ProductVariantInterface">
-            <join-table name="skyboundtech_wholesale_quantity_step_rule_product_variant">
+            <join-table name="product_variant_quantity_step_rule">
                 <join-columns>
                     <join-column name="quantity_step_rule_id" referenced-column-name="id" nullable="false"/>
                 </join-columns>

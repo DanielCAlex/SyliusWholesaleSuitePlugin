@@ -17,43 +17,43 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\QuantityStepRuleInterface;
 
-trait WholesaleRuleQuantityStepTrait
+trait QuantityStepRuleTrait
 {
     /**
      * @var Collection|QuantityStepRuleInterface[]
      * @psalm-var Collection<array-key, QuantityStepRuleInterface>
      */
-    protected $skyBoundTechWholesaleQuantityStepRules;
+    protected $quantityStepRules;
 
-    public function initWholesaleRuleQuantityStepTrait()
+    public function initQuantityStepRuleTrait()
     {
-        $this->skyBoundTechWholesaleQuantityStepRules = new ArrayCollection();
+        $this->quantityStepRules = new ArrayCollection();
     }
 
     public function addQuantityStepRule(QuantityStepRuleInterface $quantityStepRule): void
     {
-        if ($this->skyBoundTechWholesaleQuantityStepRules->contains($quantityStepRule)) {
+        if ($this->quantityStepRules->contains($quantityStepRule)) {
             return;
         }
-        $this->skyBoundTechWholesaleQuantityStepRules->add($quantityStepRule);
+        $this->quantityStepRules->add($quantityStepRule);
         $quantityStepRule->setRuleset($this);
     }
 
     public function removeQuantityStepRule(QuantityStepRuleInterface $quantityStepRule): void
     {
-        if (!$this->skyBoundTechWholesaleQuantityStepRules->contains($quantityStepRule)) {
+        if (!$this->quantityStepRules->contains($quantityStepRule)) {
             return;
         }
-        $this->skyBoundTechWholesaleQuantityStepRules->removeElement($quantityStepRule);
+        $this->quantityStepRules->removeElement($quantityStepRule);
     }
 
     public function hasQuantityStepRule(QuantityStepRuleInterface $quantityStepRule): bool
     {
-        return $this->skyBoundTechWholesaleQuantityStepRules->contains($quantityStepRule);
+        return $this->quantityStepRules->contains($quantityStepRule);
     }
 
     public function getQuantityStepRules(): Collection
     {
-        return $this->skyBoundTechWholesaleQuantityStepRules;
+        return $this->quantityStepRules;
     }
 }

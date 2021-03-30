@@ -12,17 +12,17 @@ declare(strict_types=1);
 
 namespace SkyBoundTech\SyliusWholesaleSuitePlugin\Entity;
 
-use SkyBoundTech\SyliusWholesaleSuitePlugin\Traits\WholesaleRuleQuantityStepTrait;
+use SkyBoundTech\SyliusWholesaleSuitePlugin\Traits\QuantityStepRuleTrait;
 use Sylius\Component\Core\Model\ProductVariant as BaseProductVariant;
 
 class ProductVariant extends BaseProductVariant implements ProductVariantInterface
 {
-    use WholesaleRuleQuantityStepTrait;
+    use QuantityStepRuleTrait;
 
     public function __construct()
     {
         parent::__construct();
-        $this->initWholesaleRuleQuantityStepTrait();
+        $this->initQuantityStepRuleTrait();
     }
 
     public function getDescriptor(string $pathDelimiter = ' / '): string
