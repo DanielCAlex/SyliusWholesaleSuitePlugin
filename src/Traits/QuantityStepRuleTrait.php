@@ -35,8 +35,8 @@ trait QuantityStepRuleTrait
         if ($this->quantityStepRules->contains($quantityStepRule)) {
             return;
         }
-        $this->quantityStepRules->add($quantityStepRule);
         $quantityStepRule->setRuleset($this);
+        $this->quantityStepRules->add($quantityStepRule);
     }
 
     public function removeQuantityStepRule(QuantityStepRuleInterface $quantityStepRule): void
@@ -55,5 +55,31 @@ trait QuantityStepRuleTrait
     public function getQuantityStepRules(): Collection
     {
         return $this->quantityStepRules;
+    }
+
+    public function addTaxonQuantityStepRule(QuantityStepRuleInterface $rule): void
+    {
+        $rule->setRuleset($this);
+        $rule->setScope('taxonomy');
+        if (!in_array($rule, $this->getTaxonQuantityStepRules()) && 'taxonomy' === $rule->getScope()) {
+            $this->quantityStepRules->add($rule);
+        }
+    }
+
+    public function getTaxonQuantityStepRules(): array
+    {
+        return array_filter(
+            $this->quantityStepRules->toArray(),
+            function ($rule) {
+                return 'taxonomy' == $rule->getScope();
+            }
+        );
+    }
+
+    public function removeTaxonQuantityStepRule(QuantityStepRuleInterface $rule): void
+    {
+        if (in_array($rule, $this->getTaxonQuantityStepRules()) && 'taxonomy' === $rule->getScope()) {
+            $this->quantityStepRules->removeElement($rule);
+        }
     }
 }
