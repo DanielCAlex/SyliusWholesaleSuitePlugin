@@ -14,7 +14,7 @@ namespace Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Page\Admin\Wholesa
 
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
 
-class CreatePage extends BaseCreatePage implements CreatePageInterface
+class CreateRulesetPage extends BaseCreatePage implements CreateRulesetPageInterface
 {
     public function fillField(string $field, string $value): void
     {

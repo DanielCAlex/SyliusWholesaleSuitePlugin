@@ -16,7 +16,7 @@ namespace Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Page\Admin\Wholesa
 use Sylius\Behat\Page\Admin\Crud\CreatePageInterface as BaseCreatePageInterface;
 
 
-interface CreatePageInterface extends BaseCreatePageInterface
+interface CreateRulesetPageInterface extends BaseCreatePageInterface
 {
     public function fillField(string $field, string $value): void;
 

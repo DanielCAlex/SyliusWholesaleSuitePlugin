@@ -19,11 +19,11 @@ use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Component\Core\Model\TaxonInterface;
 use Sylius\Component\Taxonomy\Factory\TaxonFactoryInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
-use Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Page\Admin\WholesaleRuleset\CreatePageInterface;
+use Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Page\Admin\WholesaleRuleset\CreateRulesetPageInterface;
 
 final class WholesaleSuiteRulesetContext extends BaseMinkContext implements Context
 {
-    /** @var CreatePageInterface */
+    /** @var CreateRulesetPageInterface */
     protected $createPage;
     /**
      * @var TaxonFactoryInterface
@@ -39,7 +39,7 @@ final class WholesaleSuiteRulesetContext extends BaseMinkContext implements Cont
     private $entityManager;
 
     public function __construct(
-        CreatePageInterface $createPage,
+        CreateRulesetPageInterface $createPage,
         TaxonFactoryInterface $taxonFactory,
         TaxonRepositoryInterface $taxonRepository,
         EntityManagerInterface $entityManager
