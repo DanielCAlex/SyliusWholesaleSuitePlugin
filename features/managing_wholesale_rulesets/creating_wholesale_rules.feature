@@ -9,12 +9,17 @@ Feature: Creating wholesale rules
 
   @ui @javascript @rule
   Scenario: Admin adds a Quantity Step Rule by Taxonomy
+    Given a taxon named "CBD Products" exists
     When I go to the create Wholesale Ruleset page
     And I click the add rule button for the Quantity Step Rules by Taxonomy tab
     Then I should see "These rules will apply to their selected taxonomies."
     And I fill rule name with "Behat Quantity Step Rule By Taxonomy Rule 1"
     And I fill the rule description with "This is the first quantity step rule by taxonomy created by Behat."
     And I should see "Select taxonomies"
+    And I select the quantity step rule taxon "CBD Products"
+    And I enable the rule
+    And I add it
+    Then I should be notified that the rule was successfully created.
 
 #  @ui @javascript @rule
 #  Scenario: Admin adds a Quantity Step Rule by Product

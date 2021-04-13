@@ -63,6 +63,11 @@ final class WholesaleRuleQuantityStepByTaxonType extends AbstractResourceType
 
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults(['data_class' => QuantityStepRule::class]);
+        $resolver->setDefaults(
+            [
+                'data_class' => QuantityStepRule::class,
+                'attr' => ['class' => 'taxon-quantity-step-rule-form'],
+            ]
+        );
     }
 }

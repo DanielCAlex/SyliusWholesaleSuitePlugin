@@ -138,11 +138,46 @@ final class WholesaleSuiteRulesetContext extends BaseMinkContext implements Cont
         /** @var TaxonInterface $taxon */
         $taxon = $this->taxonFactory->createNew();
 
-        $taxon->setName($name);
-        $taxon->setCode($name);
-        $taxon->setSlug($name);
+        $loweredTaxonName = mb_strtolower($name);
+        $taxonCode = str_replace(' ', '_', $loweredTaxonName);
+        $taxonSlug = str_replace(' ', '-', $loweredTaxonName);
 
+        $taxon->setName($name);
+        $taxon->setCode($taxonCode);
+        $taxon->setSlug($taxonSlug);
         $this->entityManager->persist($taxon);
         $this->entityManager->flush();
+    }
+
+    /**
+     * @Then I select the quantity step rule taxon :taxon
+     */
+    public function iSelectTheQuantityStepRuleTaxon($taxon)
+    {
+        $this->createPage->addTaxon($taxon);
+    }
+
+    /**
+     * @Then I enable the rule
+     */
+    public function iEnableTheRule()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then I add it
+     */
+    public function iAddIt()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then I should be notified that the rule was successfully created.
+     */
+    public function iShouldBeNotifiedThatTheRuleWasSuccessfullyCreated()
+    {
+        throw new PendingException();
     }
 }
