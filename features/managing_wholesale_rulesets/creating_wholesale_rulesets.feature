@@ -1,4 +1,4 @@
-@managing_wholesale_rulesets @creating_wholesale_rulesets
+#@managing_wholesale_rulesets @creating_wholesale_rulesets
 Feature: Creating wholesale rulesets
   In order to have the customer adhere to wholesale business rules
   As an administrator
