@@ -14,17 +14,15 @@ namespace Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Tester\Exception\PendingException;
-use Behat\MinkExtension\Context\MinkContext as BaseMinkContext;
 use Doctrine\ORM\EntityManagerInterface;
-use Sylius\Component\Core\Model\TaxonInterface;
 use Sylius\Component\Taxonomy\Factory\TaxonFactoryInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Page\Admin\WholesaleRuleset\CreateRulesetPageInterface;
 
-final class WholesaleSuiteRulesetContext extends BaseMinkContext implements Context
+final class WholesaleSuiteRulesetContext implements Context
 {
     /** @var CreateRulesetPageInterface */
-    protected $createPage;
+    private $createPage;
     /**
      * @var TaxonFactoryInterface
      */
@@ -128,33 +126,6 @@ final class WholesaleSuiteRulesetContext extends BaseMinkContext implements Cont
     public function addRuleForQuantityStepRulesByProductVariant()
     {
         $this->createPage->addQuantityStepRule('product-variant');
-    }
-
-    /**
-     * @Given a taxon named :name exists
-     */
-    public function aTaxonNamedExists($name)
-    {
-        /** @var TaxonInterface $taxon */
-        $taxon = $this->taxonFactory->createNew();
-
-        $loweredTaxonName = mb_strtolower($name);
-        $taxonCode = str_replace(' ', '_', $loweredTaxonName);
-        $taxonSlug = str_replace(' ', '-', $loweredTaxonName);
-
-        $taxon->setName($name);
-        $taxon->setCode($taxonCode);
-        $taxon->setSlug($taxonSlug);
-        $this->entityManager->persist($taxon);
-        $this->entityManager->flush();
-    }
-
-    /**
-     * @Then I select the quantity step rule taxon :taxon
-     */
-    public function iSelectTheQuantityStepRuleTaxon($taxon)
-    {
-        $this->createPage->addTaxon($taxon);
     }
 
     /**

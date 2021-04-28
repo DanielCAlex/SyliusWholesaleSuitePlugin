@@ -3,7 +3,20 @@ default:
     ui_managing_wholesale_rulesets:
       contexts:
         - sylius.behat.context.hook.doctrine_orm
+
+        - sylius.behat.context.transform.admin
+        - sylius.behat.context.transform.channel
+        - sylius.behat.context.transform.locale
+        - sylius.behat.context.transform.shared_storage
+        - sylius.behat.context.transform.taxon
+
+        - sylius.behat.context.setup.admin_user
+        - sylius.behat.context.setup.channel
+        - sylius.behat.context.setup.product
         - sylius.behat.context.setup.admin_security
+        - sylius.behat.context.setup.taxonomy
+
+        - Behat\MinkExtension\Context\MinkContext
         - skyboundtech_sylius_wholesale_suite_plugin.context.ui.admin.wholesale_ruleset
       filters:
         tags: "@managing_wholesale_rulesets && ui"
