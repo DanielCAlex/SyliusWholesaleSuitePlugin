@@ -14,38 +14,17 @@ namespace Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Tester\Exception\PendingException;
-use Doctrine\ORM\EntityManagerInterface;
-use Sylius\Component\Taxonomy\Factory\TaxonFactoryInterface;
-use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Page\Admin\WholesaleRuleset\CreateRulesetPageInterface;
 
 final class WholesaleSuiteRulesetContext implements Context
 {
     /** @var CreateRulesetPageInterface */
     private $createPage;
-    /**
-     * @var TaxonFactoryInterface
-     */
-    private $taxonFactory;
-    /**
-     * @var TaxonRepositoryInterface
-     */
-    private $taxonRepository;
-    /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
 
     public function __construct(
-        CreateRulesetPageInterface $createPage,
-        TaxonFactoryInterface $taxonFactory,
-        TaxonRepositoryInterface $taxonRepository,
-        EntityManagerInterface $entityManager
+        CreateRulesetPageInterface $createPage
     ) {
         $this->createPage = $createPage;
-        $this->taxonFactory = $taxonFactory;
-        $this->taxonRepository = $taxonRepository;
-        $this->entityManager = $entityManager;
     }
 
     /**
