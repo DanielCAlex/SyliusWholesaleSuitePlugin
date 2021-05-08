@@ -117,19 +117,19 @@ final class WholesaleSuiteRulesetContext implements Context
     }
 
     /**
-     * @Then I enable the rule
+     * @Then I enable the taxon quantity step rule
      */
-    public function iEnableTheRule()
+    public function iEnableTheTaxonQuantityStepRule()
     {
-        throw new PendingException();
+        $this->createPage->enableTaxonQuantitytepRule();
     }
 
     /**
-     * @Then I add it
+     * @When I add it
      */
     public function iAddIt()
     {
-        throw new PendingException();
+        $this->createPage->create();
     }
 
     /**

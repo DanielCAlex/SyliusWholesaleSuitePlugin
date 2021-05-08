@@ -99,12 +99,19 @@ class CreateRulesetPage extends BaseCreatePage implements CreateRulesetPageInter
         AutocompleteHelper::chooseValue($this->getSession(), $addTaxonsElement, $taxon->getName());
     }
 
+    public function enableTaxonQuantitytepRule(): void
+    {
+        $enableButton = $this->getElement('taxonQuantityStepRuleEnable');
+        $enableButton->click();
+    }
+
     protected function getDefinedElements(): array
     {
         return array_merge(
             parent::getDefinedElements(),
             [
                 'addQuantityStepRuleTaxon' => '#wholesale_ruleset_taxonQuantityStepRules_0_taxons',
+                'taxonQuantityStepRuleEnable' => '#wholesale_ruleset_taxonQuantityStepRules_0_enabled',
             ]
         );
     }

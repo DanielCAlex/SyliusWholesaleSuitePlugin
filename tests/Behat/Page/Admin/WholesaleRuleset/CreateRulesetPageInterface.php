@@ -35,6 +35,8 @@ interface CreateRulesetPageInterface extends BaseCreatePageInterface
 
     public function addQuantityStepRuleTaxon(TaxonInterface $taxon): void;
 
+    public function enableTaxonQuantitytepRule(): void;
+
     public function disable(): void;
 
     public function enable(): void;
