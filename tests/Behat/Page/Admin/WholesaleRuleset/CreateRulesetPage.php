@@ -13,6 +13,8 @@ declare(strict_types=1);
 namespace Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Page\Admin\WholesaleRuleset;
 
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
+use Sylius\Behat\Service\AutocompleteHelper;
+use Sylius\Component\Core\Model\TaxonInterface;
 
 class CreateRulesetPage extends BaseCreatePage implements CreateRulesetPageInterface
 {
@@ -88,5 +90,22 @@ class CreateRulesetPage extends BaseCreatePage implements CreateRulesetPageInter
         );
 
         $tab->click();
+    }
+
+    public function addQuantityStepRuleTaxon(TaxonInterface $taxon): void
+    {
+        $addTaxonsElement = $this->getElement('addQuantityStepRuleTaxon')->getParent();
+
+        AutocompleteHelper::chooseValue($this->getSession(), $addTaxonsElement, $taxon->getName());
+    }
+
+    protected function getDefinedElements(): array
+    {
+        return array_merge(
+            parent::getDefinedElements(),
+            [
+                'addQuantityStepRuleTaxon' => '#wholesale_ruleset_taxonQuantityStepRules_0_taxons',
+            ]
+        );
     }
 }

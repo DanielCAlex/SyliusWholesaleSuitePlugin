@@ -6,7 +6,7 @@ Feature: Creating wholesale rules
 
   Background:
     Given the store operates on a single channel in "United States"
-    And the store classifies its products as "T-Shirts", "Accessories", "Funny" and "Sad"
+    And the store classifies its products as "Funny"
     And I am logged in as an administrator
     And I am using "English (United States)" locale for my panel
 
@@ -18,7 +18,7 @@ Feature: Creating wholesale rules
     And I fill rule name with "Behat Quantity Step Rule By Taxonomy Rule 1"
     And I fill the rule description with "This is the first quantity step rule by taxonomy created by Behat."
     And I should see "Select taxonomies"
-    And I select the quantity step rule taxon "Funny"
+    And I add the quantity step rule taxon "Funny"
     And I enable the rule
     And I add it
     Then I should be notified that the rule was successfully created.

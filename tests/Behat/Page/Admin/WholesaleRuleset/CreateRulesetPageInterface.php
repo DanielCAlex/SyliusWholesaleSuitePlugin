@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Page\Admin\WholesaleRuleset;
 
 use Sylius\Behat\Page\Admin\Crud\CreatePageInterface as BaseCreatePageInterface;
+use Sylius\Component\Core\Model\TaxonInterface;
 
 
 interface CreateRulesetPageInterface extends BaseCreatePageInterface
@@ -31,6 +32,8 @@ interface CreateRulesetPageInterface extends BaseCreatePageInterface
     public function chooseRuleScope(string $scope): void;
 
     public function clickTab(string $tab): void;
+
+    public function addQuantityStepRuleTaxon(TaxonInterface $taxon): void;
 
     public function disable(): void;
 

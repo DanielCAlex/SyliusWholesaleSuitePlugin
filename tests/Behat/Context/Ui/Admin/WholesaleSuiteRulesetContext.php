@@ -14,6 +14,7 @@ namespace Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Tester\Exception\PendingException;
+use Sylius\Component\Core\Model\TaxonInterface;
 use Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Page\Admin\WholesaleRuleset\CreateRulesetPageInterface;
 
 final class WholesaleSuiteRulesetContext implements Context
@@ -105,6 +106,14 @@ final class WholesaleSuiteRulesetContext implements Context
     public function addRuleForQuantityStepRulesByProductVariant()
     {
         $this->createPage->addQuantityStepRule('product-variant');
+    }
+
+    /**
+     * @When /^I add the quantity step rule (taxon "[^"]+")$/
+     */
+    public function iAddTheQuantityStepRuleTaxon(TaxonInterface $taxon)
+    {
+        $this->createPage->addQuantityStepRuleTaxon($taxon);
     }
 
     /**
