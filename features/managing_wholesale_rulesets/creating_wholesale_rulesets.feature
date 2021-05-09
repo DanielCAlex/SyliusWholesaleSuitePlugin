@@ -1,4 +1,4 @@
-#@managing_wholesale_rulesets @creating_wholesale_rulesets
+@managing_wholesale_rulesets @creating_wholesale_rulesets
 Feature: Creating wholesale rulesets
   In order to have the customer adhere to wholesale business rules
   As an administrator
@@ -8,10 +8,12 @@ Feature: Creating wholesale rulesets
     Given I am logged in as an administrator
 
   @ui @javascript @ruleset_info
-  Scenario: Admin fills the name and description of the ruleset
+  Scenario: Admin creates a ruleset without rules
     When I go to the create Wholesale Ruleset page
     And I fill ruleset name with "Behat Ruleset 1"
     And I fill the ruleset description with "This is the first ruleset behat added."
+    And I add it
+    Then I should be notified that it has been successfully created
 
   @ui @javascript @ruleset
   Scenario: Admin can see the form tabs for the different types of wholesale rules and their scopes.
