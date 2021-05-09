@@ -15,6 +15,7 @@ default:
         - sylius.behat.context.setup.product
         - sylius.behat.context.setup.admin_security
         - sylius.behat.context.setup.taxonomy
+        - sylius.behat.context.ui.admin.notification
 
         - Behat\MinkExtension\Context\MinkContext
         - skyboundtech_sylius_wholesale_suite_plugin.context.ui.admin.wholesale_ruleset
