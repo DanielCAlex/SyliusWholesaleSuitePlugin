@@ -6,22 +6,25 @@ Feature: Creating wholesale rules
 
   Background:
     Given the store operates on a single channel in "United States"
-    And the store classifies its products as "Funny"
+    And the store classifies its products as "Funny", "Happy" and "Jump"
     And I am logged in as an administrator
     And I am using "English (United States)" locale for my panel
 
-  @ui @javascript @rule
+  @ui @javascript @rule @by_taxon
   Scenario: Admin adds a Quantity Step Rule by Taxonomy
     When I go to the create Wholesale Ruleset page
+    And I fill ruleset name with "Testing Creation of Rules by Taxonomy"
+    And I fill the ruleset description with "Taxon quantity step rule."
     And I click the add rule button for the Quantity Step Rules by Taxonomy tab
     Then I should see "These rules will apply to their selected taxonomies."
     And I fill rule name with "Behat Quantity Step Rule By Taxonomy Rule 1"
     And I fill the rule description with "This is the first quantity step rule by taxonomy created by Behat."
+    And I fill in "Set Quantity" with "10"
     And I should see "Select taxonomies"
     And I add the quantity step rule taxon "Funny"
-    And I enable the rule
+    And I enable the taxon quantity step rule
     And I add it
-    Then I should be notified that the rule was successfully created.
+    Then I should be notified that it has been successfully created
 
 #  @ui @javascript @rule
 #  Scenario: Admin adds a Quantity Step Rule by Product
