@@ -46,6 +46,7 @@ final class WholesaleRuleQuantityStepByTaxonType extends AbstractResourceType
                 IntegerType::class,
                 [
                     'label' => 'skyboundtech_sylius_wholesale_suite_plugin.ui.wholesale_rules.quantity_step.quantity',
+                    'help' => 'skyboundtech_sylius_wholesale_suite_plugin.ui.wholesale_rules.quantity_step.quantity_explanation',
                 ]
             )
             ->add('scope', HiddenType::class)
