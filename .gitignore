@@ -11,3 +11,6 @@
 /behat.yml
 /phpspec.yml
 /phpunit.xml
+/.directory
+/node_modules
+/src/Migrations/Version20210721041927.php
