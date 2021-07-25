@@ -16,24 +16,17 @@ use Doctrine\ORM\EntityManagerInterface;
 
 final class EntityHelper implements EntityHelperInterface
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    protected $entityManager;
+    private EntityManagerInterface $entityManager;
 
     public function __construct(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
     }
 
-    /**
-     * @param string $entityName
-     *
-     * @return array|null
-     */
     public function entityHasRecords(string $entityName): ?array
     {
         $repository = $this->entityManager->getRepository($entityName);
+
         return $repository->findAll();
     }
 }
