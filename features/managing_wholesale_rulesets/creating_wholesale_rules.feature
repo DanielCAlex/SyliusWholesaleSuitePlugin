@@ -27,15 +27,16 @@ Feature: Creating wholesale rules
     And I add it
     Then I should be notified that it has been successfully created
 
-  @ui @javascript @rule
+  @ui @javascript @rule @by_product
   Scenario: Admin adds a Quantity Step Rule by Product
     When I go to the create Wholesale Ruleset page
-    And I fill ruleset name with "Testing Creation of Rules by Taxonomy"
-    And I fill the ruleset description with "Taxon quantity step rule."
+    And I fill ruleset name with "Testing Creation of Rules by Product"
+    And I fill the ruleset description with "Product quantity step rule."
     And I click the add rule button for the Quantity Step Rules by Product tab
-    Then I should see "These rules will apply to their selected products."
+    Then I should see "These rules will apply to the products you choose."
     And I fill rule name with "Behat Quantity Step Rule By Product Rule 1"
     And I fill the rule description with "This is the first quantity step rule by product created by Behat."
+    And I fill in "Set Quantity" with "10"
     And I should see "Select products"
     And I add the quantity step rule product "White Shirt"
     And I enable the product quantity step rule

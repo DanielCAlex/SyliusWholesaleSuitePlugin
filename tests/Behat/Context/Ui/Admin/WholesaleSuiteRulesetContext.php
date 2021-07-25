@@ -14,6 +14,7 @@ namespace Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Tester\Exception\PendingException;
+use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Model\TaxonInterface;
 use Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Page\Admin\WholesaleRuleset\CreateRulesetPageInterface;
 
@@ -77,17 +78,9 @@ final class WholesaleSuiteRulesetContext implements Context
     }
 
     /**
-     * @When I choose the rule scope :arg1
-     */
-    public function iChooseTheRuleScope($arg1): void
-    {
-        throw new PendingException();
-    }
-
-    /**
      * @When I click the add rule button for the Quantity Step Rules by Taxonomy tab
      */
-    public function addRuleForQuantityStepRulesByTaxonomy()
+    public function addRuleForQuantityStepRulesByTaxonomy(): void
     {
         $this->createPage->addQuantityStepRule('taxonomy');
     }
@@ -95,7 +88,7 @@ final class WholesaleSuiteRulesetContext implements Context
     /**
      * @When I click the add rule button for the Quantity Step Rules by Product tab
      */
-    public function addRuleForQuantityStepRulesByProduct()
+    public function addRuleForQuantityStepRulesByProduct(): void
     {
         $this->createPage->addQuantityStepRule('product');
     }
@@ -103,7 +96,7 @@ final class WholesaleSuiteRulesetContext implements Context
     /**
      * @When I click the add rule button for the Quantity Step Rules by Product Variant tab
      */
-    public function addRuleForQuantityStepRulesByProductVariant()
+    public function addRuleForQuantityStepRulesByProductVariant(): void
     {
         $this->createPage->addQuantityStepRule('product-variant');
     }
@@ -111,17 +104,33 @@ final class WholesaleSuiteRulesetContext implements Context
     /**
      * @When /^I add the quantity step rule (taxon "[^"]+")$/
      */
-    public function iAddTheQuantityStepRuleTaxon(TaxonInterface $taxon)
+    public function iAddTheQuantityStepRuleTaxon(TaxonInterface $taxon): void
     {
         $this->createPage->addQuantityStepRuleTaxon($taxon);
     }
 
     /**
+     * @When /^I add the quantity step rule (product "[^"]+")$/
+     */
+    public function iAddTheQuantityStepRuleProduct(ProductInterface $product): void
+    {
+        $this->createPage->addQuantityStepRuleProduct($product);
+    }
+
+    /**
      * @Then I enable the taxon quantity step rule
      */
-    public function iEnableTheTaxonQuantityStepRule()
+    public function iEnableTheTaxonQuantityStepRule(): void
     {
         $this->createPage->enableTaxonQuantitytepRule();
+    }
+
+    /**
+     * @Then I enable the product quantity step rule
+     */
+    public function iEnableTheProductQuantityStepRulee(): void
+    {
+        $this->createPage->enableProductQuantityStepRule();
     }
 
     /**
