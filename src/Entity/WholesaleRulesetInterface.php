@@ -44,4 +44,10 @@ interface WholesaleRulesetInterface
     public function addTaxonQuantityStepRule(QuantityStepRuleInterface $rule): void;
 
     public function removeTaxonQuantityStepRule(QuantityStepRuleInterface $rule): void;
+
+    public function getProductQuantityStepRules(): array;
+
+    public function addProductQuantityStepRule(QuantityStepRuleInterface $rule): void;
+
+    public function removeProductQuantityStepRule(QuantityStepRuleInterface $rule): void;
 }

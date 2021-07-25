@@ -82,4 +82,29 @@ trait QuantityStepRuleTrait
             $this->quantityStepRules->removeElement($rule);
         }
     }
+    public function addProductQuantityStepRule(QuantityStepRuleInterface $rule): void
+    {
+        $rule->setRuleset($this);
+        $rule->setScope('product');
+        if (!in_array($rule, $this->getProductQuantityStepRules()) && 'product' === $rule->getScope()) {
+            $this->quantityStepRules->add($rule);
+        }
+    }
+
+    public function getProductQuantityStepRules(): array
+    {
+        return array_filter(
+            $this->quantityStepRules->toArray(),
+            function ($rule) {
+                return 'product' == $rule->getScope();
+            }
+        );
+    }
+
+    public function removeProductQuantityStepRule(QuantityStepRuleInterface $rule): void
+    {
+        if (in_array($rule, $this->getProductQuantityStepRules()) && 'product' === $rule->getScope()) {
+            $this->quantityStepRules->removeElement($rule);
+        }
+    }
 }
