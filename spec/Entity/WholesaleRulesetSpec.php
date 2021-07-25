@@ -13,7 +13,6 @@ declare(strict_types=1);
 namespace spec\SkyBoundTech\SyliusWholesaleSuitePlugin\Entity;
 
 use PhpSpec\ObjectBehavior;
-use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\BaseEntity;
 use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\QuantityStepRuleInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
@@ -22,11 +21,6 @@ final class WholesaleRulesetSpec extends ObjectBehavior
     public function it_is_a_resource(): void
     {
         $this->shouldHaveType(ResourceInterface::class);
-    }
-
-    public function it_extends_base_entity()
-    {
-        $this->shouldBeAnInstanceOf(BaseEntity::class);
     }
 
     public function it_toggles(): void

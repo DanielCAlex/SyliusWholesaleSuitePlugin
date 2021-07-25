@@ -17,7 +17,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use SkyBoundTech\SyliusWholesaleSuitePlugin\Traits\QuantityStepRuleTrait;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
-class WholesaleRuleset extends BaseEntity implements ResourceInterface, WholesaleRulesetInterface
+class WholesaleRuleset implements ResourceInterface, WholesaleRulesetInterface
 {
     use QuantityStepRuleTrait;
 

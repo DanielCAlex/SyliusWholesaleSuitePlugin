@@ -13,7 +13,6 @@ declare(strict_types=1);
 namespace spec\SkyBoundTech\SyliusWholesaleSuitePlugin\Entity;
 
 use PhpSpec\ObjectBehavior;
-use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\BaseEntity;
 use SkyBoundTech\SyliusWholesaleSuitePlugin\Entity\QuantityStepRuleInterface;
 use Sylius\Component\Core\Model\Product;
 use Sylius\Component\Core\Model\TaxonInterface;
@@ -24,11 +23,6 @@ class QuantityStepRuleSpec extends ObjectBehavior
     public function it_is_a_resource(): void
     {
         $this->shouldHaveType(ResourceInterface::class);
-    }
-
-    public function it_extends_base_entity(): void
-    {
-        $this->shouldBeAnInstanceOf(BaseEntity::class);
     }
 
     public function it_implements_wholesale_rule_quantity_step_interface(): void
