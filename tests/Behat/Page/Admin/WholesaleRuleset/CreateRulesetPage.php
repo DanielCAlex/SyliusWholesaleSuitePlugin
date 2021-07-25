@@ -14,6 +14,7 @@ namespace Tests\SkyBoundTech\SyliusWholesaleSuitePlugin\Behat\Page\Admin\Wholesa
 
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
 use Sylius\Behat\Service\AutocompleteHelper;
+use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Model\TaxonInterface;
 
 class CreateRulesetPage extends BaseCreatePage implements CreateRulesetPageInterface
@@ -95,13 +96,24 @@ class CreateRulesetPage extends BaseCreatePage implements CreateRulesetPageInter
     public function addQuantityStepRuleTaxon(TaxonInterface $taxon): void
     {
         $addTaxonsElement = $this->getElement('addQuantityStepRuleTaxon')->getParent();
-
         AutocompleteHelper::chooseValue($this->getSession(), $addTaxonsElement, $taxon->getName());
+    }
+
+    public function addQuantityStepRuleProduct(ProductInterface $product): void
+    {
+        $addProductsElement = $this->getElement('addQuantityStepRuleProduct')->getParent();
+        AutocompleteHelper::chooseValue($this->getSession(), $addProductsElement, $product->getName());
     }
 
     public function enableTaxonQuantitytepRule(): void
     {
         $enableButton = $this->getElement('taxonQuantityStepRuleEnable');
+        $enableButton->click();
+    }
+
+    public function enableProductQuantityStepRule(): void
+    {
+        $enableButton = $this->getElement('enableProductQuantityStepRule');
         $enableButton->click();
     }
 
@@ -112,6 +124,8 @@ class CreateRulesetPage extends BaseCreatePage implements CreateRulesetPageInter
             [
                 'addQuantityStepRuleTaxon' => '#wholesale_ruleset_taxonQuantityStepRules_0_taxons',
                 'taxonQuantityStepRuleEnable' => '#wholesale_ruleset_taxonQuantityStepRules_0_enabled',
+                'addQuantityStepRuleProduct' => '#wholesale_ruleset_productQuantityStepRules_0_products',
+                'enableProductQuantityStepRule' => '#wholesale_ruleset_productQuantityStepRules_0_enabled',
             ]
         );
     }
