@@ -53,6 +53,15 @@ final class WholesaleRulesetType extends AbstractResourceType
                     'allow_delete' => true,
                 ]
             )
+            ->add(
+                'productQuantityStepRules',
+                CollectionType::class,
+                [
+                    'entry_type' => WholesaleRuleQuantityStepByProductType::class,
+                    'allow_add' => true,
+                    'allow_delete' => true,
+                ]
+            )
         ;
     }
 }
